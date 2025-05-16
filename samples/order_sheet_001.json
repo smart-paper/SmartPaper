@@ -1,0 +1,180 @@
+{
+    "id": "126af0d21746",
+    "no": "20250516133651040000",
+    "storeName": "블루베리 디저트",
+    "fromName": "",
+    "fromPhone": "01023242343",
+    "fromAddress": "waeafsdfasdfas",
+    "fromComment": "",
+    "createDatetime": "20250516133702",
+    "smartPaperType": "orderSheet",
+    "paymentMethod": "unknown",
+    "paperWidth": 552,
+    "groupId": 0,
+    "groupName": "",
+    "items": [
+        {
+            "type": "divider",
+            "alignment": "none",
+            "dividerStyle": "equal"
+        },
+        {
+            "type": "text",
+            "alignment": "center",
+            "textStyle": "bold",
+            "textSize": 22.5,
+            "text": "블루베리 디저트"
+        },
+        {
+            "type": "divider",
+            "alignment": "none",
+            "dividerStyle": "equal"
+        },
+        {
+            "type": "text",
+            "alignment": "centerLeft",
+            "textStyle": "normal",
+            "textSize": 18,
+            "text": "온라인 주문[배달 주문]"
+        },
+        {
+            "type": "text",
+            "alignment": "centerLeft",
+            "textStyle": "normal",
+            "textSize": 18,
+            "text": "사업자명: 공공플랫폼"
+        },
+        {
+            "type": "text",
+            "alignment": "centerLeft",
+            "textStyle": "normal",
+            "textSize": 18,
+            "text": "사업자등록번호: 1234567890"
+        },
+        {
+            "type": "text",
+            "alignment": "centerLeft",
+            "textStyle": "normal",
+            "textSize": 18,
+            "text": "전화번호: 010-1234-5678"
+        },
+        {
+            "type": "text",
+            "alignment": "centerLeft",
+            "textStyle": "normal",
+            "textSize": 18,
+            "text": "매장 주소: 서울시 관악구 관악로 1"
+        },
+        {
+            "type": "text",
+            "alignment": "none",
+            "textStyle": "italic",
+            "textSize": 18,
+            "text": "주문일자: 2025/05/16 13:37:02[|SFS|]1[|SFS|]centerLeft[|SEO|]"
+        },
+        {
+            "type": "divider",
+            "alignment": "none",
+            "dividerStyle": "hyphen"
+        },
+        {
+            "type": "divider",
+            "alignment": "none",
+            "dividerStyle": "hyphen"
+        },
+        {
+            "type": "text",
+            "alignment": "none",
+            "textStyle": "normal",
+            "textSize": 22.5,
+            "text": "상품명[|SFS|]3[|SFS|]centerLeft[|SEO|]단가[|SFS|]2[|SFS|]center[|SEO|]수량[|SFS|]1[|SFS|]center[|SEO|]할인[|SFS|]2[|SFS|]center[|SEO|]금액[|SFS|]2[|SFS|]centerRight[|SEO|]"
+        },
+        {
+            "type": "divider",
+            "alignment": "none",
+            "dividerStyle": "hyphen"
+        },
+        {
+            "type": "text",
+            "alignment": "none",
+            "textStyle": "normal",
+            "textSize": 18,
+            "text": "롤케이크 1 piece[|SFS|]3[|SFS|]centerLeft[|SEO|]₩2,600[|SFS|]2[|SFS|]center[|SEO|]1[|SFS|]1[|SFS|]center[|SEO|]₩520[|SFS|]2[|SFS|]center[|SEO|]₩2,080[|SFS|]2[|SFS|]centerRight[|SEO|]"
+        },
+        {
+            "type": "divider",
+            "alignment": "none",
+            "dividerStyle": "hyphen"
+        },
+        {
+            "type": "text",
+            "alignment": "none",
+            "textStyle": "normal",
+            "textSize": 22.5,
+            "text": "최종 결제금액:[|SFS|]1[|SFS|]centerLeft[|SEO|]₩2,080[|SFS|]1[|SFS|]centerRight[|SEO|]"
+        },
+        {
+            "type": "divider",
+            "alignment": "none",
+            "dividerStyle": "blank"
+        },
+        {
+            "type": "text",
+            "alignment": "none",
+            "textStyle": "normal",
+            "textSize": 18,
+            "text": "주문 전체금액:[|SFS|]1[|SFS|]centerLeft[|SEO|]₩2,600[|SFS|]1[|SFS|]centerRight[|SEO|]"
+        },
+        {
+            "type": "text",
+            "alignment": "none",
+            "textStyle": "normal",
+            "textSize": 18,
+            "text": "할인 전체금액:[|SFS|]1[|SFS|]centerLeft[|SEO|]₩520[|SFS|]1[|SFS|]centerRight[|SEO|]"
+        },
+        {
+            "type": "text",
+            "alignment": "none",
+            "textStyle": "normal",
+            "textSize": 18,
+            "text": "부가세 과세 전체금액:[|SFS|]1[|SFS|]centerLeft[|SEO|]₩1,891[|SFS|]1[|SFS|]centerRight[|SEO|]"
+        },
+        {
+            "type": "text",
+            "alignment": "none",
+            "textStyle": "normal",
+            "textSize": 18,
+            "text": "부가세 전체금액:[|SFS|]1[|SFS|]centerLeft[|SEO|]₩189[|SFS|]1[|SFS|]centerRight[|SEO|]"
+        },
+        {
+            "type": "divider",
+            "alignment": "none",
+            "dividerStyle": "hyphen"
+        },
+        {
+            "type": "text",
+            "alignment": "centerRight",
+            "textStyle": "italic",
+            "textSize": 18,
+            "text": "주문 ID: 126af0d21746[|SFS|]1[|SFS|]leftPad[|SFS|]0[|SFS|] [|SEO|]"
+        },
+        {
+            "type": "divider",
+            "alignment": "none",
+            "dividerStyle": "equal"
+        },
+        {
+            "type": "barcode",
+            "alignment": "none",
+            "imageWidth": 500,
+            "imageHeight": 150,
+            "text": "126af0d21746"
+        },
+        {
+            "type": "divider",
+            "alignment": "none",
+            "dividerStyle": "blank"
+        }
+    ],
+    "version": "202504101515"
+}
