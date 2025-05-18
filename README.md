@@ -11,8 +11,8 @@ Supports various types of paper, including order forms, receipts, number tickets
 
 * Normal URL
 
-> Link to [Order Sheet](http://127.0.0.1:5011/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_sheet_001.json)</br>
-> Link to [Order Receipt](http://127.0.0.1:5011/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_receipt_001.json)
+> Link to [Order Sheet](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_sheet_001.json)</br>
+> Link to [Order Receipt](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_receipt_001.json)
 
 * Secure URL (Password: 1234)
 

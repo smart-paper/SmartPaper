@@ -5,14 +5,14 @@
 모든 비스페놀로부터 자유로워지세요!</br>
 자연을 보호해야 자연도 여러분들을 보호합니다!
 
-주문서, 영수증, 번호표/번호태그, 쿠폰, 티켓 등 다양한 종류를 지원합니다. 
+주문서, 영수증, 번호표/번호태그, 쿠폰, 티켓 등 다양한 종류의 용지를 지원합니다. 
 
 ## Samples
 
 * 일반 URL
 
-> [주문서](http://127.0.0.1:5011/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_sheet_001.json) 링크</br>
-> [영수증](http://127.0.0.1:5011/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_receipt_001.json) 링크
+> [주문서](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_sheet_001.json) 링크</br>
+> [영수증](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_receipt_001.json) 링크
 
 * 보안 URL (비빌번호: 1234)
 
