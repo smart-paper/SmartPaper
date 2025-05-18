@@ -1,179 +1,303 @@
 {
-    "id": "126af0d21746",
-    "no": "20250516133651040000",
+    "id": "126af0f09f4a",
+    "no": "20250518134555046000",
     "storeName": "블루베리 디저트",
     "fromName": "",
-    "fromPhone": "01023242343",
-    "fromAddress": "waeafsdfasdfas",
+    "fromPhone": "01011112222",
+    "fromAddress": "hkhjhkjhkjhjkhjkhkj",
     "fromComment": "",
-    "createDatetime": "20250516133702",
+    "createDatetime": "20250518134602",
     "smartPaperType": "orderSheet",
     "paymentMethod": "unknown",
-    "paperWidth": 552,
+    "paperWidth": 500,
     "groupId": 0,
     "groupName": "",
     "items": [
         {
             "type": "divider",
             "alignment": "none",
-            "dividerStyle": "equal"
+            "imageWidth": null,
+            "imageHeight": null,
+            "textStyle": null,
+            "textSize": 22.5,
+            "text": "=",
+            "dividerStyle": "equal",
+            "imageSrc": null
         },
         {
             "type": "text",
             "alignment": "center",
+            "imageWidth": null,
+            "imageHeight": null,
             "textStyle": "bold",
             "textSize": 22.5,
-            "text": "블루베리 디저트"
+            "text": "블루베리 디저트",
+            "dividerStyle": null,
+            "imageSrc": null
         },
         {
             "type": "divider",
             "alignment": "none",
-            "dividerStyle": "equal"
+            "imageWidth": null,
+            "imageHeight": null,
+            "textStyle": null,
+            "textSize": 22.5,
+            "text": "=",
+            "dividerStyle": "equal",
+            "imageSrc": null
         },
         {
             "type": "text",
             "alignment": "centerLeft",
+            "imageWidth": null,
+            "imageHeight": null,
             "textStyle": "normal",
             "textSize": 18,
-            "text": "온라인 주문[배달 주문]"
+            "text": "온라인 주문[배달 주문]",
+            "dividerStyle": null,
+            "imageSrc": null
         },
         {
             "type": "text",
             "alignment": "centerLeft",
+            "imageWidth": null,
+            "imageHeight": null,
             "textStyle": "normal",
             "textSize": 18,
-            "text": "사업자명: 공공플랫폼"
+            "text": "사업자명: 공공플랫폼",
+            "dividerStyle": null,
+            "imageSrc": null
         },
         {
             "type": "text",
             "alignment": "centerLeft",
+            "imageWidth": null,
+            "imageHeight": null,
             "textStyle": "normal",
             "textSize": 18,
-            "text": "사업자등록번호: 1234567890"
+            "text": "사업자등록번호: 1234567890",
+            "dividerStyle": null,
+            "imageSrc": null
         },
         {
             "type": "text",
             "alignment": "centerLeft",
+            "imageWidth": null,
+            "imageHeight": null,
             "textStyle": "normal",
             "textSize": 18,
-            "text": "전화번호: 010-1234-5678"
+            "text": "전화번호: 010-1234-5678",
+            "dividerStyle": null,
+            "imageSrc": null
         },
         {
             "type": "text",
             "alignment": "centerLeft",
+            "imageWidth": null,
+            "imageHeight": null,
             "textStyle": "normal",
             "textSize": 18,
-            "text": "매장 주소: 서울시 관악구 관악로 1"
+            "text": "매장 주소: 서울시 관악구 관악로 1",
+            "dividerStyle": null,
+            "imageSrc": null
         },
         {
             "type": "text",
             "alignment": "none",
+            "imageWidth": null,
+            "imageHeight": null,
             "textStyle": "italic",
             "textSize": 18,
-            "text": "주문일자: 2025/05/16 13:37:02[|SFS|]1[|SFS|]centerLeft[|SEO|]"
+            "text": "주문일자: 2025/05/18 13:46:02[|SFS|]1[|SFS|]centerLeft[|SEO|]",
+            "dividerStyle": null,
+            "imageSrc": null
         },
         {
             "type": "divider",
             "alignment": "none",
-            "dividerStyle": "hyphen"
+            "imageWidth": null,
+            "imageHeight": null,
+            "textStyle": null,
+            "textSize": 22.5,
+            "text": "-",
+            "dividerStyle": "hyphen",
+            "imageSrc": null
         },
         {
             "type": "divider",
             "alignment": "none",
-            "dividerStyle": "hyphen"
+            "imageWidth": null,
+            "imageHeight": null,
+            "textStyle": null,
+            "textSize": 22.5,
+            "text": "-",
+            "dividerStyle": "hyphen",
+            "imageSrc": null
         },
         {
             "type": "text",
             "alignment": "none",
+            "imageWidth": null,
+            "imageHeight": null,
             "textStyle": "normal",
             "textSize": 22.5,
-            "text": "상품명[|SFS|]3[|SFS|]centerLeft[|SEO|]단가[|SFS|]2[|SFS|]center[|SEO|]수량[|SFS|]1[|SFS|]center[|SEO|]할인[|SFS|]2[|SFS|]center[|SEO|]금액[|SFS|]2[|SFS|]centerRight[|SEO|]"
+            "text": "상품명[|SFS|]3[|SFS|]centerLeft[|SEO|]단가[|SFS|]2[|SFS|]center[|SEO|]수량[|SFS|]1[|SFS|]center[|SEO|]할인[|SFS|]2[|SFS|]center[|SEO|]금액[|SFS|]2[|SFS|]centerRight[|SEO|]",
+            "dividerStyle": null,
+            "imageSrc": null
         },
         {
             "type": "divider",
             "alignment": "none",
-            "dividerStyle": "hyphen"
+            "imageWidth": null,
+            "imageHeight": null,
+            "textStyle": null,
+            "textSize": 22.5,
+            "text": "-",
+            "dividerStyle": "hyphen",
+            "imageSrc": null
         },
         {
             "type": "text",
             "alignment": "none",
+            "imageWidth": null,
+            "imageHeight": null,
             "textStyle": "normal",
             "textSize": 18,
-            "text": "롤케이크 1 piece[|SFS|]3[|SFS|]centerLeft[|SEO|]₩2,600[|SFS|]2[|SFS|]center[|SEO|]1[|SFS|]1[|SFS|]center[|SEO|]₩520[|SFS|]2[|SFS|]center[|SEO|]₩2,080[|SFS|]2[|SFS|]centerRight[|SEO|]"
+            "text": "롤케이크 1 piece[|SFS|]3[|SFS|]centerLeft[|SEO|]₩2,600[|SFS|]2[|SFS|]center[|SEO|]1[|SFS|]1[|SFS|]center[|SEO|]₩520[|SFS|]2[|SFS|]center[|SEO|]₩2,080[|SFS|]2[|SFS|]centerRight[|SEO|]",
+            "dividerStyle": null,
+            "imageSrc": null
         },
         {
             "type": "divider",
             "alignment": "none",
-            "dividerStyle": "hyphen"
+            "imageWidth": null,
+            "imageHeight": null,
+            "textStyle": null,
+            "textSize": 22.5,
+            "text": "-",
+            "dividerStyle": "hyphen",
+            "imageSrc": null
         },
         {
             "type": "text",
             "alignment": "none",
+            "imageWidth": null,
+            "imageHeight": null,
             "textStyle": "normal",
             "textSize": 22.5,
-            "text": "최종 결제금액:[|SFS|]1[|SFS|]centerLeft[|SEO|]₩2,080[|SFS|]1[|SFS|]centerRight[|SEO|]"
+            "text": "최종 결제금액:[|SFS|]1[|SFS|]centerLeft[|SEO|]₩2,080[|SFS|]1[|SFS|]centerRight[|SEO|]",
+            "dividerStyle": null,
+            "imageSrc": null
         },
         {
             "type": "divider",
             "alignment": "none",
-            "dividerStyle": "blank"
+            "imageWidth": null,
+            "imageHeight": null,
+            "textStyle": null,
+            "textSize": 13.5,
+            "text": " ",
+            "dividerStyle": "blank",
+            "imageSrc": null
         },
         {
             "type": "text",
             "alignment": "none",
+            "imageWidth": null,
+            "imageHeight": null,
             "textStyle": "normal",
             "textSize": 18,
-            "text": "주문 전체금액:[|SFS|]1[|SFS|]centerLeft[|SEO|]₩2,600[|SFS|]1[|SFS|]centerRight[|SEO|]"
+            "text": "주문 전체금액:[|SFS|]1[|SFS|]centerLeft[|SEO|]₩2,600[|SFS|]1[|SFS|]centerRight[|SEO|]",
+            "dividerStyle": null,
+            "imageSrc": null
         },
         {
             "type": "text",
             "alignment": "none",
+            "imageWidth": null,
+            "imageHeight": null,
             "textStyle": "normal",
             "textSize": 18,
-            "text": "할인 전체금액:[|SFS|]1[|SFS|]centerLeft[|SEO|]₩520[|SFS|]1[|SFS|]centerRight[|SEO|]"
+            "text": "할인 전체금액:[|SFS|]1[|SFS|]centerLeft[|SEO|]₩520[|SFS|]1[|SFS|]centerRight[|SEO|]",
+            "dividerStyle": null,
+            "imageSrc": null
         },
         {
             "type": "text",
             "alignment": "none",
+            "imageWidth": null,
+            "imageHeight": null,
             "textStyle": "normal",
             "textSize": 18,
-            "text": "부가세 과세 전체금액:[|SFS|]1[|SFS|]centerLeft[|SEO|]₩1,891[|SFS|]1[|SFS|]centerRight[|SEO|]"
+            "text": "부가세 과세 전체금액:[|SFS|]1[|SFS|]centerLeft[|SEO|]₩1,891[|SFS|]1[|SFS|]centerRight[|SEO|]",
+            "dividerStyle": null,
+            "imageSrc": null
         },
         {
             "type": "text",
             "alignment": "none",
+            "imageWidth": null,
+            "imageHeight": null,
             "textStyle": "normal",
             "textSize": 18,
-            "text": "부가세 전체금액:[|SFS|]1[|SFS|]centerLeft[|SEO|]₩189[|SFS|]1[|SFS|]centerRight[|SEO|]"
+            "text": "부가세 전체금액:[|SFS|]1[|SFS|]centerLeft[|SEO|]₩189[|SFS|]1[|SFS|]centerRight[|SEO|]",
+            "dividerStyle": null,
+            "imageSrc": null
         },
         {
             "type": "divider",
             "alignment": "none",
-            "dividerStyle": "hyphen"
+            "imageWidth": null,
+            "imageHeight": null,
+            "textStyle": null,
+            "textSize": 22.5,
+            "text": "-",
+            "dividerStyle": "hyphen",
+            "imageSrc": null
         },
         {
             "type": "text",
             "alignment": "centerRight",
+            "imageWidth": null,
+            "imageHeight": null,
             "textStyle": "italic",
             "textSize": 18,
-            "text": "주문 ID: 126af0d21746[|SFS|]1[|SFS|]leftPad[|SFS|]0[|SFS|] [|SEO|]"
+            "text": "주문 ID: 126af0f09f4a[|SFS|]1[|SFS|]leftPad[|SFS|]0[|SFS|] [|SEO|]",
+            "dividerStyle": null,
+            "imageSrc": null
         },
         {
             "type": "divider",
             "alignment": "none",
-            "dividerStyle": "equal"
+            "imageWidth": null,
+            "imageHeight": null,
+            "textStyle": null,
+            "textSize": 22.5,
+            "text": "=",
+            "dividerStyle": "equal",
+            "imageSrc": null
         },
         {
             "type": "barcode",
             "alignment": "none",
             "imageWidth": 500,
             "imageHeight": 150,
-            "text": "126af0d21746"
+            "textStyle": null,
+            "textSize": null,
+            "text": "126af0f09f4a",
+            "dividerStyle": null,
+            "imageSrc": null
         },
         {
             "type": "divider",
             "alignment": "none",
-            "dividerStyle": "blank"
+            "imageWidth": null,
+            "imageHeight": null,
+            "textStyle": null,
+            "textSize": 22.5,
+            "text": " ",
+            "dividerStyle": "blank",
+            "imageSrc": null
         }
     ],
     "version": "202504101515"
