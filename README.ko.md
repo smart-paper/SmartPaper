@@ -9,9 +9,13 @@
 
 ## Samples
 
-링크 [Order Sheet](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=AQV%2Bw0n5tUDhm%2BWEyX26PJNRA2QVb%2Fw3wq24e7QsYecWoevx3MfeqtW%2FLmIv64R6tFsiipZu48YfgOpaxfVzBOiQHSeS1tP4wbN135GZQXA%3D&iv=EBESExQVFhcYGRobHB0eHw%3D%3D&keyBits=256)
+링크 [Order Sheet](http://127.0.0.1:5011/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_sheet_001.json)
 
-링크 [Order Receipt](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=AQV%2Bw0n5tUDhm%2BWEyX26PJNRA2QVb%2Fw3wq24e7QsYecWoevx3MfeqtW%2FLmIv64R6tFsiipZu48cShupH6rEcBfbLQCKPsrb6w7F33ZObQ3I%3D&iv=EBESExQVFhcYGRobHB0eHw%3D%3D&keyBits=256)
+링크 [Order Receipt](http://127.0.0.1:5011/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_receipt_001.json)
+
+링크(Secure) [Order Sheet](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=AQV%2Bw0n5tUDhm%2BWEyX26PJNRA2QVb%2Fw3wq24e7QsYecWoevx3MfeqtW%2FLmIv64R6tEc1jYZu2ZoYl%2BtL6JowXaOfGhfM7endutkOseiRSXg%3D&iv=EBESExQVFhcYGRobHB0eHw%3D%3D&keyBits=256)
+
+링크(Secure) [Order Receipt](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=AQV%2Bw0n5tUDhm%2BWEyX26PJNRA2QVb%2Fw3wq24e7QsYecWoevx3MfeqtW%2FLmIv64R6tEc1jYZu2ZoYl%2BtL6JoxUKWfBziIgujD%2B5YOter3OHo%3D&iv=EBESExQVFhcYGRobHB0eHw%3D%3D&keyBits=256)
 
 ## Language Specific READMEs
 
