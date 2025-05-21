@@ -2,8 +2,8 @@
 
 A repository for providing and sharing information about smart paper.
 
-Be free from all bisphenols!</br>
-Protect nature, and nature will protect you!
+Protect nature, and nature will protect you!</br>
+Be free from all bisphenols...
 
 Supports various types of paper, including order forms, receipts, number tickets(number tags), coupons, and tickets.
 
@@ -27,8 +27,10 @@ Supports various types of paper, including order forms, receipts, number tickets
 > Font Style & Font Weight: normalAndBold(0x00000101), italicAndBold(0x00000102)</br>
 > Font Style & Text Decoration: normalAndUnderline(0x00010001), normalAndOverline(0x00020001), normalAndLineThrough(0x00040001),italicAndUnderline(0x00010002), italicAndOverline(0x00020002), italicAndLineThrough(0x00040002)</br>
 > FontStyle & Font Weight & Text Decoration: normalAndBoldAndUnderline(0x00010101), normalAndBoldAndOverline(0x00020101), normalAndBoldAndLineThrough(0x00040101), italicAndBoldAndUnderline(0x00010102), italicAndBoldAndOverline(0x00020102), italicAndBoldAndLineThrough(0x00040102)</br>
-> text: Text</br>
-> textSize: Font Size
+> **[text]**</br>
+> Text</br>
+> **[fontSize]**</br>
+> Font Size
 
 * Pad String: type = text
 > Item for composing text with pad</br>
@@ -42,16 +44,24 @@ Supports various types of paper, including order forms, receipts, number tickets
 > alignment: Alignment value</br></br>
 > **Pad Type**</br>
 > [text]STRING_FORMAT_SEPARATOR[padFlex]STRING_FORMAT_SEPARATOR[padType]STRING_FORMAT_SEPARATOR[padWidth]STRING_FORMAT_SEPARATOR[padText]STRING_END_OF</br>
-> text: Text</br>
-> padFlex: When composed of multiple 'Pad String', a proportional integer value for the size of another 'Pad String'</br>
-> padType: leftPad(0), rightPad(1)</br>
-> padWidth: Pad Width</br>
-> padText: Text to be filled with pad
+> **[text]**</br>
+> Text</br>
+> **[padFlex]**</br>
+> When composed of multiple 'Pad String', a proportional integer value for the size of another 'Pad String'</br>
+> **[padType]**</br>
+> leftPad(0), rightPad(1)</br>
+> **[padWidth]**</br>
+> Pad Width</br>
+> **[padText]**</br>
+> Text to be filled with pad
 
 * Image: type = image</br>
-> imageWidth: Image Width</br>
-> imageHeight: Image Height</br>
-> imageSrc: Image Source (URL)
+> **[imageWidth]**</br>
+> Image Width</br>
+> **[imageHeight]**</br>
+> Image Height</br>
+> **[imageSrc]**</br>
+> Image Source (URL)
 
 * Image & Text: type = imageAndText
 > Image on the left, text on the right
@@ -64,14 +74,20 @@ Supports various types of paper, including order forms, receipts, number tickets
   exclamation(7)[!], at(8)[@], dollar(9)[$], percent(10)[%], caret(11)[^], ampersand(12)[&], blank(13)[ ], equal(14)[=], underscore(15)[_], dot(16)[.], comma(17)[,], custom(99)[], none(-1)[];
 
 * Barcode: type = barcode
-> text: Barcode Text</br>
-> imageWidth: Image Width</br>
-> imageHeight: Image Height
+> **[text]**</br>
+> Barcode Text</br>
+> **[imageWidth]**</br>
+> Image Width</br>
+> **[imageHeight]**</br>
+> Image Height
 
 * QR Code: type = qrcode
-> text: QR code text</br>
-> imageWidth: Image Width</br>
-> imageHeight: Image Height
+> **[text]**</br>
+> QR code text</br>
+> **[imageWidth]**</br>
+> Image Width</br>
+> **[imageHeight]**</br>
+> Image Height
 
 ## Samples
 
