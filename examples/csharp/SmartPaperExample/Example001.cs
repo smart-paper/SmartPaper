@@ -1,0 +1,129 @@
+﻿using SmartPaperLib;
+
+namespace SmartPaperExample
+{
+    public class Example001
+    {
+        public static SmartPaper GeneratePaper(double paperWidth = 500)
+        {
+            SmartPaper smartPaper = new SmartPaper(paperWidth: paperWidth);
+            smartPaper.smartPaperType = SmartPaperType.orderSheet.ToString();
+            smartPaper.bizName = "PublicPlatform";
+            SmartPaperItem smartPaperItem;
+            PadString padString;
+            List<PadString> padStringList = new List<PadString>();
+
+            // bizName
+            smartPaperItem = new SmartPaperItem(SmartPaperItemType.text, smartPaper.bizName, SmartPaperItemAlignment.center,
+                15.0, SmartPaperItemTextStyle.bold);
+            smartPaper.items.Add(smartPaperItem);
+
+            // Body
+            int flexProductName = 3;
+            int flexUniPrice = 2;
+            int flexQuantity = 1;
+            int flexDiscount = 2;
+            int flexAmount = 2;
+
+            // MenuList Item
+            string menuName;
+            int quantity;
+            double unitMenuPrice;
+            double totalMenuPrice;
+            double totalMenuPriceDC;
+            double totalMenuDC;
+            menuName = "Menu Name";
+            quantity = 1;
+            unitMenuPrice = 1000;
+            totalMenuPrice = 1000;
+            totalMenuPriceDC = 0;
+            totalMenuDC = totalMenuPrice - totalMenuPriceDC;
+
+            padStringList.Clear();
+            padString = new PadString(text: menuName, padFlex: flexProductName, alignment: SmartPaperItemAlignment.centerLeft);
+            padStringList.Add(padString);
+            padString = new PadString(text: unitMenuPrice.ToString(), padFlex: flexUniPrice, alignment: SmartPaperItemAlignment.center);
+            padStringList.Add(padString);
+            padString = new PadString(text: quantity.ToString(), padFlex: flexQuantity, alignment: SmartPaperItemAlignment.center);
+            padStringList.Add(padString);
+            padString = new PadString(text: totalMenuDC.ToString(), padFlex: flexDiscount, alignment: SmartPaperItemAlignment.center);
+            padStringList.Add(padString);
+            padString = new PadString(text: totalMenuPriceDC.ToString(), padFlex: flexAmount, alignment: SmartPaperItemAlignment.centerRight);
+            padStringList.Add(padString);
+            smartPaperItem = SmartPaperItem.MakePadStringItem(padStringList);
+            smartPaperItem.textStyle = SmartPaperItemTextStyle.normal.ToString();
+            smartPaperItem.fontSize = 12.0;
+            smartPaper.items.Add(smartPaperItem);
+
+            smartPaperItem = new SmartPaperItem(SmartPaperItemType.divider, dividerStyle: SmartPaperItemDividerStyle.hyphen, fontSize: 15.0);
+            smartPaper.items.Add(smartPaperItem);
+
+            smartPaperItem = new SmartPaperItem(SmartPaperItemType.divider, dividerStyle: SmartPaperItemDividerStyle.equal, fontSize: 15.0);
+            smartPaper.items.Add(smartPaperItem);
+
+            smartPaperItem = new SmartPaperItem(SmartPaperItemType.barcode, text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
+            smartPaper.items.Add(smartPaperItem);
+            smartPaperItem = new SmartPaperItem(SmartPaperItemType.divider, dividerStyle: SmartPaperItemDividerStyle.blank, fontSize: 15.0);
+            smartPaper.items.Add(smartPaperItem);
+
+            return smartPaper;
+            // GeneratePaper: {"id":"126AF12D51CB","no":"","bizName":"PublicPlatform","fromName":"","fromPhone":"","fromAddress":"","fromComment":"","creationDatetime":"20250522112459","smartPaperType":"orderSheet","smartPaperOutlineType":"none","paymentMethod":"unknown","paperWidth":500,"outlineWidth":0,"groupId":0,"groupName":"","items":[{"type":"text","alignment":"center","textStyle":"bold","fontSize":15,"textMaxLines":null,"text":"PublicPlatform","textColor":null,"textBgColor":null,"dividerStyle":null,"imageWidth":null,"imageHeight":null,"imageSrc":null},{"type":"text","alignment":"none","textStyle":"normal","fontSize":12,"textMaxLines":null,"text":"Menu Name[|SFS|]3[|SFS|]centerLeft[|SEO|]1000[|SFS|]2[|SFS|]center[|SEO|]1[|SFS|]1[|SFS|]center[|SEO|]1000[|SFS|]2[|SFS|]center[|SEO|]0[|SFS|]2[|SFS|]centerRight[|SEO|]","textColor":null,"textBgColor":null,"dividerStyle":null,"imageWidth":null,"imageHeight":null,"imageSrc":null},{"type":"divider","alignment":"none","textStyle":null,"fontSize":15,"textMaxLines":null,"text":null,"textColor":null,"textBgColor":null,"dividerStyle":"hyphen","imageWidth":null,"imageHeight":null,"imageSrc":null},{"type":"divider","alignment":"none","textStyle":null,"fontSize":15,"textMaxLines":null,"text":null,"textColor":null,"textBgColor":null,"dividerStyle":"equal","imageWidth":null,"imageHeight":null,"imageSrc":null},{"type":"barcode","alignment":"none","textStyle":null,"fontSize":null,"textMaxLines":null,"text":"126af11e3355","textColor":null,"textBgColor":null,"dividerStyle":null,"imageWidth":500,"imageHeight":100,"imageSrc":null},{"type":"divider","alignment":"none","textStyle":null,"fontSize":15,"textMaxLines":null,"text":null,"textColor":null,"textBgColor":null,"dividerStyle":"blank","imageWidth":null,"imageHeight":null,"imageSrc":null}],"version":"202504101515"}
+        }
+
+        public static SmartPaper GenerateBorderPaper(double paperWidth = 500)
+        {
+            SmartPaper smartPaper = new SmartPaper(paperWidth);
+            smartPaper.smartPaperType = SmartPaperType.numberTicket.ToString();
+            smartPaper.smartPaperOutlineType = SmartPaperOutlineType.solid.ToString();
+            smartPaper.outlineWidth = 2;
+            smartPaper.bizName = "PublicPlatform";
+            SmartPaperItem smartPaperItem;
+            PadString padString;
+            List<PadString> padStringList = new List<PadString>();
+
+            smartPaperItem = new SmartPaperItem(SmartPaperItemType.divider, SmartPaperItemDividerStyle.blank, 15.0);
+            smartPaper.items.Add(smartPaperItem);
+
+            // Waiting Number
+            padStringList.Clear();
+            padString = new PadString(text: "Waiting Number ", padFlex: 2, alignment: SmartPaperItemAlignment.centerRight);
+            padStringList.Add(padString);
+            padString = new PadString(text: "123", padFlex: 1, alignment: SmartPaperItemAlignment.centerLeft);
+            padStringList.Add(padString);
+            smartPaperItem = SmartPaperItem.MakePadStringItem(padStringList);
+            smartPaperItem.textStyle = SmartPaperItemTextStyle.normal.ToString();
+            smartPaperItem.fontSize = 21.0;
+            smartPaperItem.textColor = "#FFFFFFFF";
+            smartPaperItem.textBgColor = "#FF000000";
+            smartPaper.items.Add(smartPaperItem);
+
+            // Waiting People Number
+            padStringList.Clear();
+            padString = new PadString(text: "Waiting People ", padFlex: 2, alignment: SmartPaperItemAlignment.centerRight);
+            padStringList.Add(padString);
+            padString = new PadString(text: "12", padFlex: 1, alignment: SmartPaperItemAlignment.centerLeft);
+            padStringList.Add(padString);
+            smartPaperItem = SmartPaperItem.MakePadStringItem(padStringList);
+            smartPaperItem.textStyle = SmartPaperItemTextStyle.normal.ToString();
+            smartPaperItem.fontSize = 18.0;
+            smartPaper.items.Add(smartPaperItem);
+
+            smartPaperItem = new SmartPaperItem(SmartPaperItemType.divider, SmartPaperItemDividerStyle.hyphen, 15.0);
+            smartPaper.items.Add(smartPaperItem);
+
+            smartPaperItem = new SmartPaperItem(SmartPaperItemType.divider, dividerStyle: SmartPaperItemDividerStyle.hyphen, fontSize: 15.0);
+            smartPaper.items.Add(smartPaperItem);
+
+            smartPaperItem = new SmartPaperItem(SmartPaperItemType.divider, dividerStyle: SmartPaperItemDividerStyle.equal, fontSize: 15.0);
+            smartPaper.items.Add(smartPaperItem);
+
+            smartPaperItem = new SmartPaperItem(SmartPaperItemType.barcode, text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
+            smartPaper.items.Add(smartPaperItem);
+            smartPaperItem = new SmartPaperItem(SmartPaperItemType.divider, dividerStyle: SmartPaperItemDividerStyle.blank, fontSize: 15.0);
+            smartPaper.items.Add(smartPaperItem);
+
+            return smartPaper;
+            // GenerateBorderPaper: {"id":"126AF12D5259","no":"","bizName":"PublicPlatform","fromName":"","fromPhone":"","fromAddress":"","fromComment":"","creationDatetime":"20250522112601","smartPaperType":"numberTicket","smartPaperOutlineType":"solid","paymentMethod":"unknown","paperWidth":500,"outlineWidth":2,"groupId":0,"groupName":"","items":[{"type":"divider","alignment":"none","textStyle":null,"fontSize":15,"textMaxLines":null,"text":null,"textColor":null,"textBgColor":null,"dividerStyle":"blank","imageWidth":null,"imageHeight":null,"imageSrc":null},{"type":"text","alignment":"none","textStyle":"normal","fontSize":21,"textMaxLines":null,"text":"Waiting Number [|SFS|]2[|SFS|]centerRight[|SEO|]123[|SFS|]1[|SFS|]centerLeft[|SEO|]","textColor":"#FFFFFFFF","textBgColor":"#FF000000","dividerStyle":null,"imageWidth":null,"imageHeight":null,"imageSrc":null},{"type":"text","alignment":"none","textStyle":"normal","fontSize":18,"textMaxLines":null,"text":"Waiting People [|SFS|]2[|SFS|]centerRight[|SEO|]12[|SFS|]1[|SFS|]centerLeft[|SEO|]","textColor":null,"textBgColor":null,"dividerStyle":null,"imageWidth":null,"imageHeight":null,"imageSrc":null},{"type":"divider","alignment":"none","textStyle":null,"fontSize":15,"textMaxLines":null,"text":null,"textColor":null,"textBgColor":null,"dividerStyle":"hyphen","imageWidth":null,"imageHeight":null,"imageSrc":null},{"type":"divider","alignment":"none","textStyle":null,"fontSize":15,"textMaxLines":null,"text":null,"textColor":null,"textBgColor":null,"dividerStyle":"hyphen","imageWidth":null,"imageHeight":null,"imageSrc":null},{"type":"divider","alignment":"none","textStyle":null,"fontSize":15,"textMaxLines":null,"text":null,"textColor":null,"textBgColor":null,"dividerStyle":"equal","imageWidth":null,"imageHeight":null,"imageSrc":null},{"type":"barcode","alignment":"none","textStyle":null,"fontSize":null,"textMaxLines":null,"text":"126af11e3355","textColor":null,"textBgColor":null,"dividerStyle":null,"imageWidth":500,"imageHeight":100,"imageSrc":null},{"type":"divider","alignment":"none","textStyle":null,"fontSize":15,"textMaxLines":null,"text":null,"textColor":null,"textBgColor":null,"dividerStyle":"blank","imageWidth":null,"imageHeight":null,"imageSrc":null}],"version":"202504101515"}
+        }
+    }
+}
