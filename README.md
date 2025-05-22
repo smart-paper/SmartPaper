@@ -70,8 +70,10 @@ Supports various types of paper, including order forms, receipts, number tickets
 > Text on the left, image on the right
 
 * Divider : type = divider
-> Divider Style: pipe(0)[|], slash(1)[/], backSlash(2)[\], hyphen(3)[-], sharp(4)[#], plus(5)[+], star(6)[*],
+> Divider Style: pipe(0)[|], slash(1)[/], backSlash(2)[\\], hyphen(3)[-], sharp(4)[#], plus(5)[+], star(6)[*],
   exclamation(7)[!], at(8)[@], dollar(9)[$], percent(10)[%], caret(11)[^], ampersand(12)[&], blank(13)[ ], equal(14)[=], underscore(15)[_], dot(16)[.], comma(17)[,], custom(99)[], none(-1)[];
+> **[fontSize]**</br>
+> Font Size
 
 * Barcode: type = barcode
 > **[text]**</br>

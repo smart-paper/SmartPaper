@@ -19,36 +19,6 @@
         public double? imageHeight;
         public string? imageSrc;
 
-        public SmartPaperItem(string text)
-        {
-            this.text = text;
-        }
-
-        public SmartPaperItem(SmartPaperItemType type, string text, SmartPaperItemAlignment alignment,
-                double fontSize, SmartPaperItemTextStyle textStyle)
-        {
-            this.type = type.ToString();
-            this.text = text;
-            this.alignment = alignment.ToString();
-            this.fontSize = fontSize;
-            this.textStyle = textStyle.ToString();
-        }
-
-        public SmartPaperItem(SmartPaperItemType type, SmartPaperItemDividerStyle dividerStyle, double fontSize)
-        {
-            this.type = type.ToString();
-            this.dividerStyle = dividerStyle.ToString();
-            this.fontSize = fontSize;
-        }
-
-        public SmartPaperItem(SmartPaperItemType type, string text, double imageWidth, double imageHeight)
-        {
-            this.type = type.ToString();
-            this.text = text;
-            this.imageWidth = imageWidth;
-            this.imageHeight = imageHeight;
-        }
-
         public static string MakePadString(dynamic data)
         {
             string resultString = string.Empty;
@@ -64,26 +34,6 @@
                 }
             }
             return resultString;
-        }
-
-        public static SmartPaperItem MakePadStringItem(dynamic data)
-        {
-            return new SmartPaperItem(MakePadString(data));
-        }
-
-        public static List<string> TrimPadString(List<string> padStringList)
-        {
-            List<string> resultList = new List<string>();
-
-            foreach (string padString in padStringList)
-            {
-                if (padStringList.Count > 0)
-                {
-                    resultList.Add(padString);
-                }
-            }
-
-            return resultList;
         }
     }
 

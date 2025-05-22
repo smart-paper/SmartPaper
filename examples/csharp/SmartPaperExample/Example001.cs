@@ -14,7 +14,7 @@ namespace SmartPaperExample
             List<PadString> padStringList = new List<PadString>();
 
             // bizName
-            smartPaperItem = new SmartPaperItem(SmartPaperItemType.text, smartPaper.bizName, SmartPaperItemAlignment.center,
+            smartPaperItem = SmartPaperHelper.Text(smartPaper.bizName, SmartPaperItemAlignment.center,
                 15.0, SmartPaperItemTextStyle.bold);
             smartPaper.items.Add(smartPaperItem);
 
@@ -50,20 +50,20 @@ namespace SmartPaperExample
             padStringList.Add(padString);
             padString = new PadString(text: totalMenuPriceDC.ToString(), padFlex: flexAmount, alignment: SmartPaperItemAlignment.centerRight);
             padStringList.Add(padString);
-            smartPaperItem = SmartPaperItem.MakePadStringItem(padStringList);
+            smartPaperItem = SmartPaperHelper.MakePadStringItem(padStringList);
             smartPaperItem.textStyle = SmartPaperItemTextStyle.normal.ToString();
             smartPaperItem.fontSize = 12.0;
             smartPaper.items.Add(smartPaperItem);
 
-            smartPaperItem = new SmartPaperItem(SmartPaperItemType.divider, dividerStyle: SmartPaperItemDividerStyle.hyphen, fontSize: 15.0);
+            smartPaperItem = SmartPaperHelper.Divider(dividerStyle: SmartPaperItemDividerStyle.hyphen, fontSize: 15.0);
             smartPaper.items.Add(smartPaperItem);
 
-            smartPaperItem = new SmartPaperItem(SmartPaperItemType.divider, dividerStyle: SmartPaperItemDividerStyle.equal, fontSize: 15.0);
+            smartPaperItem = SmartPaperHelper.Divider(dividerStyle: SmartPaperItemDividerStyle.equal, fontSize: 15.0);
             smartPaper.items.Add(smartPaperItem);
 
-            smartPaperItem = new SmartPaperItem(SmartPaperItemType.barcode, text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
+            smartPaperItem = SmartPaperHelper.Barcode(text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
             smartPaper.items.Add(smartPaperItem);
-            smartPaperItem = new SmartPaperItem(SmartPaperItemType.divider, dividerStyle: SmartPaperItemDividerStyle.blank, fontSize: 15.0);
+            smartPaperItem = SmartPaperHelper.Divider(dividerStyle: SmartPaperItemDividerStyle.blank, fontSize: 15.0);
             smartPaper.items.Add(smartPaperItem);
 
             return smartPaper;
@@ -81,7 +81,7 @@ namespace SmartPaperExample
             PadString padString;
             List<PadString> padStringList = new List<PadString>();
 
-            smartPaperItem = new SmartPaperItem(SmartPaperItemType.divider, SmartPaperItemDividerStyle.blank, 15.0);
+            smartPaperItem = SmartPaperHelper.Divider(SmartPaperItemDividerStyle.blank, 15.0);
             smartPaper.items.Add(smartPaperItem);
 
             // Waiting Number
@@ -90,7 +90,7 @@ namespace SmartPaperExample
             padStringList.Add(padString);
             padString = new PadString(text: "123", padFlex: 1, alignment: SmartPaperItemAlignment.centerLeft);
             padStringList.Add(padString);
-            smartPaperItem = SmartPaperItem.MakePadStringItem(padStringList);
+            smartPaperItem = SmartPaperHelper.MakePadStringItem(padStringList);
             smartPaperItem.textStyle = SmartPaperItemTextStyle.normal.ToString();
             smartPaperItem.fontSize = 21.0;
             smartPaperItem.textColor = "#FFFFFFFF";
@@ -103,23 +103,23 @@ namespace SmartPaperExample
             padStringList.Add(padString);
             padString = new PadString(text: "12", padFlex: 1, alignment: SmartPaperItemAlignment.centerLeft);
             padStringList.Add(padString);
-            smartPaperItem = SmartPaperItem.MakePadStringItem(padStringList);
+            smartPaperItem = SmartPaperHelper.MakePadStringItem(padStringList);
             smartPaperItem.textStyle = SmartPaperItemTextStyle.normal.ToString();
             smartPaperItem.fontSize = 18.0;
             smartPaper.items.Add(smartPaperItem);
 
-            smartPaperItem = new SmartPaperItem(SmartPaperItemType.divider, SmartPaperItemDividerStyle.hyphen, 15.0);
+            smartPaperItem = SmartPaperHelper.Divider(SmartPaperItemDividerStyle.hyphen, 15.0);
             smartPaper.items.Add(smartPaperItem);
 
-            smartPaperItem = new SmartPaperItem(SmartPaperItemType.divider, dividerStyle: SmartPaperItemDividerStyle.hyphen, fontSize: 15.0);
+            smartPaperItem = SmartPaperHelper.Divider(dividerStyle: SmartPaperItemDividerStyle.hyphen, fontSize: 15.0);
             smartPaper.items.Add(smartPaperItem);
 
-            smartPaperItem = new SmartPaperItem(SmartPaperItemType.divider, dividerStyle: SmartPaperItemDividerStyle.equal, fontSize: 15.0);
+            smartPaperItem = SmartPaperHelper.Divider(dividerStyle: SmartPaperItemDividerStyle.equal, fontSize: 15.0);
             smartPaper.items.Add(smartPaperItem);
 
-            smartPaperItem = new SmartPaperItem(SmartPaperItemType.barcode, text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
+            smartPaperItem = SmartPaperHelper.Barcode(text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
             smartPaper.items.Add(smartPaperItem);
-            smartPaperItem = new SmartPaperItem(SmartPaperItemType.divider, dividerStyle: SmartPaperItemDividerStyle.blank, fontSize: 15.0);
+            smartPaperItem = SmartPaperHelper.Divider(dividerStyle: SmartPaperItemDividerStyle.blank, fontSize: 15.0);
             smartPaper.items.Add(smartPaperItem);
 
             return smartPaper;
