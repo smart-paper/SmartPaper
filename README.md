@@ -1,11 +1,12 @@
-# Smart Paper
+# SmartPaper
 
-A repository for providing and sharing information about smart paper.
+A repository for providing and sharing information about SmartPaper.
 
 Protect nature, and nature will protect you!</br>
 Be free from all bisphenols...
 
 Supports various types of paper, including order forms, receipts, number tickets(number tags), coupons, and tickets.
+Secure transmission and storage is possible through support for AES encryption (default 256-bit).
 
 ## Features
 
@@ -90,6 +91,14 @@ Supports various types of paper, including order forms, receipts, number tickets
 > Image Width</br>
 > **[imageHeight]**</br>
 > Image Height
+
+## Viewer for Testing
+
+You can test the smartpaper you created.
+
+<a href="https://smart-paper.github.io/SmartPaper/" target="_blank">
+  🔗 Open SmartPaper Viewer (new window)
+</a>
 
 ## Samples
 
