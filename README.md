@@ -10,15 +10,22 @@ Secure transmission and storage is possible through support for AES encryption (
 
 ## Features
 
+* Paper Size
+> paperWidth: Paper Width
+> The paper height is determined by the Item configuration.
+
+* Outline
+> Outline Type: Among solid line, dotted line, dashed line, thick line, thin line, and double line, only solid line is currently supported</br>
+> outlineWidth: Real number greater than 0
+
+* Type
+> image(0), text(1), imageAndText(2), textAndImage(3), divider(4), barcode(5), qrcode(6)
+
 * Alignment
 > Top: topLeft(0x11), topCenter(0x110), topRight(0x12)</br>
 > Center: centerLeft(0x101), center(0x100), centerRight(0x102)</br>
 > Bottom: bottomLeft(0x21), bottomCenter(0x120), bottomRight(0x22)</br>
 > Not Set: none(0)
-
-* Outline
-> Outline Type: Among solid line, dotted line, dashed line, thick line, thin line, and double line, only solid line is currently supported</br>
-> outlineWidth: Real number greater than 0
 
 * Text: type = text
 > textStyle:</br>
@@ -31,7 +38,15 @@ Secure transmission and storage is possible through support for AES encryption (
 > **[text]**</br>
 > Text</br>
 > **[fontSize]**</br>
-> Font Size
+> Font Size</br>
+> **[alignment]**</br>
+> Alignment value</br>
+> **[textMaxLines]**</br>
+> Text Maximum Lines</br>
+> **[textColor]**</br>
+> Text Color</br>
+> **[textBgColor]**</br>
+> Text Background Color 
 
 * Pad String: type = text
 > Item for composing text with pad</br>
@@ -40,9 +55,12 @@ Secure transmission and storage is possible through support for AES encryption (
 > String Divider: STRING_FORMAT_SEPARATOR([|SFS|]), STRING_END_OF([|SEO|])</br></br>
 > **Alignment Type**</br>
 > [text]STRING_FORMAT_SEPARATOR[padFlex]STRING_FORMAT_SEPARATOR[alignment]STRING_END_OF</br>
-> text: Text</br>
-> padFlex: When composed of multiple 'Pad String', a proportional integer value for the size of another 'Pad String'</br>
-> alignment: Alignment value</br></br>
+> **[text]**</br>
+> Text</br>
+> **[padFlex]**</br>
+> When composed of multiple 'Pad String', a proportional integer value for the size of another 'Pad String'</br>
+> **[alignment]**</br>
+> Alignment value</br></br>
 > **Pad Type**</br>
 > [text]STRING_FORMAT_SEPARATOR[padFlex]STRING_FORMAT_SEPARATOR[padType]STRING_FORMAT_SEPARATOR[padWidth]STRING_FORMAT_SEPARATOR[padText]STRING_END_OF</br>
 > **[text]**</br>
@@ -91,6 +109,117 @@ Secure transmission and storage is possible through support for AES encryption (
 > Image Width</br>
 > **[imageHeight]**</br>
 > Image Height
+
+## How to use (C# Source code)
+
+```
+SmartPaper smartPaper;
+SmartPaperItem smartPaperItem;
+```
+
+* PaperSize
+
+```
+paper.paperWidth = 500; // Default 500
+```
+
+* Outline
+
+```
+paper.outlineWidth = 2.0;`
+```
+
+* Type
+
+```
+smartPaperItem.type = SmartPaperItemType.image;
+```
+
+* Alignment
+
+```
+smartPaperItem.alignment = SmartPaperItemAlignment.topLeft;
+```
+
+* Text
+
+```
+smartPaperItem.textStyle = SmartPaperItemTextStyle.bold;
+smartPaperItem.text = "Smart Paper";
+smartPaperItem.fontSize = 16.0;
+smartPaperItem.alignment = SmartPaperItemAlignment.center;
+smartPaperItem.textMaxLines = null; // Unlimit
+smartPaperItem.textColor = DataManager.IntToColorHex(4278190080); // #FF000000
+smartPaperItem.textBgColor = DataManager.IntToColorHex(4294967295); // #FFFFFFFF
+```
+
+* Pad String
+
+```
+PadString padString;
+List<PadString> padStringList = new List<PadString>();
+padString = new PadString(text: "Waiting Number ", padFlex: 2, alignment: SmartPaperItemAlignment.centerRight);
+padStringList.Add(padString);
+padString = new PadString(text: "123", padFlex: 1, alignment: SmartPaperItemAlignment.centerLeft);
+padStringList.Add(padString);
+smartPaperItem = SmartPaperHelper.MakePadStringItem(padStringList, textStyle: SmartPaperItemTextStyle.normal, fontSize: 21.0, textColor: "#FFFFFFFF", textBgColor: "#FF000000");
+smartPaper.items.Add(smartPaperItem);
+```
+
+* Image
+
+```
+smartPaperItem = SmartPaperHelper.Image("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, SmartPaperItemAlignment.center);
+```
+
+* Image & Text
+
+```
+smartPaperItem = SmartPaperHelper.ImageAndText("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", SmartPaperItemAlignment.center, fontSize: 16.0, textStyle: SmartPaperItemTextStyle.normal);
+```
+
+* Text & Image
+
+```
+smartPaperItem = SmartPaperHelper.TextAndImage("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", SmartPaperItemAlignment.center, fontSize: 16.0, textStyle: SmartPaperItemTextStyle.normal);
+```
+
+* Divider
+
+```
+smartPaperItem = SmartPaperHelper.Divider(dividerStyle: SmartPaperItemDividerStyle.equal, fontSize: 15.0);
+smartPaper.items.Add(smartPaperItem);
+```
+
+* Barcode
+
+```
+smartPaperItem = SmartPaperHelper.Barcode(text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
+smartPaper.items.Add(smartPaperItem);
+```
+
+* QR Code
+
+```
+smartPaperItem = SmartPaperHelper.QrCode(text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
+smartPaper.items.Add(smartPaperItem);
+```
+
+* Generate URL
+
+```
+string paperUrl = "https://paper.example.com/order_receipt_001.json";
+string? url = SecurityManager.GenerateUrl(paperUrl);
+```
+
+* Generate Secured URL
+
+```
+string paperUrl = "https://paper.example.com/order_receipt_001.paper";
+string pin = "abc123#@$";
+byte[] ivBytes = [0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f];
+string? surl = SecurityManager.EncryptAndGenerateUrl(paperUrl, SecurityManager.GenerateDeterministicKeyFromPin(pin), ivBytes);
+```
 
 ## Viewer for Testing
 

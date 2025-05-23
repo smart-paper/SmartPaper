@@ -10,15 +10,22 @@ AES 암호화(기본 256 비트) 지원을 통해 안전한 전송 및 저장이
 
 ## Features
 
+* 용지 크기 (PaperSize)
+> paperWidth: 용지 너비
+> 용지 높이는 항목 구성에 의해 결정됩니다.
+
+* 테두리 (Outline)
+> 테두리 타입: 실선, 점선, 파선, 굵은 선, 가는 선, 이중 선 중에서 현재는 실선만 지원</br>
+> outlineWidth: 0보다 큰 실수
+
+* 유형 (Type)
+> image(0), text(1), imageAndText(2), textAndImage(3), divider(4), barcode(5), qrcode(6)
+
 * 정렬 (Alignment)
 > 상단: topLeft(0x11), topCenter(0x110), topRight(0x12)</br>
 > 중앙: centerLeft(0x101), center(0x100), centerRight(0x102)</br>
 > 하단: bottomLeft(0x21), bottomCenter(0x120), bottomRight(0x22)</br>
 > 설정 안함: none(0)
-
-* 테두리 (Outline)
-> 테두리 타입: 실선, 점선, 파선, 굵은 선, 가는 선, 이중 선 중에서 현재는 실선만 지원</br>
-> outlineWidth: 0보다 큰 실수
 
 * 텍스트 (Text): type = text
 > **[textStyle]**</br>
@@ -31,7 +38,15 @@ AES 암호화(기본 256 비트) 지원을 통해 안전한 전송 및 저장이
 > **[text]**</br>
 > 텍스트</br>
 > **[fontSize]**</br>
-> 폰트 크기
+> 폰트 크기</br>
+> **[alignment]**</br>
+> 정렬 값</br>
+> **[textMaxLines]**</br>
+> 텍스트 최대 라인 수</br>
+> **[textColor]**</br>
+> 텍스트 색상</br>
+> **[textBgColor]**</br>
+> 텍스트 배경 색상 
 
 * 패드 문자열 (Pad String): type = text
 > 패드를 가진 텍스트를 구성하기 위한 아이템</br>
@@ -73,7 +88,7 @@ AES 암호화(기본 256 비트) 지원을 통해 안전한 전송 및 저장이
 * 텍스트 & 이미지 (Text & Image): type = textAndImage
 > 왼쪽에 텍스트, 오른쪽에 이미지
 
-* 구분선 (Divider) : type = divider
+* 구분선 (Divider): type = divider
 > Divider Style: pipe(0)[|], slash(1)[/], backSlash(2)[\\], hyphen(3)[-], sharp(4)[#], plus(5)[+], star(6)[*],
   exclamation(7)[!], at(8)[@], dollar(9)[$], percent(10)[%], caret(11)[^], ampersand(12)[&], blank(13)[ ], equal(14)[=], underscore(15)[_], dot(16)[.], comma(17)[,], custom(99)[], none(-1)[];
 > **[fontSize]**</br>
@@ -94,6 +109,117 @@ AES 암호화(기본 256 비트) 지원을 통해 안전한 전송 및 저장이
 > 이미지 너비</br>
 > **[imageHeight]**</br>
 > 이미지 높이
+
+## 사용 방법 (C# 소스 코드)
+
+```
+SmartPaper smartPaper;
+SmartPaperItem smartPaperItem;
+```
+
+* 용지 크기 (PaperSize)
+
+```
+paper.paperWidth = 500; // 기본 500
+```
+
+* 테두리 (Outline)
+
+```
+paper.outlineWidth = 2.0;`
+```
+
+* 유형 (Type)
+
+```
+smartPaperItem.type = SmartPaperItemType.image;
+```
+
+* 정렬 (Alignment)
+
+```
+smartPaperItem.alignment = SmartPaperItemAlignment.topLeft;
+```
+
+* 텍스트 (Text)
+
+```
+smartPaperItem.textStyle = SmartPaperItemTextStyle.bold;
+smartPaperItem.text = "Smart Paper";
+smartPaperItem.fontSize = 16.0;
+smartPaperItem.alignment = SmartPaperItemAlignment.center;
+smartPaperItem.textMaxLines = null; // Unlimit
+smartPaperItem.textColor = DataManager.IntToColorHex(4278190080); // #FF000000
+smartPaperItem.textBgColor = DataManager.IntToColorHex(4294967295); // #FFFFFFFF
+```
+
+* 패드 문자열 (Pad String)
+
+```
+PadString padString;
+List<PadString> padStringList = new List<PadString>();
+padString = new PadString(text: "Waiting Number ", padFlex: 2, alignment: SmartPaperItemAlignment.centerRight);
+padStringList.Add(padString);
+padString = new PadString(text: "123", padFlex: 1, alignment: SmartPaperItemAlignment.centerLeft);
+padStringList.Add(padString);
+smartPaperItem = SmartPaperHelper.MakePadStringItem(padStringList, textStyle: SmartPaperItemTextStyle.normal, fontSize: 21.0, textColor: "#FFFFFFFF", textBgColor: "#FF000000");
+smartPaper.items.Add(smartPaperItem);
+```
+
+* 이미지 (Image)
+
+```
+smartPaperItem = SmartPaperHelper.Image("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, SmartPaperItemAlignment.center);
+```
+
+* 이미지 & 텍스트 (Image & Text)
+
+```
+smartPaperItem = SmartPaperHelper.ImageAndText("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", SmartPaperItemAlignment.center, fontSize: 16.0, textStyle: SmartPaperItemTextStyle.normal);
+```
+
+* 텍스트 & 이미지 (Text & Image)
+
+```
+smartPaperItem = SmartPaperHelper.TextAndImage("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", SmartPaperItemAlignment.center, fontSize: 16.0, textStyle: SmartPaperItemTextStyle.normal);
+```
+
+* 구분선 (Divider)
+
+```
+smartPaperItem = SmartPaperHelper.Divider(dividerStyle: SmartPaperItemDividerStyle.equal, fontSize: 15.0);
+smartPaper.items.Add(smartPaperItem);
+```
+
+* 바코드 (Barcode)
+
+```
+smartPaperItem = SmartPaperHelper.Barcode(text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
+smartPaper.items.Add(smartPaperItem);
+```
+
+* QR 코드 (QR Code)
+
+```
+smartPaperItem = SmartPaperHelper.QrCode(text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
+smartPaper.items.Add(smartPaperItem);
+```
+
+* URL 생성
+
+```
+string paperUrl = "https://paper.example.com/order_receipt_001.json";
+string? url = SecurityManager.GenerateUrl(paperUrl);
+```
+
+* 보안 URL 생성
+
+```
+string paperUrl = "https://paper.example.com/order_receipt_001.paper";
+string pin = "abc123#@$";
+byte[] ivBytes = [0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f];
+string? surl = SecurityManager.EncryptAndGenerateUrl(paperUrl, SecurityManager.GenerateDeterministicKeyFromPin(pin), ivBytes);
+```
 
 ## Viewer for Testing
 

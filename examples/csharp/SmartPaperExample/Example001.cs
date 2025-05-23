@@ -90,11 +90,7 @@ namespace SmartPaperExample
             padStringList.Add(padString);
             padString = new PadString(text: "123", padFlex: 1, alignment: SmartPaperItemAlignment.centerLeft);
             padStringList.Add(padString);
-            smartPaperItem = SmartPaperHelper.MakePadStringItem(padStringList);
-            smartPaperItem.textStyle = SmartPaperItemTextStyle.normal.ToString();
-            smartPaperItem.fontSize = 21.0;
-            smartPaperItem.textColor = "#FFFFFFFF";
-            smartPaperItem.textBgColor = "#FF000000";
+            smartPaperItem = SmartPaperHelper.MakePadStringItem(padStringList, textStyle: SmartPaperItemTextStyle.normal, fontSize: 21.0, textColor: "#FFFFFFFF", textBgColor: "#FF000000");
             smartPaper.items.Add(smartPaperItem);
 
             // Waiting People Number
@@ -103,9 +99,7 @@ namespace SmartPaperExample
             padStringList.Add(padString);
             padString = new PadString(text: "12", padFlex: 1, alignment: SmartPaperItemAlignment.centerLeft);
             padStringList.Add(padString);
-            smartPaperItem = SmartPaperHelper.MakePadStringItem(padStringList);
-            smartPaperItem.textStyle = SmartPaperItemTextStyle.normal.ToString();
-            smartPaperItem.fontSize = 18.0;
+            smartPaperItem = SmartPaperHelper.MakePadStringItem(padStringList, textStyle: SmartPaperItemTextStyle.normal, fontSize: 18.0);
             smartPaper.items.Add(smartPaperItem);
 
             smartPaperItem = SmartPaperHelper.Divider(SmartPaperItemDividerStyle.hyphen, 15.0);
@@ -124,6 +118,18 @@ namespace SmartPaperExample
 
             return smartPaper;
             // GenerateBorderPaper: {"id":"126AF12D5259","no":"","bizName":"PublicPlatform","fromName":"","fromPhone":"","fromAddress":"","fromComment":"","creationDatetime":"20250522112601","smartPaperType":"numberTicket","smartPaperOutlineType":"solid","paymentMethod":"unknown","paperWidth":500,"outlineWidth":2,"groupId":0,"groupName":"","items":[{"type":"divider","alignment":"none","textStyle":null,"fontSize":15,"textMaxLines":null,"text":null,"textColor":null,"textBgColor":null,"dividerStyle":"blank","imageWidth":null,"imageHeight":null,"imageSrc":null},{"type":"text","alignment":"none","textStyle":"normal","fontSize":21,"textMaxLines":null,"text":"Waiting Number [|SFS|]2[|SFS|]centerRight[|SEO|]123[|SFS|]1[|SFS|]centerLeft[|SEO|]","textColor":"#FFFFFFFF","textBgColor":"#FF000000","dividerStyle":null,"imageWidth":null,"imageHeight":null,"imageSrc":null},{"type":"text","alignment":"none","textStyle":"normal","fontSize":18,"textMaxLines":null,"text":"Waiting People [|SFS|]2[|SFS|]centerRight[|SEO|]12[|SFS|]1[|SFS|]centerLeft[|SEO|]","textColor":null,"textBgColor":null,"dividerStyle":null,"imageWidth":null,"imageHeight":null,"imageSrc":null},{"type":"divider","alignment":"none","textStyle":null,"fontSize":15,"textMaxLines":null,"text":null,"textColor":null,"textBgColor":null,"dividerStyle":"hyphen","imageWidth":null,"imageHeight":null,"imageSrc":null},{"type":"divider","alignment":"none","textStyle":null,"fontSize":15,"textMaxLines":null,"text":null,"textColor":null,"textBgColor":null,"dividerStyle":"hyphen","imageWidth":null,"imageHeight":null,"imageSrc":null},{"type":"divider","alignment":"none","textStyle":null,"fontSize":15,"textMaxLines":null,"text":null,"textColor":null,"textBgColor":null,"dividerStyle":"equal","imageWidth":null,"imageHeight":null,"imageSrc":null},{"type":"barcode","alignment":"none","textStyle":null,"fontSize":null,"textMaxLines":null,"text":"126af11e3355","textColor":null,"textBgColor":null,"dividerStyle":null,"imageWidth":500,"imageHeight":100,"imageSrc":null},{"type":"divider","alignment":"none","textStyle":null,"fontSize":15,"textMaxLines":null,"text":null,"textColor":null,"textBgColor":null,"dividerStyle":"blank","imageWidth":null,"imageHeight":null,"imageSrc":null}],"version":"202504101515"}
+        }
+
+        public static string? GenerateURL(string paperUrl)
+        {
+            string? url = SecurityManager.GenerateUrl(paperUrl);
+            return url;
+        }
+
+        public static string? GenerateSecuredURL(string paperUrl, string pin, byte[] ivBytes)
+        {
+            string? surl = SecurityManager.EncryptAndGenerateUrl(paperUrl, SecurityManager.GenerateDeterministicKeyFromPin(pin), ivBytes);
+            return surl;
         }
     }
 }
