@@ -50,7 +50,7 @@ namespace SmartPaperExample
             return item;
         }
 
-        public static SmartPaperItem ImageAndText(string imageSrc, double imageWidth, double imageHeight, string text, SmartPaperItemAlignment alignment = SmartPaperItemAlignment.none,
+        public static SmartPaperItem ImageAndText(string imageSrc, double imageWidth, double imageHeight, string text, SmartPaperItemAlignment imageAlignment = SmartPaperItemAlignment.none, SmartPaperItemAlignment textAlignment = SmartPaperItemAlignment.none,
             double? fontSize = null, SmartPaperItemTextStyle textStyle = SmartPaperItemTextStyle.normal)
         {
             SmartPaperItem item = new SmartPaperItem();
@@ -58,14 +58,15 @@ namespace SmartPaperExample
             item.imageSrc = imageSrc;
             item.imageWidth = imageWidth;
             item.imageHeight = imageHeight;
+            item.imageAlignment = imageAlignment.ToString();
             item.text = text;
-            item.textAlignment = alignment.ToString();
+            item.textAlignment = textAlignment.ToString();
             item.fontSize = fontSize;
             item.textStyle = textStyle.ToString();
             return item;
         }
 
-        public static SmartPaperItem TextAndImage(string imageSrc, double imageWidth, double imageHeight, string text, SmartPaperItemAlignment alignment = SmartPaperItemAlignment.none,
+        public static SmartPaperItem TextAndImage(string imageSrc, double imageWidth, double imageHeight, string text, SmartPaperItemAlignment imageAlignment = SmartPaperItemAlignment.none, SmartPaperItemAlignment textAlignment = SmartPaperItemAlignment.none,
             double? fontSize = null, SmartPaperItemTextStyle textStyle = SmartPaperItemTextStyle.normal)
         {
             SmartPaperItem item = new SmartPaperItem();
@@ -73,8 +74,9 @@ namespace SmartPaperExample
             item.imageSrc = imageSrc;
             item.imageWidth = imageWidth;
             item.imageHeight = imageHeight;
+            item.imageAlignment = imageAlignment.ToString();
             item.text = text;
-            item.textAlignment = alignment.ToString();
+            item.textAlignment = textAlignment.ToString();
             item.fontSize = fontSize;
             item.textStyle = textStyle.ToString();
             return item;
@@ -87,7 +89,7 @@ namespace SmartPaperExample
             item.text = text;
             item.imageWidth = imageWidth;
             item.imageHeight = imageHeight;
-            item.textAlignment = alignment.ToString();
+            item.imageAlignment = alignment.ToString();
             return item;
         }
 
@@ -98,7 +100,7 @@ namespace SmartPaperExample
             item.text = text;
             item.imageWidth = imageWidth;
             item.imageHeight = imageHeight;
-            item.textAlignment = alignment.ToString();
+            item.imageAlignment = alignment.ToString();
             return item;
         }
 

@@ -39,7 +39,7 @@ Secure transmission and storage is possible through support for AES encryption (
 > Text</br>
 > **[fontSize]**</br>
 > Font Size</br>
-> **[alignment]**</br>
+> **[textAlignment]**</br>
 > Alignment value</br>
 > **[textMaxLines]**</br>
 > Text Maximum Lines</br>
@@ -54,12 +54,12 @@ Secure transmission and storage is possible through support for AES encryption (
 > Supports 'Alignment Type' and 'Pad Type', with 'Alignment Type' taking precedence</br></br>
 > String Divider: STRING_FORMAT_SEPARATOR([|SFS|]), STRING_END_OF([|SEO|])</br></br>
 > **Alignment Type**</br>
-> [text]STRING_FORMAT_SEPARATOR[padFlex]STRING_FORMAT_SEPARATOR[alignment]STRING_END_OF</br>
+> [text]STRING_FORMAT_SEPARATOR[padFlex]STRING_FORMAT_SEPARATOR[textAlignment]STRING_END_OF</br>
 > **[text]**</br>
 > Text</br>
 > **[padFlex]**</br>
 > When composed of multiple 'Pad String', a proportional integer value for the size of another 'Pad String'</br>
-> **[alignment]**</br>
+> **[textAlignment]**</br>
 > Alignment value</br></br>
 > **Pad Type**</br>
 > [text]STRING_FORMAT_SEPARATOR[padFlex]STRING_FORMAT_SEPARATOR[padType]STRING_FORMAT_SEPARATOR[padWidth]STRING_FORMAT_SEPARATOR[padText]STRING_END_OF</br>
@@ -138,7 +138,8 @@ smartPaperItem.type = SmartPaperItemType.image;
 * Alignment
 
 ```
-smartPaperItem.alignment = SmartPaperItemAlignment.topLeft;
+smartPaperItem.textAlignment = SmartPaperItemAlignment.center;
+smartPaperItem.imageAlignment = SmartPaperItemAlignment.center;
 ```
 
 * Text
@@ -147,7 +148,7 @@ smartPaperItem.alignment = SmartPaperItemAlignment.topLeft;
 smartPaperItem.textStyle = SmartPaperItemTextStyle.bold;
 smartPaperItem.text = "Smart Paper";
 smartPaperItem.fontSize = 16.0;
-smartPaperItem.alignment = SmartPaperItemAlignment.center;
+smartPaperItem.textAlignment = SmartPaperItemAlignment.center;
 smartPaperItem.textMaxLines = null; // Unlimit
 smartPaperItem.textColor = DataManager.IntToColorHex(4278190080); // #FF000000 (#ARGB)
 smartPaperItem.textBgColor = DataManager.IntToColorHex(4294967295); // #FFFFFFFF (#ARGB)
@@ -158,9 +159,9 @@ smartPaperItem.textBgColor = DataManager.IntToColorHex(4294967295); // #FFFFFFFF
 ```
 PadString padString;
 List<PadString> padStringList = new List<PadString>();
-padString = new PadString(text: "Waiting Number ", padFlex: 2, alignment: SmartPaperItemAlignment.centerRight);
+padString = new PadString(text: "Waiting Number ", padFlex: 2, textAlignment: SmartPaperItemAlignment.centerRight);
 padStringList.Add(padString);
-padString = new PadString(text: "123", padFlex: 1, alignment: SmartPaperItemAlignment.centerLeft);
+padString = new PadString(text: "123", padFlex: 1, textAlignment: SmartPaperItemAlignment.centerLeft);
 padStringList.Add(padString);
 smartPaperItem = SmartPaperHelper.MakePadStringItem(padStringList, textStyle: SmartPaperItemTextStyle.normal, fontSize: 21.0, textColor: "#FFFFFFFF", textBgColor: "#FF000000");
 smartPaper.items.Add(smartPaperItem);
@@ -175,13 +176,13 @@ smartPaperItem = SmartPaperHelper.Image("https://image.example.com/paper.png", i
 * Image & Text
 
 ```
-smartPaperItem = SmartPaperHelper.ImageAndText("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", SmartPaperItemAlignment.center, fontSize: 16.0, textStyle: SmartPaperItemTextStyle.normal);
+smartPaperItem = SmartPaperHelper.ImageAndText("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", textAlignment: SmartPaperItemAlignment.center, fontSize: 16.0, textStyle: SmartPaperItemTextStyle.normal);
 ```
 
 * Text & Image
 
 ```
-smartPaperItem = SmartPaperHelper.TextAndImage("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", SmartPaperItemAlignment.center, fontSize: 16.0, textStyle: SmartPaperItemTextStyle.normal);
+smartPaperItem = SmartPaperHelper.TextAndImage("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", textAlignment: SmartPaperItemAlignment.center, fontSize: 16.0, textStyle: SmartPaperItemTextStyle.normal);
 ```
 
 * Divider

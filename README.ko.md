@@ -39,7 +39,7 @@ AES 암호화(기본 256 비트) 지원을 통해 안전한 전송 및 저장이
 > 텍스트</br>
 > **[fontSize]**</br>
 > 폰트 크기</br>
-> **[alignment]**</br>
+> **[textAlignment]**</br>
 > 정렬 값</br>
 > **[textMaxLines]**</br>
 > 텍스트 최대 라인 수</br>
@@ -54,12 +54,12 @@ AES 암호화(기본 256 비트) 지원을 통해 안전한 전송 및 저장이
 > '정렬 타입'과 '패드 타입'을 지원하며 '정렬 타입'이 우선 됨</br></br>
 > String Divider: STRING_FORMAT_SEPARATOR([|SFS|]), STRING_END_OF([|SEO|])</br></br>
 > **정렬 타입 (Alignment Type)**</br>
-> [text]STRING_FORMAT_SEPARATOR[padFlex]STRING_FORMAT_SEPARATOR[alignment]STRING_END_OF</br>
+> [text]STRING_FORMAT_SEPARATOR[padFlex]STRING_FORMAT_SEPARATOR[textAlignment]STRING_END_OF</br>
 > **[text]**</br>
 > 텍스트</br>
 > **[padFlex]**</br>
 > 여러 개의 'Pad String'으로 구성될 때 다른 'Pad String'의 크기에 대한 비례되는 정수 값</br>
-> **[alignment]**</br>
+> **[textAlignment]**</br>
 > 정렬 값</br></br>
 > **패드 타입 (Pad Type)**</br>
 > [text]STRING_FORMAT_SEPARATOR[padFlex]STRING_FORMAT_SEPARATOR[padType]STRING_FORMAT_SEPARATOR[padWidth]STRING_FORMAT_SEPARATOR[padText]STRING_END_OF</br>
@@ -138,7 +138,8 @@ smartPaperItem.type = SmartPaperItemType.image;
 * 정렬 (Alignment)
 
 ```
-smartPaperItem.alignment = SmartPaperItemAlignment.topLeft;
+smartPaperItem.textAlignment = SmartPaperItemAlignment.center;
+smartPaperItem.imageAlignment = SmartPaperItemAlignment.center;
 ```
 
 * 텍스트 (Text)
@@ -147,7 +148,7 @@ smartPaperItem.alignment = SmartPaperItemAlignment.topLeft;
 smartPaperItem.textStyle = SmartPaperItemTextStyle.bold;
 smartPaperItem.text = "Smart Paper";
 smartPaperItem.fontSize = 16.0;
-smartPaperItem.alignment = SmartPaperItemAlignment.center;
+smartPaperItem.textAlignment = SmartPaperItemAlignment.center;
 smartPaperItem.textMaxLines = null; // Unlimit
 smartPaperItem.textColor = DataManager.IntToColorHex(4278190080); // #FF000000 (#ARGB)
 smartPaperItem.textBgColor = DataManager.IntToColorHex(4294967295); // #FFFFFFFF (#ARGB)
@@ -158,9 +159,9 @@ smartPaperItem.textBgColor = DataManager.IntToColorHex(4294967295); // #FFFFFFFF
 ```
 PadString padString;
 List<PadString> padStringList = new List<PadString>();
-padString = new PadString(text: "Waiting Number ", padFlex: 2, alignment: SmartPaperItemAlignment.centerRight);
+padString = new PadString(text: "Waiting Number ", padFlex: 2, textAlignment: SmartPaperItemAlignment.centerRight);
 padStringList.Add(padString);
-padString = new PadString(text: "123", padFlex: 1, alignment: SmartPaperItemAlignment.centerLeft);
+padString = new PadString(text: "123", padFlex: 1, textAlignment: SmartPaperItemAlignment.centerLeft);
 padStringList.Add(padString);
 smartPaperItem = SmartPaperHelper.MakePadStringItem(padStringList, textStyle: SmartPaperItemTextStyle.normal, fontSize: 21.0, textColor: "#FFFFFFFF", textBgColor: "#FF000000");
 smartPaper.items.Add(smartPaperItem);
@@ -175,13 +176,13 @@ smartPaperItem = SmartPaperHelper.Image("https://image.example.com/paper.png", i
 * 이미지 & 텍스트 (Image & Text)
 
 ```
-smartPaperItem = SmartPaperHelper.ImageAndText("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", SmartPaperItemAlignment.center, fontSize: 16.0, textStyle: SmartPaperItemTextStyle.normal);
+smartPaperItem = SmartPaperHelper.ImageAndText("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", textAlignment: SmartPaperItemAlignment.center, fontSize: 16.0, textStyle: SmartPaperItemTextStyle.normal);
 ```
 
 * 텍스트 & 이미지 (Text & Image)
 
 ```
-smartPaperItem = SmartPaperHelper.TextAndImage("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", SmartPaperItemAlignment.center, fontSize: 16.0, textStyle: SmartPaperItemTextStyle.normal);
+smartPaperItem = SmartPaperHelper.TextAndImage("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", textAlignment: SmartPaperItemAlignment.center, fontSize: 16.0, textStyle: SmartPaperItemTextStyle.normal);
 ```
 
 * 구분선 (Divider)
