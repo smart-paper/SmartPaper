@@ -237,8 +237,10 @@ string? url = SecurityManager.GenerateUrl(paperUrl);
 ```
 string paperUrl = "https://paper.example.com/order_receipt_001.paper";
 string pin = "abc123#@$"; // PIN is the value that the user actually enters.
-byte[] ivBytes = [0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f];
-string? surl = SecurityManager.EncryptAndGenerateUrl(paperUrl, SecurityManager.GenerateDeterministicKeyFromPin(pin), ivBytes);
+byte[] keyBytes = SecurityManager.GenerateDeterministicKeyFromPin(pin);
+byte[] ivBytes = SecurityManager.GenerateUniqueIV();
+
+string? surl = SecurityManager.EncryptAndGenerateUrl(paperUrl, keyBytes, ivBytes);
 ```
 
 ## Viewer for Testing
