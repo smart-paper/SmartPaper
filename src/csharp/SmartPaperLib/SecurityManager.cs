@@ -34,6 +34,14 @@ namespace SmartPaperLib
             }
         }
 
+        public static byte[] GenerateUniqueIV()
+        {
+            using (Aes aes = Aes.Create())
+            {
+                return aes.IV;
+            }
+        }
+
         private static readonly string SECURE_URL_SMART_PAPER_PREFIX = "https://app.publicplatform.co.kr/?/smart_paper?type=surl";
 
         public static string? GenerateUrl(string destUrl)
