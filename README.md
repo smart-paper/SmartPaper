@@ -126,7 +126,7 @@ paper.paperWidth = 500; // Default 500
 * Outline
 
 ```
-paper.outlineWidth = 2.0;`
+paper.outlineWidth = 2.0;
 ```
 
 * Type
@@ -218,7 +218,8 @@ string json = SmartPaper.toJson(smartPaper);
 ```
 SmartPaper smartPaper = Example001.GeneratePaper();
 string jsonData = SmartPaper.toJson(smartPaper);
-byte[] keyBytes = SecurityManager.GenerateDeterministicKeyFromPin("abc123#@$");
+string pin = "abc123#@$"; // PIN is the value that the user actually enters.
+byte[] keyBytes = SecurityManager.GenerateDeterministicKeyFromPin(pin);
 byte[] ivBytes = [0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f];
 
 SecurityManager.EncryptJsonData(jsonData, keyBytes, ivBytes);	// Encoded in Base64
@@ -235,7 +236,7 @@ string? url = SecurityManager.GenerateUrl(paperUrl);
 
 ```
 string paperUrl = "https://paper.example.com/order_receipt_001.paper";
-string pin = "abc123#@$";
+string pin = "abc123#@$"; // PIN is the value that the user actually enters.
 byte[] ivBytes = [0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f];
 string? surl = SecurityManager.EncryptAndGenerateUrl(paperUrl, SecurityManager.GenerateDeterministicKeyFromPin(pin), ivBytes);
 ```
@@ -258,7 +259,7 @@ You can test the smartpaper you created.
 
 > Link to [Number Ticket](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Fnumber_ticket_001.json)</br><details><summary>View QR Code</summary><img src="https://smart-paper.github.io/SmartPaper/samples/number_ticket_001.json.png" alt="number_ticket_001.json" width="200" height="200"></br></details>
 
-* Secure URLs (Password: 1234)
+* Secure URLs (PIN: 1234)
 
 > Link to [Order Sheet](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=AQV%2Bw0n5tUDhm%2BWEyX26PJNRA2QVb%2Fw3wq24e7QsYecWoevx3MfeqtW%2FLmIv64R6tEc1jYZu2ZoYl%2BtL6JowXaOfGhfM7endutkOseiRSXg%3D&iv=EBESExQVFhcYGRobHB0eHw%3D%3D&keyBits=256)</br><details><summary>View QR Code</summary><img src="https://smart-paper.github.io/SmartPaper/samples/secure/order_sheet_001.paper.png" alt="order_sheet_001.paper" width="200" height="200"></br></details>
 
