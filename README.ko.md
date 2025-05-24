@@ -5,7 +5,7 @@
 자연을 보호해야 자연도 여러분들을 보호합니다!</br>
 모든 비스페놀로부터 자유로워지세요...
 
-주문서, 영수증, 번호표/번호태그, 쿠폰, 티켓 등 다양한 종류의 용지를 지원합니다.
+주문서, 영수증, 번호표/번호태그, 쿠폰, 티켓 등 다양한 종류의 용지를 지원합니다.</br>
 AES 암호화(기본 256 비트) 지원을 통해 안전한 전송 및 저장이 가능합니다.
 
 ## Features
@@ -149,8 +149,8 @@ smartPaperItem.text = "Smart Paper";
 smartPaperItem.fontSize = 16.0;
 smartPaperItem.alignment = SmartPaperItemAlignment.center;
 smartPaperItem.textMaxLines = null; // Unlimit
-smartPaperItem.textColor = DataManager.IntToColorHex(4278190080); // #FF000000
-smartPaperItem.textBgColor = DataManager.IntToColorHex(4294967295); // #FFFFFFFF
+smartPaperItem.textColor = DataManager.IntToColorHex(4278190080); // #FF000000 (#ARGB)
+smartPaperItem.textBgColor = DataManager.IntToColorHex(4294967295); // #FFFFFFFF (#ARGB)
 ```
 
 * 패드 문자열 (Pad String)
@@ -203,6 +203,24 @@ smartPaper.items.Add(smartPaperItem);
 ```
 smartPaperItem = SmartPaperHelper.QrCode(text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
 smartPaper.items.Add(smartPaperItem);
+```
+
+* 샘플 JSON 생성
+
+```
+SmartPaper smartPaper = Example001.GeneratePaper();
+string json = SmartPaper.toJson(smartPaper);
+```
+
+* 암호화된 JSON 생성
+
+```
+SmartPaper smartPaper = Example001.GeneratePaper();
+string jsonData = SmartPaper.toJson(smartPaper);
+byte[] keyBytes = SecurityManager.GenerateDeterministicKeyFromPin("abc123#@$");
+byte[] ivBytes = [0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f];
+
+SecurityManager.EncryptJsonData(jsonData, keyBytes, ivBytes);	// Encoded in Base64
 ```
 
 * URL 생성

@@ -40,15 +40,15 @@ namespace SmartPaperExample
             totalMenuDC = totalMenuPrice - totalMenuPriceDC;
 
             padStringList.Clear();
-            padString = new PadString(text: menuName, padFlex: flexProductName, alignment: SmartPaperItemAlignment.centerLeft);
+            padString = new PadString(text: menuName, padFlex: flexProductName, textAlignment: SmartPaperItemAlignment.centerLeft);
             padStringList.Add(padString);
-            padString = new PadString(text: unitMenuPrice.ToString(), padFlex: flexUniPrice, alignment: SmartPaperItemAlignment.center);
+            padString = new PadString(text: unitMenuPrice.ToString(), padFlex: flexUniPrice, textAlignment: SmartPaperItemAlignment.center);
             padStringList.Add(padString);
-            padString = new PadString(text: quantity.ToString(), padFlex: flexQuantity, alignment: SmartPaperItemAlignment.center);
+            padString = new PadString(text: quantity.ToString(), padFlex: flexQuantity, textAlignment: SmartPaperItemAlignment.center);
             padStringList.Add(padString);
-            padString = new PadString(text: totalMenuDC.ToString(), padFlex: flexDiscount, alignment: SmartPaperItemAlignment.center);
+            padString = new PadString(text: totalMenuDC.ToString(), padFlex: flexDiscount, textAlignment: SmartPaperItemAlignment.center);
             padStringList.Add(padString);
-            padString = new PadString(text: totalMenuPriceDC.ToString(), padFlex: flexAmount, alignment: SmartPaperItemAlignment.centerRight);
+            padString = new PadString(text: totalMenuPriceDC.ToString(), padFlex: flexAmount, textAlignment: SmartPaperItemAlignment.centerRight);
             padStringList.Add(padString);
             smartPaperItem = SmartPaperHelper.MakePadStringItem(padStringList);
             smartPaperItem.textStyle = SmartPaperItemTextStyle.normal.ToString();
@@ -86,18 +86,18 @@ namespace SmartPaperExample
 
             // Waiting Number
             padStringList.Clear();
-            padString = new PadString(text: "Waiting Number ", padFlex: 2, alignment: SmartPaperItemAlignment.centerRight);
+            padString = new PadString(text: "Waiting Number ", padFlex: 2, textAlignment: SmartPaperItemAlignment.centerRight);
             padStringList.Add(padString);
-            padString = new PadString(text: "123", padFlex: 1, alignment: SmartPaperItemAlignment.centerLeft);
+            padString = new PadString(text: "123", padFlex: 1, textAlignment: SmartPaperItemAlignment.centerLeft);
             padStringList.Add(padString);
             smartPaperItem = SmartPaperHelper.MakePadStringItem(padStringList, textStyle: SmartPaperItemTextStyle.normal, fontSize: 21.0, textColor: "#FFFFFFFF", textBgColor: "#FF000000");
             smartPaper.items.Add(smartPaperItem);
 
             // Waiting People Number
             padStringList.Clear();
-            padString = new PadString(text: "Waiting People ", padFlex: 2, alignment: SmartPaperItemAlignment.centerRight);
+            padString = new PadString(text: "Waiting People ", padFlex: 2, textAlignment: SmartPaperItemAlignment.centerRight);
             padStringList.Add(padString);
-            padString = new PadString(text: "12", padFlex: 1, alignment: SmartPaperItemAlignment.centerLeft);
+            padString = new PadString(text: "12", padFlex: 1, textAlignment: SmartPaperItemAlignment.centerLeft);
             padStringList.Add(padString);
             smartPaperItem = SmartPaperHelper.MakePadStringItem(padStringList, textStyle: SmartPaperItemTextStyle.normal, fontSize: 18.0);
             smartPaper.items.Add(smartPaperItem);

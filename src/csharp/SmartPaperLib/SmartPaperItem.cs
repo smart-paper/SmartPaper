@@ -7,7 +7,8 @@
         public static readonly string STRING_END_OF = "[|SEO|]";
 
         public string type = SmartPaperItemType.text.ToString();
-        public string alignment = SmartPaperItemAlignment.none.ToString();
+        public string textAlignment = SmartPaperItemAlignment.none.ToString();
+        public string imageAlignment = SmartPaperItemAlignment.none.ToString();
         public string? textStyle;
         public double? fontSize;
         public int? textMaxLines;
@@ -46,30 +47,30 @@
         public int PadWidth { get; set; } = 0;
         public int PadFlex { get; set; } = 1;
         public string PadText { get; set; } = defaultPadText;
-        public SmartPaperItemAlignment Alignment { get; set; } = SmartPaperItemAlignment.none;
+        public SmartPaperItemAlignment TextAlignment { get; set; } = SmartPaperItemAlignment.none;
 
-        public PadString(string text, double? width = null, TextPadType padType = TextPadType.leftPad, int padFlex = 1, string padText = defaultPadText, SmartPaperItemAlignment alignment = SmartPaperItemAlignment.none)
+        public PadString(string text, double? width = null, TextPadType padType = TextPadType.leftPad, int padFlex = 1, string padText = defaultPadText, SmartPaperItemAlignment textAlignment = SmartPaperItemAlignment.none)
         {
             Text = text;
             Width = width;
             PadType = padType;
             PadFlex = padFlex;
             PadText = padText;
-            Alignment = alignment;
+            TextAlignment = textAlignment;
         }
 
         public bool IsValid()
         {
             return !string.IsNullOrEmpty(Text) &&
-                   ((Alignment == SmartPaperItemAlignment.none && TextPadTypeExtensions.ValidTextPadType(PadType) && !string.IsNullOrEmpty(PadText) && PadWidth >= 0) || Alignment != SmartPaperItemAlignment.none);
+                   ((TextAlignment == SmartPaperItemAlignment.none && TextPadTypeExtensions.ValidTextPadType(PadType) && !string.IsNullOrEmpty(PadText) && PadWidth >= 0) || TextAlignment != SmartPaperItemAlignment.none);
         }
 
         public string MakePadString()
         {
             if (IsValid())
             {
-                return Alignment != SmartPaperItemAlignment.none
-                    ? $"{Text}{SmartPaperItem.STRING_FORMAT_SEPARATOR}{PadFlex}{SmartPaperItem.STRING_FORMAT_SEPARATOR}{Alignment.ToString()}{SmartPaperItem.STRING_END_OF}"
+                return TextAlignment != SmartPaperItemAlignment.none
+                    ? $"{Text}{SmartPaperItem.STRING_FORMAT_SEPARATOR}{PadFlex}{SmartPaperItem.STRING_FORMAT_SEPARATOR}{TextAlignment.ToString()}{SmartPaperItem.STRING_END_OF}"
                     : $"{Text}{SmartPaperItem.STRING_FORMAT_SEPARATOR}{PadFlex}{SmartPaperItem.STRING_FORMAT_SEPARATOR}{PadType.ToString()}{SmartPaperItem.STRING_FORMAT_SEPARATOR}{PadWidth}{SmartPaperItem.STRING_FORMAT_SEPARATOR}{PadText}{SmartPaperItem.STRING_END_OF}";
             }
             else

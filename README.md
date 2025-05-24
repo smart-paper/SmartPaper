@@ -5,7 +5,7 @@ A repository for providing and sharing information about SmartPaper.
 Protect nature, and nature will protect you!</br>
 Be free from all bisphenols...
 
-Supports various types of paper, including order forms, receipts, number tickets(number tags), coupons, and tickets.
+Supports various types of paper, including order forms, receipts, number tickets(number tags), coupons, and tickets.</br>
 Secure transmission and storage is possible through support for AES encryption (default 256-bit).
 
 ## Features
@@ -149,8 +149,8 @@ smartPaperItem.text = "Smart Paper";
 smartPaperItem.fontSize = 16.0;
 smartPaperItem.alignment = SmartPaperItemAlignment.center;
 smartPaperItem.textMaxLines = null; // Unlimit
-smartPaperItem.textColor = DataManager.IntToColorHex(4278190080); // #FF000000
-smartPaperItem.textBgColor = DataManager.IntToColorHex(4294967295); // #FFFFFFFF
+smartPaperItem.textColor = DataManager.IntToColorHex(4278190080); // #FF000000 (#ARGB)
+smartPaperItem.textBgColor = DataManager.IntToColorHex(4294967295); // #FFFFFFFF (#ARGB)
 ```
 
 * Pad String
@@ -203,6 +203,24 @@ smartPaper.items.Add(smartPaperItem);
 ```
 smartPaperItem = SmartPaperHelper.QrCode(text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
 smartPaper.items.Add(smartPaperItem);
+```
+
+* Generate sample JSON
+
+```
+SmartPaper smartPaper = Example001.GeneratePaper();
+string json = SmartPaper.toJson(smartPaper);
+```
+
+* Generate encrypted JSON
+
+```
+SmartPaper smartPaper = Example001.GeneratePaper();
+string jsonData = SmartPaper.toJson(smartPaper);
+byte[] keyBytes = SecurityManager.GenerateDeterministicKeyFromPin("abc123#@$");
+byte[] ivBytes = [0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f];
+
+SecurityManager.EncryptJsonData(jsonData, keyBytes, ivBytes);	// Encoded in Base64
 ```
 
 * Generate URL
