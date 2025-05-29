@@ -5,7 +5,7 @@ A repository for providing and sharing information about SmartPaper.
 Protect nature, and nature will protect you!</br>
 Be free from all bisphenols...
 
-Supports various types of paper, including order forms, receipts, number tickets(number tags), coupons, and tickets.</br>
+Supports various types of paper, including order forms, sheets, receipts, number tickets(number tags), coupons, and tickets.</br>
 Secure transmission and storage is possible through support for AES encryption (default 256-bit).
 
 ## Features
@@ -243,7 +243,7 @@ byte[] ivBytes = SecurityManager.GenerateUniqueIV();
 string? surl = SecurityManager.EncryptAndGenerateUrl(paperUrl, keyBytes, ivBytes);
 ```
 
-## Viewer for Testing
+## Test Viewer
 
 You can test the smartpaper you created.
 
