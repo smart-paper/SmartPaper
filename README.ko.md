@@ -247,7 +247,7 @@ string? surl = SecurityManager.EncryptAndGenerateUrl(paperUrl, keyBytes, ivBytes
 
 생성한 스마트페이퍼를 테스트할 수 있습니다.
 
-<a href="https://smart-paper.github.io/SmartPaper/" target="_blank">
+<a href="https://publicplatform.co.kr/smartpaper/" target="_blank">
   🔗 스마트페이퍼 뷰어 열기
 </a>
 

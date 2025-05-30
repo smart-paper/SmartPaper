@@ -247,7 +247,7 @@ string? surl = SecurityManager.EncryptAndGenerateUrl(paperUrl, keyBytes, ivBytes
 
 You can test the smartpaper you created.
 
-<a href="https://smart-paper.github.io/SmartPaper/" target="_blank">
+<a href="https://publicplatform.co.kr/smartpaper/" target="_blank">
   🔗 Open SmartPaper Viewer
 </a>
 
