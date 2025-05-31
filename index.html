@@ -148,8 +148,10 @@
         // typeSelect 변경 시 추가 필드 가시성 토글
         typeSelect.addEventListener('change', function() {
             if (typeSelect.value === 'surl') {
+                urlInput.placeholder = 'String encoded in Base64 after encryption';
                 surlFieldsDiv.style.display = 'block'; // 'surl'일 때 보이기
             } else {
+                urlInput.placeholder = 'Example: https://example.com/paper.json';
                 surlFieldsDiv.style.display = 'none';  // 'url'일 때 숨기기
             }
         });
