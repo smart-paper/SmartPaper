@@ -86,6 +86,26 @@
             margin-bottom: 0;
             font-weight: normal; /* 체크박스 라벨은 굵게 안 함 */
         }
+        /* word-wrap 사용 */
+        .break-word-example {
+            word-wrap: break-word; /* 또는 overflow-wrap: break-word; */
+        }
+
+        /* white-space와 함께 사용하여 더 정교하게 제어 */
+        .pre-wrap-example {
+            white-space: pre-wrap; /* 줄 바꿈 문자를 인식하면서도 div 폭에 맞춰 자동 개행 */
+            word-wrap: break-word; /* 긴 단어 중간에서 개행 */
+        }
+
+        .normal-example {
+            white-space: normal; /* 기본값: 여러 공백을 하나로, 줄 바꿈 문자를 공백으로 처리. div 폭에 맞춰 자동 개행 */
+        }
+        .js-example {
+            white-space: pre-wrap;
+			word-wrap: break-word;
+			border: 1px solid black;
+			padding: 10px;
+        }
     </style>
 </head>
 <body>
@@ -102,7 +122,7 @@
 
         <div class="form-group">
             <label for="urlInput">URL</label>
-            <input type="text" id="urlInput" placeholder="Example: https://example.com/paper.json">
+            <input type="text" id="urlInput">
         </div>
 
         <div class="form-group checkbox-group">
@@ -125,7 +145,15 @@
             </div>
         </div>
 
-        <button id="submitButton">Open SmartPaper Viewer</button>
+        <div class="form-group js-example">
+            <label for="sampleData">Sample Data:</label>
+            <div id="sampleData"></div>
+        </div>
+
+
+        <div class="form-group">
+            <button id="submitButton">Open SmartPaper Viewer</button>
+        </div>
 
         <div class="form-group">
             <label for="resultUrl">Generated URL:</label>
@@ -143,14 +171,17 @@
         const keyBitsSelect = document.getElementById('keyBitsSelect');
         const submitButton = document.getElementById('submitButton');
         const resultUrlDiv = document.getElementById('resultUrl');
+        const sampleDataDiv = document.getElementById('sampleData');
         const surlFieldsDiv = document.getElementById('surlFields');
 
         // typeSelect 변경 시 추가 필드 가시성 토글
         typeSelect.addEventListener('change', function() {
             if (typeSelect.value === 'surl') {
+                sampleDataDiv.textContent = '[URL] AQV+w0n5tUDhm+WEyX26PJNRA2QVb/w3wq24e7QsYecWoevx3MfeqtW/LmIv64R6tEc1jYZu2ZoYl+tL6JoxUKWfBziIgujD+5YOter3OHo=\n[IV] EBESExQVFhcYGRobHB0eHw==\n\n*Password: 1234';
                 urlInput.placeholder = 'String encoded in Base64 after encryption';
                 surlFieldsDiv.style.display = 'block'; // 'surl'일 때 보이기
             } else {
+                sampleDataDiv.textContent = '[URL] https://smart-paper.github.io/SmartPaper/samples/number_ticket_001.json';
                 urlInput.placeholder = 'Example: https://example.com/paper.json';
                 surlFieldsDiv.style.display = 'none';  // 'url'일 때 숨기기
             }
