@@ -42,22 +42,22 @@ namespace SmartPaperLib
             }
         }
 
+        private static readonly string NORMAL_URL_SMART_PAPER_PREFIX = "https://app.publicplatform.co.kr/?/smart_paper?type=url";
         private static readonly string SECURE_URL_SMART_PAPER_PREFIX = "https://app.publicplatform.co.kr/?/smart_paper?type=surl";
 
-        public static string? GenerateUrl(string destUrl)
+        public static string? GenerateUrl(string destUrl, bool isAutoSave = false)
         {
             try
             {
-                string url = $"{SECURE_URL_SMART_PAPER_PREFIX}&url={Uri.EscapeDataString(destUrl)}";
-                return url;
-            }
+                return $"{NORMAL_URL_SMART_PAPER_PREFIX}&url={Uri.EscapeDataString(destUrl)}&autoSave={isAutoSave.ToString().ToLowerInvariant()}";
+           }
             catch
             {
                 return null;
             }
         }
 
-        public static string? EncryptAndGenerateUrl(string dataToEncrypt, byte[] keyBytes, byte[] ivBytes)
+        public static string? EncryptAndGenerateUrl(string url, byte[] keyBytes, byte[] ivBytes, bool isAutoSave = false)
         {
             try
             {
@@ -65,6 +65,8 @@ namespace SmartPaperLib
                 {
                     aes.Key = keyBytes;
                     aes.IV = ivBytes;
+                    aes.Mode = CipherMode.CBC;
+                    aes.Padding = PaddingMode.PKCS7;
 
                     ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
                     using (var ms = new System.IO.MemoryStream())
@@ -73,18 +75,16 @@ namespace SmartPaperLib
                         {
                             using (var sw = new System.IO.StreamWriter(cs))
                             {
-                                sw.Write(dataToEncrypt);
+                                sw.Write(url);
                             }
                             byte[] encrypted = ms.ToArray();
 
-                            // 암호화된 데이터, IV를 Base64로 인코딩 후 파라미터 데이터 인코딩
                             string encryptedDataEncoded = Uri.EscapeDataString(Convert.ToBase64String(encrypted));
                             string ivEncoded = Uri.EscapeDataString(Convert.ToBase64String(ivBytes));
-                            int keyBits = keyBytes.Length * 8;
+                            int keyBits = keyBytes.Length << 3;
 
                             // URL 파라미터 생성
-                            string url = $"{SECURE_URL_SMART_PAPER_PREFIX}&url={encryptedDataEncoded}&iv={ivEncoded}&keyBits={keyBits}";
-                            return url;
+                            return $"{SECURE_URL_SMART_PAPER_PREFIX}&url={encryptedDataEncoded}&iv={ivEncoded}&keyBits={keyBits}&autoSave={isAutoSave.ToString().ToLowerInvariant()}";
                         }
                     }
                 }
@@ -95,7 +95,7 @@ namespace SmartPaperLib
             }
         }
 
-        public static string? EncryptJsonData(string jsonData, byte[] keyBytes, byte[] ivBytes)
+        public static string? EncryptJsonData(string data, byte[] keyBytes, byte[] ivBytes)
         {
             try
             {
@@ -103,6 +103,8 @@ namespace SmartPaperLib
                 {
                     aes.Key = keyBytes;
                     aes.IV = ivBytes;
+                    aes.Mode = CipherMode.CBC;
+                    aes.Padding = PaddingMode.PKCS7;
 
                     ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
                     using (var ms = new System.IO.MemoryStream())
@@ -111,7 +113,7 @@ namespace SmartPaperLib
                         {
                             using (var sw = new System.IO.StreamWriter(cs))
                             {
-                                sw.Write(jsonData);
+                                sw.Write(data);
                             }
                             byte[] encrypted = ms.ToArray();
                             return Convert.ToBase64String(encrypted);

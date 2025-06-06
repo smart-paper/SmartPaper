@@ -30,6 +30,7 @@
         {
             buttonGenerateOrderSheet = new Button();
             buttonGenerateNumberTicket = new Button();
+            buttonGenerateURLs = new Button();
             SuspendLayout();
             // 
             // buttonGenerateOrderSheet
@@ -52,11 +53,22 @@
             buttonGenerateNumberTicket.UseVisualStyleBackColor = true;
             buttonGenerateNumberTicket.Click += buttonGenerateNumberTicket_Click;
             // 
+            // buttonGenerateURLs
+            // 
+            buttonGenerateURLs.Location = new Point(66, 167);
+            buttonGenerateURLs.Name = "buttonGenerateURLs";
+            buttonGenerateURLs.Size = new Size(180, 32);
+            buttonGenerateURLs.TabIndex = 2;
+            buttonGenerateURLs.Text = "Generate URLs";
+            buttonGenerateURLs.UseVisualStyleBackColor = true;
+            buttonGenerateURLs.Click += buttonGenerateURLs_Click;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(304, 201);
+            ClientSize = new Size(304, 241);
+            Controls.Add(buttonGenerateURLs);
             Controls.Add(buttonGenerateNumberTicket);
             Controls.Add(buttonGenerateOrderSheet);
             Name = "FormMain";
@@ -68,5 +80,6 @@
 
         private Button buttonGenerateOrderSheet;
         private Button buttonGenerateNumberTicket;
+        private Button buttonGenerateURLs;
     }
 }

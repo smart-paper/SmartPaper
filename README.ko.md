@@ -10,6 +10,19 @@ AES 암호화(기본 256 비트) 지원을 통해 안전한 전송 및 저장이
 
 ## 기능
 
+1. 용지 크기 설정: 용지의 너비로 Pixel 단위 (출력 화면보다 큰 경우 출력 화면 크기로 자동 조절 )
+2. 테투리: 용지 전체를 감싸는 테두리로 현재 실선만 지원 (다른 타입 지원 예정)
+3. 지원되는 유형
+    1. 이미지
+    2. 텍스트
+    3. 이미지 & 텍스트
+    4. 텍스트 & 이미지
+    5. 구분선
+    6. 바코드
+    7. QR 코드
+4. 보안 지원: 용지가 저장된 URL 및 용지 데이터 암호화 지원
+5. 저장 기능: 전용 뷰어에서 용지를 수동 및 자동 저장 지원
+
 * 용지 크기 (PaperSize)
 > paperWidth: 용지 너비
 > 용지 높이는 항목 구성에 의해 결정됩니다.
@@ -255,21 +268,21 @@ string? surl = SecurityManager.EncryptAndGenerateUrl(paperUrl, keyBytes, ivBytes
 
 * 일반 URLs
 
-> [주문지](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_form_001.json) 링크</br><details><summary>QR 코드 보기</summary><img src="https://smart-paper.github.io/SmartPaper/samples/order_form_001.json.png" alt="order_form_001.json" width="200" height="200"></br></details>
+> [주문지](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_form_001.json&autoSave=true) 링크</br><details><summary>QR 코드 보기</summary><img src="https://smart-paper.github.io/SmartPaper/samples/order_form_001.json.png" alt="order_form_001.json" width="200" height="200"></br></details>
 
-> [주문서](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_sheet_001.json) 링크</br><details><summary>QR 코드 보기</summary><img src="https://smart-paper.github.io/SmartPaper/samples/order_sheet_001.json.png" alt="order_sheet_001.json" width="200" height="200"></br></details>
+> [주문서](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_sheet_001.json&autoSave=true) 링크</br><details><summary>QR 코드 보기</summary><img src="https://smart-paper.github.io/SmartPaper/samples/order_sheet_001.json.png" alt="order_sheet_001.json" width="200" height="200"></br></details>
 
-> [영수증](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_receipt_001.json) 링크</br><details><summary>QR 코드 보기</summary><img src="https://smart-paper.github.io/SmartPaper/samples/order_receipt_001.json.png" alt="order_receipt_001.json" width="200" height="200"></br></details>
+> [영수증](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_receipt_001.json&autoSave=true) 링크</br><details><summary>QR 코드 보기</summary><img src="https://smart-paper.github.io/SmartPaper/samples/order_receipt_001.json.png" alt="order_receipt_001.json" width="200" height="200"></br></details>
 
-> [번호표](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Fnumber_ticket_001.json) 링크</br><details><summary>QR 코드 보기</summary><img src="https://smart-paper.github.io/SmartPaper/samples/number_ticket_001.json.png" alt="number_ticket_001.json" width="200" height="200"></br></details>
+> [번호표](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Fnumber_ticket_001.json&autoSave=true) 링크</br><details><summary>QR 코드 보기</summary><img src="https://smart-paper.github.io/SmartPaper/samples/number_ticket_001.json.png" alt="number_ticket_001.json" width="200" height="200"></br></details>
 
 * 보안 URLs (PIN: 1234)
 
-> [주문지](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=AQV%2Bw0n5tUDhm%2BWEyX26PJNRA2QVb%2Fw3wq24e7QsYecWoevx3MfeqtW%2FLmIv64R6tEc1jYZu2ZoYl%2BtL6JolWrSXMXjM7PaDq8gbpp6WTn8%3D&iv=EBESExQVFhcYGRobHB0eHw%3D%3D&keyBits=256) 링크</br><details><summary>QR 코드 보기</summary><img src="https://smart-paper.github.io/SmartPaper/samples/secure/order_form_001.paper.png" alt="order_form_001.paper" width="200" height="200"></br></details>
+> [주문지](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=MbEEzibllzTL91I1NAMbB1IzVCAQ9ueMMnoIFTR%2BK9ONJiGJoQVFKmmFX8jwS4zUrP8jsGMoAZK9EMvtDGxR1SgIdpAfPDGtDW04v3pBwiQ%3D&iv=EBESExQVFhcYGRobHB0eHw%3D%3D&keyBits=256&autoSave=true) 링크</br><details><summary>QR 코드 보기</summary><img src="https://smart-paper.github.io/SmartPaper/samples/secure/order_form_001.paper.png" alt="order_form_001.paper" width="200" height="200"></br></details>
 
-> [주문서](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=AQV%2Bw0n5tUDhm%2BWEyX26PJNRA2QVb%2Fw3wq24e7QsYecWoevx3MfeqtW%2FLmIv64R6tEc1jYZu2ZoYl%2BtL6JowXaOfGhfM7endutkOseiRSXg%3D&iv=EBESExQVFhcYGRobHB0eHw%3D%3D&keyBits=256) 링크</br><details><summary>QR 코드 보기</summary><img src="https://smart-paper.github.io/SmartPaper/samples/secure/order_sheet_001.paper.png" alt="order_sheet_001.paper" width="200" height="200"></br></details>
+> [주문서](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=MbEEzibllzTL91I1NAMbB1IzVCAQ9ueMMnoIFTR%2BK9ONJiGJoQVFKmmFX8jwS4zUo2VmoxJhCSNdwad2jT86vOS%2FR9q12%2BwjNeAQaFLs0ko%3D&iv=EBESExQVFhcYGRobHB0eHw%3D%3D&keyBits=256&autoSave=true) 링크</br><details><summary>QR 코드 보기</summary><img src="https://smart-paper.github.io/SmartPaper/samples/secure/order_sheet_001.paper.png" alt="order_sheet_001.paper" width="200" height="200"></br></details>
 
-> [영수증](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=AQV%2Bw0n5tUDhm%2BWEyX26PJNRA2QVb%2Fw3wq24e7QsYecWoevx3MfeqtW%2FLmIv64R6tEc1jYZu2ZoYl%2BtL6JoxUKWfBziIgujD%2B5YOter3OHo%3D&iv=EBESExQVFhcYGRobHB0eHw%3D%3D&keyBits=256) 링크</br><details><summary>QR 코드 보기</summary><img src="https://smart-paper.github.io/SmartPaper/samples/secure/order_receipt_001.paper.png" alt="order_receipt_001.paper" width="200" height="200"></br></details>
+> [영수증](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=MbEEzibllzTL91I1NAMbB1IzVCAQ9ueMMnoIFTR%2BK9ONJiGJoQVFKmmFX8jwS4zUUjuGMq%2Bng4fpMFwziMRqLY%2BT1JK92B%2Fg2Fnz5HqmpBY%3D&iv=EBESExQVFhcYGRobHB0eHw%3D%3D&keyBits=256&autoSave=true) 링크</br><details><summary>QR 코드 보기</summary><img src="https://smart-paper.github.io/SmartPaper/samples/secure/order_receipt_001.paper.png" alt="order_receipt_001.paper" width="200" height="200"></br></details>
 
 ## Language Specific READMEs
 

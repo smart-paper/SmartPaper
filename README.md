@@ -10,6 +10,19 @@ Secure transmission and storage is possible through support for AES encryption (
 
 ## Features
 
+1. Paper size setting: The width of the paper in pixels (if it is larger than the output screen, it will be automatically adjusted to the output screen size)
+2. Border: A border that wraps the entire paper, currently only supporting solid lines (other types will be supported)
+3. Supported types
+    1. Image
+    2. Text
+    3. Image & Text
+    4. Text & Image
+    5. Divider
+    6. Barcode
+    7. QR Code
+4. Security support: Supports URL where the paper is saved and encryption of paper data
+5. Save function: Supports manual and automatic saving of paper in a dedicated viewer
+
 * Paper Size
 > paperWidth: Paper Width
 > The paper height is determined by the Item configuration.
@@ -255,21 +268,21 @@ You can test the smartpaper you created.
 
 * Normal URLs
 
-> Link to [Order Form](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_form_001.json)</br><details><summary>View QR Code</summary><img src="https://smart-paper.github.io/SmartPaper/samples/order_form_001.json.png" alt="order_form_001.json" width="200" height="200"></br></details>
+> Link to [Order Form](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_form_001.json&autoSave=true)</br><details><summary>View QR Code</summary><img src="https://smart-paper.github.io/SmartPaper/samples/order_form_001.json.png" alt="order_form_001.json" width="200" height="200"></br></details>
 
-> Link to [Order Sheet](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_sheet_001.json)</br><details><summary>View QR Code</summary><img src="https://smart-paper.github.io/SmartPaper/samples/order_sheet_001.json.png" alt="order_sheet_001.json" width="200" height="200"></br></details>
+> Link to [Order Sheet](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_sheet_001.json&autoSave=true)</br><details><summary>View QR Code</summary><img src="https://smart-paper.github.io/SmartPaper/samples/order_sheet_001.json.png" alt="order_sheet_001.json" width="200" height="200"></br></details>
 
-> Link to [Order Receipt](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_receipt_001.json)</br><details><summary>View QR Code</summary><img src="https://smart-paper.github.io/SmartPaper/samples/order_receipt_001.json.png" alt="order_receipt_001.json" width="200" height="200"></br></details>
+> Link to [Order Receipt](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Forder_receipt_001.json&autoSave=true)</br><details><summary>View QR Code</summary><img src="https://smart-paper.github.io/SmartPaper/samples/order_receipt_001.json.png" alt="order_receipt_001.json" width="200" height="200"></br></details>
 
-> Link to [Number Ticket](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Fnumber_ticket_001.json)</br><details><summary>View QR Code</summary><img src="https://smart-paper.github.io/SmartPaper/samples/number_ticket_001.json.png" alt="number_ticket_001.json" width="200" height="200"></br></details>
+> Link to [Number Ticket](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Fnumber_ticket_001.json&autoSave=true)</br><details><summary>View QR Code</summary><img src="https://smart-paper.github.io/SmartPaper/samples/number_ticket_001.json.png" alt="number_ticket_001.json" width="200" height="200"></br></details>
 
 * Secure URLs (PIN: 1234)
 
-> Link to [Order Form](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=AQV%2Bw0n5tUDhm%2BWEyX26PJNRA2QVb%2Fw3wq24e7QsYecWoevx3MfeqtW%2FLmIv64R6tEc1jYZu2ZoYl%2BtL6JolWrSXMXjM7PaDq8gbpp6WTn8%3D&iv=EBESExQVFhcYGRobHB0eHw%3D%3D&keyBits=256)</br><details><summary>View QR Code</summary><img src="https://smart-paper.github.io/SmartPaper/samples/secure/order_form_001.paper.png" alt="order_form_001.paper" width="200" height="200"></br></details>
+> Link to [Order Form](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=MbEEzibllzTL91I1NAMbB1IzVCAQ9ueMMnoIFTR%2BK9ONJiGJoQVFKmmFX8jwS4zUrP8jsGMoAZK9EMvtDGxR1SgIdpAfPDGtDW04v3pBwiQ%3D&iv=EBESExQVFhcYGRobHB0eHw%3D%3D&keyBits=256&autoSave=true)</br><details><summary>View QR Code</summary><img src="https://smart-paper.github.io/SmartPaper/samples/secure/order_form_001.paper.png" alt="order_form_001.paper" width="200" height="200"></br></details>
 
-> Link to [Order Sheet](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=AQV%2Bw0n5tUDhm%2BWEyX26PJNRA2QVb%2Fw3wq24e7QsYecWoevx3MfeqtW%2FLmIv64R6tEc1jYZu2ZoYl%2BtL6JowXaOfGhfM7endutkOseiRSXg%3D&iv=EBESExQVFhcYGRobHB0eHw%3D%3D&keyBits=256)</br><details><summary>View QR Code</summary><img src="https://smart-paper.github.io/SmartPaper/samples/secure/order_sheet_001.paper.png" alt="order_sheet_001.paper" width="200" height="200"></br></details>
+> Link to [Order Sheet](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=MbEEzibllzTL91I1NAMbB1IzVCAQ9ueMMnoIFTR%2BK9ONJiGJoQVFKmmFX8jwS4zUo2VmoxJhCSNdwad2jT86vOS%2FR9q12%2BwjNeAQaFLs0ko%3D&iv=EBESExQVFhcYGRobHB0eHw%3D%3D&keyBits=256&autoSave=true)</br><details><summary>View QR Code</summary><img src="https://smart-paper.github.io/SmartPaper/samples/secure/order_sheet_001.paper.png" alt="order_sheet_001.paper" width="200" height="200"></br></details>
 
-> Link to [Order Receipt](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=AQV%2Bw0n5tUDhm%2BWEyX26PJNRA2QVb%2Fw3wq24e7QsYecWoevx3MfeqtW%2FLmIv64R6tEc1jYZu2ZoYl%2BtL6JoxUKWfBziIgujD%2B5YOter3OHo%3D&iv=EBESExQVFhcYGRobHB0eHw%3D%3D&keyBits=256)</br><details><summary>View QR Code</summary><img src="https://smart-paper.github.io/SmartPaper/samples/secure/order_receipt_001.paper.png" alt="order_receipt_001.paper" width="200" height="200"></br></details>
+> Link to [Order Receipt](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=MbEEzibllzTL91I1NAMbB1IzVCAQ9ueMMnoIFTR%2BK9ONJiGJoQVFKmmFX8jwS4zUUjuGMq%2Bng4fpMFwziMRqLY%2BT1JK92B%2Fg2Fnz5HqmpBY%3D&iv=EBESExQVFhcYGRobHB0eHw%3D%3D&keyBits=256&autoSave=true)</br><details><summary>View QR Code</summary><img src="https://smart-paper.github.io/SmartPaper/samples/secure/order_receipt_001.paper.png" alt="order_receipt_001.paper" width="200" height="200"></br></details>
 
 ## Language Specific READMEs
 
