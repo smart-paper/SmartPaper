@@ -4,6 +4,9 @@ namespace SmartPaperExample
 {
     public class Example001
     {
+        public static readonly string TEST_PIN = "1234";
+        //public static readonly byte[] TEST_SMART_PAPER_NONCE = SmartPaperManager.GenerateRandomBytes(12);
+        public static readonly byte[] TEST_SMART_PAPER_NONCE = [0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b];
         public static SmartPaper GeneratePaper(double paperWidth = 500)
         {
             SmartPaper smartPaper = new SmartPaper(paperWidth: paperWidth);
@@ -122,14 +125,17 @@ namespace SmartPaperExample
 
         public static string? GenerateURL(string paperUrl, bool isAutoSave = false)
         {
-            string? url = SecurityManager.GenerateUrl(paperUrl, isAutoSave);
-            return url;
+            return SmartPaperManager.GenerateUrl(paperUrl, isAutoSave);
         }
 
-        public static string? GenerateSecuredURL(string paperUrl, string pin, byte[] ivBytes, bool isAutoSave = false)
+        public static string? GenerateSecuredURL(string paperUrl, string pin, byte[] nonceBytes, bool isAutoSave = false)
         {
-            string? surl = SecurityManager.EncryptAndGenerateUrl(paperUrl, SecurityManager.GenerateDeterministicKeyFromPin(pin), ivBytes, isAutoSave);
-            return surl;
+            return SmartPaperManager.EncryptAndGenerateUrl(paperUrl, SmartPaperManager.GenerateDeterministicKeyFromPin(pin), nonceBytes, isAutoSave);
+        }
+
+        public static string EncryptJsonData(string data, string pin, byte[] nonceBytes)
+        {
+            return SmartPaperManager.EncryptData(data, SmartPaperManager.GenerateDeterministicKeyFromPin(pin), nonceBytes);
         }
     }
 }

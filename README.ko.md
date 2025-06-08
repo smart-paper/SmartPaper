@@ -232,17 +232,17 @@ string json = SmartPaper.toJson(smartPaper);
 SmartPaper smartPaper = Example001.GeneratePaper();
 string jsonData = SmartPaper.toJson(smartPaper);
 string pin = "abc123#@$"; // PIN은 사용자가 실제로 입력하는 값입니다.
-byte[] keyBytes = SecurityManager.GenerateDeterministicKeyFromPin(pin);
-byte[] ivBytes = SecurityManager.GenerateUniqueIV();
+byte[] keyBytes = SmartPaperManager.GenerateDeterministicKeyFromPin(pin);
+byte[] nonceBytes = SmartPaperManager.GenerateUniqueNonce();
 
-string securePayload = SecurityManager.EncryptJsonData(jsonData, keyBytes, ivBytes);	// Base64로 인코딩
+string securePayload = SmartPaperManager.EncryptData(jsonData, keyBytes, nonceBytes);	// Base64로 인코딩
 ```
 
 * URL 생성
 
 ```
 string paperUrl = "https://paper.example.com/order_receipt_001.json";
-string? url = SecurityManager.GenerateUrl(paperUrl);
+string? url = SmartPaperManager.GenerateUrl(paperUrl);
 ```
 
 * 보안 URL 생성
@@ -250,10 +250,10 @@ string? url = SecurityManager.GenerateUrl(paperUrl);
 ```
 string paperUrl = "https://paper.example.com/order_receipt_001.paper";
 string pin = "abc123#@$"; // PIN은 사용자가 실제로 입력하는 값입니다.
-byte[] keyBytes = SecurityManager.GenerateDeterministicKeyFromPin(pin);
-byte[] ivBytes = SecurityManager.GenerateUniqueIV();
+byte[] keyBytes = SmartPaperManager.GenerateDeterministicKeyFromPin(pin);
+byte[] nonceBytes = SmartPaperManager.GenerateUniqueNonce();
 
-string? surl = SecurityManager.EncryptAndGenerateUrl(paperUrl, keyBytes, ivBytes);
+string? surl = SmartPaperManager.EncryptAndGenerateUrl(paperUrl, keyBytes, nonceBytes);
 ```
 
 ## 테스트 뷰어
@@ -278,11 +278,11 @@ string? surl = SecurityManager.EncryptAndGenerateUrl(paperUrl, keyBytes, ivBytes
 
 * 보안 URLs (PIN: 1234)
 
-> [주문지](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=MbEEzibllzTL91I1NAMbB1IzVCAQ9ueMMnoIFTR%2BK9ONJiGJoQVFKmmFX8jwS4zUrP8jsGMoAZK9EMvtDGxR1SgIdpAfPDGtDW04v3pBwiQ%3D&iv=EBESExQVFhcYGRobHB0eHw%3D%3D&keyBits=256&autoSave=true) 링크</br><details><summary>QR 코드 보기</summary><img src="https://smart-paper.github.io/SmartPaper/samples/secure/order_form_001.paper.png" alt="order_form_001.paper" width="200" height="200"></br></details>
+> [주문지](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=%2F3C0KcmfZj69Bsl%2FDBJ29kPlwH68JWEdWujn%2FLEFZdn9i1UokVxJVTlmZusCwprSY21ikMyvjQu5UGqLwdDk5l5uyeldPGy%2B6NdmvE8RrSAXGv6D9vsc6bEuDvQ%3D&iv=EBESExQVFhcYGRob&keyBits=256&autoSave=false) 링크</br><details><summary>QR 코드 보기</summary><img src="https://smart-paper.github.io/SmartPaper/samples/secure/order_form_001.paper.png" alt="order_form_001.paper" width="200" height="200"></br></details>
 
-> [주문서](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=MbEEzibllzTL91I1NAMbB1IzVCAQ9ueMMnoIFTR%2BK9ONJiGJoQVFKmmFX8jwS4zUo2VmoxJhCSNdwad2jT86vOS%2FR9q12%2BwjNeAQaFLs0ko%3D&iv=EBESExQVFhcYGRobHB0eHw%3D%3D&keyBits=256&autoSave=true) 링크</br><details><summary>QR 코드 보기</summary><img src="https://smart-paper.github.io/SmartPaper/samples/secure/order_sheet_001.paper.png" alt="order_sheet_001.paper" width="200" height="200"></br></details>
+> [주문서](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=%2F3C0KcmfZj69Bsl%2FDBJ29kPlwH68JWEdWujn%2FLEFZdn9i1UokVxJVTlmZusCwprSY21ikMyvjQu5UGqLwdDx4Ulm4oZdPXPg%2BcZzqzCzKuamv4IudA0PFVW2JBW%2B&iv=EBESExQVFhcYGRob&keyBits=256&autoSave=false) 링크</br><details><summary>QR 코드 보기</summary><img src="https://smart-paper.github.io/SmartPaper/samples/secure/order_sheet_001.paper.png" alt="order_sheet_001.paper" width="200" height="200"></br></details>
 
-> [영수증](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=MbEEzibllzTL91I1NAMbB1IzVCAQ9ueMMnoIFTR%2BK9ONJiGJoQVFKmmFX8jwS4zUUjuGMq%2Bng4fpMFwziMRqLY%2BT1JK92B%2Fg2Fnz5HqmpBY%3D&iv=EBESExQVFhcYGRobHB0eHw%3D%3D&keyBits=256&autoSave=true) 링크</br><details><summary>QR 코드 보기</summary><img src="https://smart-paper.github.io/SmartPaper/samples/secure/order_receipt_001.paper.png" alt="order_receipt_001.paper" width="200" height="200"></br></details>
+> [영수증](https://app.publicplatform.co.kr/?/smart_paper?type=surl&url=%2F3C0KcmfZj69Bsl%2FDBJ29kPlwH68JWEdWujn%2FLEFZdn9i1UokVxJVTlmZusCwprSY21ikMyvjQu5UGqLwdDw7E9m%2F6kZUnL%2BuIlzrzLeD3sqdYkZeWZK74rFU76DX%2F8%3D&iv=EBESExQVFhcYGRob&keyBits=256&autoSave=false) 링크</br><details><summary>QR 코드 보기</summary><img src="https://smart-paper.github.io/SmartPaper/samples/secure/order_receipt_001.paper.png" alt="order_receipt_001.paper" width="200" height="200"></br></details>
 
 ## Language Specific READMEs
 
