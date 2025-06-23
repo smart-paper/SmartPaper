@@ -1,14 +1,14 @@
 ﻿namespace SmartPaperLib
 {
-    public class SmartPaperItem
+    public class SmartRecordLine
     {
         public static readonly string STRING_FORMAT_SEPARATOR = "[|SFS|]";
         public static readonly string PAD_TEXT_BLANK = " ";
         public static readonly string STRING_END_OF = "[|SEO|]";
 
-        public string type = SmartPaperItemType.text.ToString();
-        public string textAlignment = SmartPaperItemAlignment.none.ToString();
-        public string imageAlignment = SmartPaperItemAlignment.none.ToString();
+        public string type = SmartRecordLineType.text.ToString();
+        public string textAlignment = SmartRecordLineAlignment.none.ToString();
+        public string imageAlignment = SmartRecordLineAlignment.none.ToString();
         public string? textStyle;
         public double? fontSize;
         public int? textMaxLines;
@@ -47,9 +47,9 @@
         public int PadWidth { get; set; } = 0;
         public int PadFlex { get; set; } = 1;
         public string PadText { get; set; } = defaultPadText;
-        public SmartPaperItemAlignment TextAlignment { get; set; } = SmartPaperItemAlignment.none;
+        public SmartRecordLineAlignment TextAlignment { get; set; } = SmartRecordLineAlignment.none;
 
-        public PadString(string text, double? width = null, TextPadType padType = TextPadType.leftPad, int padFlex = 1, string padText = defaultPadText, SmartPaperItemAlignment textAlignment = SmartPaperItemAlignment.none)
+        public PadString(string text, double? width = null, TextPadType padType = TextPadType.leftPad, int padFlex = 1, string padText = defaultPadText, SmartRecordLineAlignment textAlignment = SmartRecordLineAlignment.none)
         {
             Text = text;
             Width = width;
@@ -62,16 +62,16 @@
         public bool IsValid()
         {
             return !string.IsNullOrEmpty(Text) &&
-                   ((TextAlignment == SmartPaperItemAlignment.none && TextPadTypeExtensions.ValidTextPadType(PadType) && !string.IsNullOrEmpty(PadText) && PadWidth >= 0) || TextAlignment != SmartPaperItemAlignment.none);
+                   ((TextAlignment == SmartRecordLineAlignment.none && TextPadTypeExtensions.ValidTextPadType(PadType) && !string.IsNullOrEmpty(PadText) && PadWidth >= 0) || TextAlignment != SmartRecordLineAlignment.none);
         }
 
         public string MakePadString()
         {
             if (IsValid())
             {
-                return TextAlignment != SmartPaperItemAlignment.none
-                    ? $"{Text}{SmartPaperItem.STRING_FORMAT_SEPARATOR}{PadFlex}{SmartPaperItem.STRING_FORMAT_SEPARATOR}{TextAlignment.ToString()}{SmartPaperItem.STRING_END_OF}"
-                    : $"{Text}{SmartPaperItem.STRING_FORMAT_SEPARATOR}{PadFlex}{SmartPaperItem.STRING_FORMAT_SEPARATOR}{PadType.ToString()}{SmartPaperItem.STRING_FORMAT_SEPARATOR}{PadWidth}{SmartPaperItem.STRING_FORMAT_SEPARATOR}{PadText}{SmartPaperItem.STRING_END_OF}";
+                return TextAlignment != SmartRecordLineAlignment.none
+                    ? $"{Text}{SmartRecordLine.STRING_FORMAT_SEPARATOR}{PadFlex}{SmartRecordLine.STRING_FORMAT_SEPARATOR}{TextAlignment.ToString()}{SmartRecordLine.STRING_END_OF}"
+                    : $"{Text}{SmartRecordLine.STRING_FORMAT_SEPARATOR}{PadFlex}{SmartRecordLine.STRING_FORMAT_SEPARATOR}{PadType.ToString()}{SmartRecordLine.STRING_FORMAT_SEPARATOR}{PadWidth}{SmartRecordLine.STRING_FORMAT_SEPARATOR}{PadText}{SmartRecordLine.STRING_END_OF}";
             }
             else
             {
@@ -90,7 +90,7 @@
         }
     }
 
-    public enum SmartPaperItemType
+    public enum SmartRecordLineType
     {
         image = 0,
         text = 1,
@@ -101,7 +101,7 @@
         qrCode = 6
     }
 
-    public enum SmartPaperItemAlignment
+    public enum SmartRecordLineAlignment
     {
         topLeft = 0x11,
         topCenter = 0x110,
@@ -115,7 +115,7 @@
         none = 0
     }
 
-    public enum SmartPaperItemTextStyle
+    public enum SmartRecordLineTextStyle
     {
         // FontStyle
         normal = 0x00000001, italic = 0x00000002,
@@ -133,7 +133,7 @@
         italicAndBoldAndUnderline = 0x00010102, italicAndBoldAndOverline = 0x00020102, italicAndBoldAndLineThrough = 0x00040102
     }
 
-    public enum SmartPaperItemDividerStyle
+    public enum SmartRecordLineDividerStyle
     {
         pipe = 0,
         slash = 1,
@@ -157,21 +157,21 @@
         none = -1
     }
 
-    public static class SmartPaperItemDividerStyleExtensions
+    public static class SmartRecordLineDividerStyleExtensions
     {
-        public static int GetValue(this SmartPaperItemDividerStyle style)
+        public static int GetValue(this SmartRecordLineDividerStyle style)
         {
             return (int)style;
         }
 
-        public static SmartPaperItemDividerStyle ParseValue(int value)
+        public static SmartRecordLineDividerStyle ParseValue(int value)
         {
-            return Enum.IsDefined(typeof(SmartPaperItemDividerStyle), value) ? (SmartPaperItemDividerStyle)value : SmartPaperItemDividerStyle.none;
+            return Enum.IsDefined(typeof(SmartRecordLineDividerStyle), value) ? (SmartRecordLineDividerStyle)value : SmartRecordLineDividerStyle.none;
         }
 
-        public static SmartPaperItemDividerStyle ParseName(string name)
+        public static SmartRecordLineDividerStyle ParseName(string name)
         {
-            return Enum.TryParse<SmartPaperItemDividerStyle>(name, out var style) ? style : SmartPaperItemDividerStyle.none;
+            return Enum.TryParse<SmartRecordLineDividerStyle>(name, out var style) ? style : SmartRecordLineDividerStyle.none;
         }
 
         public static string GetDivider(int value)

@@ -2,7 +2,8 @@
 {
     public class SmartPaper
     {
-        public static readonly string versionCode = "202504101515";
+        public const double defaultPaperWidth = 500;
+        public static readonly string versionCode = "202506221515";
         public string id = DatetimeManager.GetCurrentTimeHexId();
         public string no = "";
         public string bizName = "";
@@ -11,17 +12,15 @@
         public string fromAddress = "";
         public string fromComment = "";
         public string creationDatetime = DatetimeManager.GetCurrentTimeString();
-        public string smartPaperType = SmartPaperType.others.ToString();
-        public string smartPaperOutlineType = SmartPaperOutlineType.none.ToString();
         public string paymentMethod = PaymentMethod.unknown.ToString();
         public double paperWidth = 0;
-        public double outlineWidth = 0;
         public int groupId = 0;
         public string groupName = "";
-        public List<SmartPaperItem> items = [];
+        public List<SmartRecord> smartRecordList = [];
+        public SmartRecordLine? smartRecordDivider;
         public string version = SmartPaper.versionCode;
 
-        public SmartPaper(double paperWidth)
+        public SmartPaper(double paperWidth = defaultPaperWidth)
         {
             this.paperWidth = paperWidth;
         }

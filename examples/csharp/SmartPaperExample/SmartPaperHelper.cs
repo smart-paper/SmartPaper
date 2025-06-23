@@ -4,11 +4,11 @@ namespace SmartPaperExample
 {
     public class SmartPaperHelper
     {
-        public static SmartPaperItem PadStringItem(string text, SmartPaperItemAlignment alignment = SmartPaperItemAlignment.none, SmartPaperItemTextStyle? textStyle = null, 
+        public static SmartRecordLine PadStringLine(string text, SmartRecordLineAlignment alignment = SmartRecordLineAlignment.none, SmartRecordLineTextStyle? textStyle = null, 
             double? fontSize = null, String? textColor = null, String? textBgColor = null)
         {
-            SmartPaperItem item = new SmartPaperItem();
-            item.type = SmartPaperItemType.text.ToString();
+            SmartRecordLine item = new SmartRecordLine();
+            item.type = SmartRecordLineType.text.ToString();
             item.text = text;
             item.textAlignment = alignment.ToString();
             item.textStyle = textStyle.ToString();
@@ -18,11 +18,11 @@ namespace SmartPaperExample
             return item;
         }
 
-        public static SmartPaperItem Text(string text, SmartPaperItemAlignment alignment = SmartPaperItemAlignment.none,
-                double? fontSize = null, SmartPaperItemTextStyle textStyle = SmartPaperItemTextStyle.normal)
+        public static SmartRecordLine Text(string text, SmartRecordLineAlignment alignment = SmartRecordLineAlignment.none,
+                double? fontSize = null, SmartRecordLineTextStyle textStyle = SmartRecordLineTextStyle.normal)
         {
-            SmartPaperItem item = new SmartPaperItem();
-            item.type = SmartPaperItemType.text.ToString();
+            SmartRecordLine item = new SmartRecordLine();
+            item.type = SmartRecordLineType.text.ToString();
             item.text = text;
             item.textAlignment = alignment.ToString();
             item.fontSize = fontSize;
@@ -30,19 +30,19 @@ namespace SmartPaperExample
             return item;
         }
 
-        public static SmartPaperItem Divider(SmartPaperItemDividerStyle dividerStyle, double? fontSize = null)
+        public static SmartRecordLine Divider(SmartRecordLineDividerStyle dividerStyle, double? fontSize = null)
         {
-            SmartPaperItem item = new SmartPaperItem();
-            item.type = SmartPaperItemType.divider.ToString();
+            SmartRecordLine item = new SmartRecordLine();
+            item.type = SmartRecordLineType.divider.ToString();
             item.dividerStyle = dividerStyle.ToString();
             item.fontSize = fontSize;
             return item;
         }
 
-        public static SmartPaperItem Image(string imageSrc, double imageWidth, double imageHeight, SmartPaperItemAlignment alignment = SmartPaperItemAlignment.none)
+        public static SmartRecordLine Image(string imageSrc, double imageWidth, double imageHeight, SmartRecordLineAlignment alignment = SmartRecordLineAlignment.none)
         {
-            SmartPaperItem item = new SmartPaperItem();
-            item.type = SmartPaperItemType.image.ToString();
+            SmartRecordLine item = new SmartRecordLine();
+            item.type = SmartRecordLineType.image.ToString();
             item.imageSrc = imageSrc;
             item.imageWidth = imageWidth;
             item.imageHeight = imageHeight;
@@ -50,11 +50,11 @@ namespace SmartPaperExample
             return item;
         }
 
-        public static SmartPaperItem ImageAndText(string imageSrc, double imageWidth, double imageHeight, string text, SmartPaperItemAlignment imageAlignment = SmartPaperItemAlignment.none, SmartPaperItemAlignment textAlignment = SmartPaperItemAlignment.none,
-            double? fontSize = null, SmartPaperItemTextStyle textStyle = SmartPaperItemTextStyle.normal)
+        public static SmartRecordLine ImageAndText(string imageSrc, double imageWidth, double imageHeight, string text, SmartRecordLineAlignment imageAlignment = SmartRecordLineAlignment.none, SmartRecordLineAlignment textAlignment = SmartRecordLineAlignment.none,
+            double? fontSize = null, SmartRecordLineTextStyle textStyle = SmartRecordLineTextStyle.normal)
         {
-            SmartPaperItem item = new SmartPaperItem();
-            item.type = SmartPaperItemType.image.ToString();
+            SmartRecordLine item = new SmartRecordLine();
+            item.type = SmartRecordLineType.image.ToString();
             item.imageSrc = imageSrc;
             item.imageWidth = imageWidth;
             item.imageHeight = imageHeight;
@@ -66,11 +66,11 @@ namespace SmartPaperExample
             return item;
         }
 
-        public static SmartPaperItem TextAndImage(string imageSrc, double imageWidth, double imageHeight, string text, SmartPaperItemAlignment imageAlignment = SmartPaperItemAlignment.none, SmartPaperItemAlignment textAlignment = SmartPaperItemAlignment.none,
-            double? fontSize = null, SmartPaperItemTextStyle textStyle = SmartPaperItemTextStyle.normal)
+        public static SmartRecordLine TextAndImage(string imageSrc, double imageWidth, double imageHeight, string text, SmartRecordLineAlignment imageAlignment = SmartRecordLineAlignment.none, SmartRecordLineAlignment textAlignment = SmartRecordLineAlignment.none,
+            double? fontSize = null, SmartRecordLineTextStyle textStyle = SmartRecordLineTextStyle.normal)
         {
-            SmartPaperItem item = new SmartPaperItem();
-            item.type = SmartPaperItemType.image.ToString();
+            SmartRecordLine item = new SmartRecordLine();
+            item.type = SmartRecordLineType.image.ToString();
             item.imageSrc = imageSrc;
             item.imageWidth = imageWidth;
             item.imageHeight = imageHeight;
@@ -82,10 +82,10 @@ namespace SmartPaperExample
             return item;
         }
 
-        public static SmartPaperItem Barcode(string text, double imageWidth, double imageHeight, SmartPaperItemAlignment alignment = SmartPaperItemAlignment.none)
+        public static SmartRecordLine Barcode(string text, double imageWidth, double imageHeight, SmartRecordLineAlignment alignment = SmartRecordLineAlignment.none)
         {
-            SmartPaperItem item = new SmartPaperItem();
-            item.type = SmartPaperItemType.barcode.ToString();
+            SmartRecordLine item = new SmartRecordLine();
+            item.type = SmartRecordLineType.barcode.ToString();
             item.text = text;
             item.imageWidth = imageWidth;
             item.imageHeight = imageHeight;
@@ -93,10 +93,10 @@ namespace SmartPaperExample
             return item;
         }
 
-        public static SmartPaperItem QrCode(string text, double imageWidth, double imageHeight, SmartPaperItemAlignment alignment = SmartPaperItemAlignment.none)
+        public static SmartRecordLine QrCode(string text, double imageWidth, double imageHeight, SmartRecordLineAlignment alignment = SmartRecordLineAlignment.none)
         {
-            SmartPaperItem item = new SmartPaperItem();
-            item.type = SmartPaperItemType.qrCode.ToString();
+            SmartRecordLine item = new SmartRecordLine();
+            item.type = SmartRecordLineType.qrCode.ToString();
             item.text = text;
             item.imageWidth = imageWidth;
             item.imageHeight = imageHeight;
@@ -104,9 +104,9 @@ namespace SmartPaperExample
             return item;
         }
 
-        public static SmartPaperItem MakePadStringItem(dynamic data, SmartPaperItemAlignment alignment = SmartPaperItemAlignment.none, SmartPaperItemTextStyle textStyle = SmartPaperItemTextStyle.normal, double? fontSize = null, String? textColor = null, String? textBgColor = null)
+        public static SmartRecordLine MakePadStringLine(dynamic data, SmartRecordLineAlignment alignment = SmartRecordLineAlignment.none, SmartRecordLineTextStyle textStyle = SmartRecordLineTextStyle.normal, double? fontSize = null, String? textColor = null, String? textBgColor = null)
         {
-            return PadStringItem(text: SmartPaperItem.MakePadString(data), alignment: alignment, textStyle: textStyle, fontSize: fontSize, textColor: textColor, textBgColor: textBgColor);
+            return PadStringLine(text: SmartRecordLine.MakePadString(data), alignment: alignment, textStyle: textStyle, fontSize: fontSize, textColor: textColor, textBgColor: textBgColor);
         }
     }
 }

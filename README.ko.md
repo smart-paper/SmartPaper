@@ -10,163 +10,197 @@ AES 암호화 지원을 통해 안전한 전송 및 저장이 가능합니다.
 
 개인, 기업, 공공기관, 정부 등 누구나 제한 없이 자유롭게 이용할 수 있습니다.
 
-## 기능
+## 스마트페이퍼 데이터 모델
 
-1. 용지 크기 설정: 용지의 너비로 Pixel 단위 (출력 화면보다 큰 경우 출력 화면 크기로 자동 조절 )
-2. 테투리: 용지 전체를 감싸는 테두리로 현재 실선만 지원 (다른 타입 지원 예정)
-3. 지원되는 유형
-    1. 이미지
-    2. 텍스트
-    3. 이미지 & 텍스트
-    4. 텍스트 & 이미지
-    5. 구분선
-    6. 바코드
-    7. QR 코드
-4. 보안 지원: 용지가 저장된 URL 및 용지 데이터 암호화 지원
-5. 저장 기능: 전용 뷰어에서 용지를 수동 및 자동 저장 지원
+버전 코드가 202506221515로 업데이트 되면서 스마트페이퍼의 데이터 모델이 변경 되었습니다.
 
-* 용지 크기 (PaperSize)
-> paperWidth: 용지 너비
-> 용지 높이는 항목 구성에 의해 결정됩니다.
+### 데이터 모델 변경
 
-* 테두리 (Outline)
-> 테두리 타입: 실선, 점선, 파선, 굵은 선, 가는 선, 이중 선 중에서 현재는 실선만 지원</br>
-> outlineWidth: 0보다 큰 실수
+* **새로운 스마트페이퍼 구조**: 기존 SmartPaper의 일부와 `SmartRecord` 목록으로 구성됩니다.
+* **이름 변경**: `SmartPaperItem`에서 `SmartRecordLine`로 변경 되었습니다.s
 
-* 유형 (Type)
-> image(0), text(1), imageAndText(2), textAndImage(3), divider(4), barcode(5), qrcode(6)
+```
+SmartPaper (Version Code: 202506221515)
++-------------------------------------------------------------+
+| SmartPaper Instance 1                                       |
+| +---------------------------------------------------------+ |
+| | SmartRecord 1 (of SmartPaper Instance 1)                | |
+| | +-----------------------------------------------------+ | |
+| | | SmartRecordLine 1 (of SmartRecord 1)                | | |
+| | +-----------------------------------------------------+ | |
+| | +-----------------------------------------------------+ | |
+| | | SmartRecordLine 2 (of SmartRecord 1)                | | |
+| | +-----------------------------------------------------+ | |
+| | | ...                                                 | | |
+| | +-----------------------------------------------------+ | |
+| +---------------------------------------------------------+ |
+| +---------------------------------------------------------+ |
+| | SmartRecord 2 (of SmartPaper Instance 1)                | |
+| | +-----------------------------------------------------+ | |
+| | | SmartRecordLine 1 (of SmartRecord 2)                | | |
+| | +-----------------------------------------------------+ | |
+| | | ...                                                 | | |
+| | +-----------------------------------------------------+ | |
+| +---------------------------------------------------------+ |
+| | ...                                                     | |
+| +---------------------------------------------------------+ |
++-------------------------------------------------------------+
+```
 
-* 정렬 (Alignment)
-> 상단: topLeft(0x11), topCenter(0x110), topRight(0x12)</br>
-> 중앙: centerLeft(0x101), center(0x100), centerRight(0x102)</br>
-> 하단: bottomLeft(0x21), bottomCenter(0x120), bottomRight(0x22)</br>
-> 설정 안함: none(0)
+```
+SmartPaper (Version Code: 202504101515)
++-------------------------------------------------------------+
+| SmartPaper Instance 1                                       |
+| +---------------------------------------------------------+ |
+| | SmartPaperItem 1 (of SmartPaper Instance 1)             | |
+| +---------------------------------------------------------+ |
+| | SmartPaperItem 2 (of SmartPaper Instance 1)             | |
+| +---------------------------------------------------------+ |
+| | ...                                                     | |
+| +---------------------------------------------------------+ |
++-------------------------------------------------------------+
+```
 
-* 텍스트 (Text): type = text
-> **[textStyle]**</br>
-> 폰트 스타일 (Font Style): normal(0x00000001), italic(0x00000002)</br>
-> 폰트 두께 (Font Weight): bold(0x00000100)</br>
-> 텍스트 장식 (Text Decoration): underline(0x00010000), overline(0x00020000), lineThrough(0x00040000)</br>
-> 폰트 스타일 & 폰트 두께: normalAndBold(0x00000101), italicAndBold(0x00000102)</br>
-> 폰트 스타일 & 텍스트 장식: normalAndUnderline(0x00010001), normalAndOverline(0x00020001), normalAndLineThrough(0x00040001),italicAndUnderline(0x00010002), italicAndOverline(0x00020002), italicAndLineThrough(0x00040002)</br>
-> 폰트 스타일 & 폰트 두께 & 텍스트 장식: normalAndBoldAndUnderline(0x00010101), normalAndBoldAndOverline(0x00020101), normalAndBoldAndLineThrough(0x00040101), italicAndBoldAndUnderline(0x00010102), italicAndBoldAndOverline(0x00020102), italicAndBoldAndLineThrough(0x00040102)</br>
-> **[text]**</br>
-> 텍스트</br>
-> **[fontSize]**</br>
-> 폰트 크기</br>
-> **[textAlignment]**</br>
-> 정렬 값</br>
-> **[textMaxLines]**</br>
-> 텍스트 최대 라인 수</br>
-> **[textColor]**</br>
-> 텍스트 색상</br>
-> **[textBgColor]**</br>
-> 텍스트 배경 색상 
+## 기능 (Features)
 
-* 패드 문자열 (Pad String): type = text
-> 패드를 가진 텍스트를 구성하기 위한 아이템</br>
-> 여러 개의 아이템으로 구성하면 한 줄에 여러 개의 텍스트 출력 가능</br>
-> '정렬 타입'과 '패드 타입'을 지원하며 '정렬 타입'이 우선 됨</br></br>
-> String Divider: STRING_FORMAT_SEPARATOR([|SFS|]), STRING_END_OF([|SEO|])</br></br>
-> **정렬 타입 (Alignment Type)**</br>
-> [text]STRING_FORMAT_SEPARATOR[padFlex]STRING_FORMAT_SEPARATOR[textAlignment]STRING_END_OF</br>
-> **[text]**</br>
-> 텍스트</br>
-> **[padFlex]**</br>
-> 여러 개의 'Pad String'으로 구성될 때 다른 'Pad String'의 크기에 대한 비례되는 정수 값</br>
-> **[textAlignment]**</br>
-> 정렬 값</br></br>
-> **패드 타입 (Pad Type)**</br>
-> [text]STRING_FORMAT_SEPARATOR[padFlex]STRING_FORMAT_SEPARATOR[padType]STRING_FORMAT_SEPARATOR[padWidth]STRING_FORMAT_SEPARATOR[padText]STRING_END_OF</br>
-> **[text]**</br>
-> 텍스트</br>
-> **[padFlex]**</br>
-> 여러 개의 'Pad String'으로 구성될 때 다른 'Pad String'의 크기에 대한 비례되는 정수 값</br>
-> **[padType]**</br>
-> leftPad(0), rightPad(1)</br>
-> **[padWidth]**</br>
-> 패드 너비</br>
-> **[padText]**</br>
-> 패드로 채울 텍스트
+이 문서는 **SmartPaper**의 주요 기능과 설정 옵션을 설명합니다.
 
-* 이미지 (Image): type = image</br>
-> **[imageWidth]**</br>
-> 이미지 너비</br>
-> **[imageHeight]**</br>
-> 이미지 높이</br>
-> **[imageSrc]**</br>
-> 이미지 소스 (URL)
+---
 
-* 이미지 & 텍스트 (Image & Text): type = imageAndText
-> 왼쪽에 이미지, 오른쪽에 텍스트
+### 핵심 기능
 
-* 텍스트 & 이미지 (Text & Image): type = textAndImage
-> 왼쪽에 텍스트, 오른쪽에 이미지
+1.  **용지 크기 및 레이아웃**:
+    * **너비**: 픽셀 단위로 설정 가능하며, 출력 화면보다 클 경우 자동으로 화면 크기에 맞춰 조정됩니다.
+    * **높이**: 아이템 설정에 따라 동적으로 결정됩니다.
+2.  **테두리**: 용지 전체를 감싸는 단일 실선 테두리를 지원합니다. (다른 종류는 향후 지원 예정)
+3.  **보안 지원**: 용지가 저장되는 URL에 대한 지원 및 용지 데이터 암호화를 지원합니다.
+4.  **저장 기능**: 전용 뷰어에서 용지의 수동 및 자동 저장을 지원합니다.
 
-* 구분선 (Divider): type = divider
-> Divider Style: pipe(0)[|], slash(1)[/], backSlash(2)[\\], hyphen(3)[-], sharp(4)[#], plus(5)[+], star(6)[*],
-  exclamation(7)[!], at(8)[@], dollar(9)[$], percent(10)[%], caret(11)[^], ampersand(12)[&], blank(13)[ ], equal(14)[=], underscore(15)[_], dot(16)[.], comma(17)[,], custom(99)[], none(-1)[];
-> **[fontSize]**</br>
-> 폰트 크기
+---
 
-* 바코드 (Barcode): type = barcode
-> **[text]**</br>
-> 바코드 텍스트</br>
-> **[imageWidth]**</br>
-> 이미지 너비</br>
-> **[imageHeight]**</br>
-> 이미지 높이
+### 지원되는 콘텐츠 유형 및 설정
 
-* QR 코드 (QR Code): type = qrcode
-> **[text]**</br>
-> QR 코드 텍스트</br>
-> **[imageWidth]**</br>
-> 이미지 너비</br>
-> **[imageHeight]**</br>
-> 이미지 높이
+SmartPaper는 다양한 콘텐츠 유형을 지원하며, 각 유형에는 특정 설정 옵션을 지원합니다.
+
+#### 공통 설정
+
+* **정렬 (Alignment)**: 섹션 내에서의 위치를 정의합니다.
+    * `topLeft (0x11)`, `topCenter (0x110)`, `topRight (0x12)`
+    * `centerLeft (0x101)`, `center (0x100)`, `centerRight (0x102)`
+    * `bottomLeft (0x21)`, `bottomCenter (0x120)`, `bottomRight (0x22)`
+    * `none (0)`
+
+#### 콘텐츠 유형 (`type` 속성 기준)
+
+1.  **텍스트 (`type = 1`)**
+    * **텍스트 스타일**:
+        * `폰트 스타일`: `normal (0x00000001)`, `italic (0x00000002)`
+        * `폰트 굵기`: `bold (0x00000100)`
+        * `텍스트 장식`: `underline (0x00010000)`, `overline (0x00020000)`, `lineThrough (0x00040000)`
+        * 조합도 지원 (예: `normalAndBold`, `italicAndUnderline`).
+    * **속성**: `text`, `fontSize`, `textAlignment`, `textMaxLines`, `textColor`, `textBgColor`
+
+2.  **이미지 (`type = 0`)**
+    * **속성**: `imageWidth`, `imageHeight`, `imageSrc` (URL)
+
+3.  **이미지 & 텍스트 (`type = 2`)**
+    * 이미지는 왼쪽에 텍스트는 오른쪽에 배치
+
+4.  **텍스트 & 이미지 (`type = 3`)**
+    * 텍스트는 왼쪽에 이미지는 오른쪽에 배치
+
+5.  **바코드 (`type = 5`)**
+    * **속성**: `text` (바코드 데이터), `imageWidth`, `imageHeight`
+
+6.  **QR 코드 (`type = 7`)**
+    * **속성**: `text` (QR 코드 데이터), `imageWidth`, `imageHeight`
+
+7.  **구분선 (`type = 4`)**
+    * **스타일**:
+        * `pipe (0) [|]`, `slash (1) [/]`, `backSlash (2) [\\]`, `hyphen (3) [-]`, `sharp (4) [#]`
+        * `plus (5) [+]`, `star (6) [*]`, `exclamation (7) [!]`, `at (8) [@]`, `dollar (9) [$]`
+        * `percent (10) [%]`, `caret (11) [^]`, `ampersand (12) [&]`, `blank (13) [ ]`
+        * `equal (14) [=]`, `underscore (15) [_]`, `dot (16) [.]`, `comma (17) [,]`
+        * `custom (99) []`, `none (-1) []`
+    * **속성**: `fontSize`
+
+---
+
+### 고급 텍스트 구성: 패드 문자열 (`type = text`)
+
+하나의 줄에 여러 텍스트 세그먼트를 구성하기 위해 사용되며, 비율적 크기 조정 또는 패딩과 함께 사용됩니다.
+
+`정렬 유형 (Alignment Type)` (우선 적용) 및 `패드 유형 (Pad Type)`을 지원합니다.
+
+* **문자열 구분자**:
+    * `STRING_FORMAT_SEPARATOR ([|SFS|])`
+    * `STRING_END_OF ([|SEO|])`
+
+#### 패드 문자열 형식:
+
+1.  **정렬 유형 (Alignment Type)**
+    * **형식**: `[text]|SFS|[padFlex]|SFS|[textAlignment]|SEO|`
+    * **속성**:
+        * `text`: 텍스트 세그먼트의 내용.
+        * `padFlex`: 여러 'Pad String' 항목이 있을 때 크기 조정을 위한 비례 정수 값.
+        * `textAlignment`: 정렬 값.
+
+2.  **패드 유형 (Pad Type)**
+    * **형식**: `[text]|SFS|[padFlex]|SFS|[padType]|SFS|[padWidth]|SFS|[padText]|SEO|`
+    * **속성**:
+        * `text`: 텍스트 세그먼트의 내용.
+        * `padFlex`: 여러 'Pad String' 항목이 있을 때 크기 조정을 위한 비례 정수 값.
+        * `padType`: `leftPad (0)`, `rightPad (1)`
+        * `padWidth`: 패드 너비.
+        * `padText`: 패드를 채울 문자.
 
 ## 사용 방법 (C# 소스 코드)
 
 ```
-SmartPaper smartPaper;
-SmartPaperItem smartPaperItem;
+SmartPaper smartPaper = new();
+SmartRecord smartRecord = new();
+SmartRecordLine smartRecordLine;
+...
+smartRecord.items.add(smartRecordLine);
+...
+smartPaper.smartRecordList.add(smartRecord);
 ```
 
 * 용지 크기 (PaperSize)
 
 ```
-paper.paperWidth = 500; // 기본 500
+public const double defaultPaperWidth = 500; // 기본 500
 ```
 
 * 테두리 (Outline)
 
 ```
-paper.outlineWidth = 2.0;
+smartRecord.outlineWidth = 2.0;
 ```
 
 * 유형 (Type)
 
 ```
-smartPaperItem.type = SmartPaperItemType.image;
+smartRecordLine.type = SmartRecordLineType.image;
 ```
 
 * 정렬 (Alignment)
 
 ```
-smartPaperItem.textAlignment = SmartPaperItemAlignment.center;
-smartPaperItem.imageAlignment = SmartPaperItemAlignment.center;
+smartRecordLine.textAlignment = SmartRecordLineAlignment.center;
+smartRecordLine.imageAlignment = SmartRecordLineAlignment.center;
 ```
 
 * 텍스트 (Text)
 
 ```
-smartPaperItem.textStyle = SmartPaperItemTextStyle.bold;
-smartPaperItem.text = "Smart Paper";
-smartPaperItem.fontSize = 16.0;
-smartPaperItem.textAlignment = SmartPaperItemAlignment.center;
-smartPaperItem.textMaxLines = null; // Unlimit
-smartPaperItem.textColor = DataManager.IntToColorHex(4278190080); // #FF000000 (#ARGB)
-smartPaperItem.textBgColor = DataManager.IntToColorHex(4294967295); // #FFFFFFFF (#ARGB)
+smartRecordLine.textStyle = SmartRecordLineTextStyle.bold;
+smartRecordLine.text = "Smart Paper";
+smartRecordLine.fontSize = 16.0;
+smartRecordLine.textAlignment = SmartRecordLineAlignment.center;
+smartRecordLine.textMaxLines = null; // Unlimit
+smartRecordLine.textColor = DataManager.IntToColorHex(4278190080); // #FF000000 (#ARGB)
+smartRecordLine.textBgColor = DataManager.IntToColorHex(4294967295); // #FFFFFFFF (#ARGB)
 ```
 
 * 패드 문자열 (Pad String)
@@ -174,51 +208,51 @@ smartPaperItem.textBgColor = DataManager.IntToColorHex(4294967295); // #FFFFFFFF
 ```
 PadString padString;
 List<PadString> padStringList = new List<PadString>();
-padString = new PadString(text: "Waiting Number ", padFlex: 2, textAlignment: SmartPaperItemAlignment.centerRight);
+padString = new PadString(text: "Waiting Number ", padFlex: 2, textAlignment: SmartRecordLineAlignment.centerRight);
 padStringList.Add(padString);
-padString = new PadString(text: "123", padFlex: 1, textAlignment: SmartPaperItemAlignment.centerLeft);
+padString = new PadString(text: "123", padFlex: 1, textAlignment: SmartRecordLineAlignment.centerLeft);
 padStringList.Add(padString);
-smartPaperItem = SmartPaperHelper.MakePadStringItem(padStringList, textStyle: SmartPaperItemTextStyle.normal, fontSize: 21.0, textColor: "#FFFFFFFF", textBgColor: "#FF000000");
-smartPaper.items.Add(smartPaperItem);
+smartRecordLine = SmartPaperHelper.MakePadStringLine(padStringList, textStyle: SmartRecordLineTextStyle.normal, fontSize: 21.0, textColor: "#FFFFFFFF", textBgColor: "#FF000000");
+smartRecord.items.Add(smartRecordLine);
 ```
 
 * 이미지 (Image)
 
 ```
-smartPaperItem = SmartPaperHelper.Image("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, SmartPaperItemAlignment.center);
+smartRecordLine = SmartPaperHelper.Image("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, SmartRecordLineAlignment.center);
 ```
 
 * 이미지 & 텍스트 (Image & Text)
 
 ```
-smartPaperItem = SmartPaperHelper.ImageAndText("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", textAlignment: SmartPaperItemAlignment.center, fontSize: 16.0, textStyle: SmartPaperItemTextStyle.normal);
+smartRecordLine = SmartPaperHelper.ImageAndText("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", textAlignment: SmartRecordLineAlignment.center, fontSize: 16.0, textStyle: SmartRecordLineTextStyle.normal);
 ```
 
 * 텍스트 & 이미지 (Text & Image)
 
 ```
-smartPaperItem = SmartPaperHelper.TextAndImage("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", textAlignment: SmartPaperItemAlignment.center, fontSize: 16.0, textStyle: SmartPaperItemTextStyle.normal);
+smartRecordLine = SmartPaperHelper.TextAndImage("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", textAlignment: SmartRecordLineAlignment.center, fontSize: 16.0, textStyle: SmartRecordLineTextStyle.normal);
 ```
 
 * 구분선 (Divider)
 
 ```
-smartPaperItem = SmartPaperHelper.Divider(dividerStyle: SmartPaperItemDividerStyle.equal, fontSize: 15.0);
-smartPaper.items.Add(smartPaperItem);
+smartRecordLine = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.equal, fontSize: 15.0);
+smartRecord.items.Add(smartRecordLine);
 ```
 
 * 바코드 (Barcode)
 
 ```
-smartPaperItem = SmartPaperHelper.Barcode(text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
-smartPaper.items.Add(smartPaperItem);
+smartRecordLine = SmartPaperHelper.Barcode(text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
+smartRecord.items.Add(smartRecordLine);
 ```
 
 * QR 코드 (QR Code)
 
 ```
-smartPaperItem = SmartPaperHelper.QrCode(text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
-smartPaper.items.Add(smartPaperItem);
+smartRecordLine = SmartPaperHelper.QrCode(text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
+smartRecord.items.Add(smartRecordLine);
 ```
 
 * 샘플 JSON 생성
