@@ -5,19 +5,19 @@ A repository for providing and sharing information about SmartPaper.
 Protect nature, and nature will protect you!</br>
 Be free from all bisphenols...
 
-Supports various types of paper, including order forms, sheets, receipts, number tickets(number tags), coupons, and tickets.</br>
-Secure transmission and storage is possible through support for AES encryption.
+Supports **multiple types of paper** (e.g., order forms, sheets, receipts, number tickets/tags, coupons, tickets) within a single SmartPaper instance, significantly expanding its utility.
+Secure transmission and storage are possible through support for AES encryption.
 
 Anyone, including individuals, businesses, public institutions, and governments, can use it freely without any restrictions.
 
 ## SmartPaper Data Model
 
-SmartPaper data model changed as version code updated to 202506221515.
+The SmartPaper data model has been significantly updated, effective with version code `202506221515`, to support multiple paper types.
 
 ### Data Model Changes
 
-* **New SmartPaper structure**: Composed of a partial existing SmartPaper and a list of `SmartRecord`s.
-* **Renamed**: `SmartPaperItem` to `SmartRecordLine`.
+* **New SmartPaper structure**: Now composed of a partial existing SmartPaper structure and a list of `SmartRecord`s. This change enables the management of multiple paper items within a single paper.
+* **Renamed**: `SmartPaperItem` to `SmartRecordLine` for better clarity within the new model.
 
 ```
 SmartPaper (Version Code: 202506221515)

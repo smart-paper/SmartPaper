@@ -1,20 +1,20 @@
 {
-    "id": "126af7330849",
-    "no": "20250623150153003000",
+    "id": "126af741def0",
+    "no": "20250624122608026000",
     "bizName": "공공플랫폼",
     "fromName": "",
     "fromPhone": "",
     "fromAddress": "",
     "fromComment": "",
-    "createDatetime": "20250623150153",
+    "createDatetime": "20250624122608",
     "paymentMethod": "unknown",
     "paperWidth": 500,
     "groupId": 0,
     "groupName": "",
     "smartRecordList": [
         {
-            "smartPaperType": "numberTicket",
-            "smartPaperOutlineType": "solid",
+            "smartRecordType": "numberTicket",
+            "smartRecordOutlineType": "solid",
             "outlineWidth": 2,
             "items": [
                 {
@@ -30,7 +30,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": "blank",
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "text",
@@ -45,7 +46,8 @@
                     "textColor": "#ffffffff",
                     "textBgColor": "#ff000000",
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "text",
@@ -60,7 +62,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "divider",
@@ -75,7 +78,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": "hyphen",
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "text",
@@ -90,7 +94,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "text",
@@ -105,7 +110,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "text",
@@ -116,11 +122,12 @@
                     "textStyle": "italic",
                     "fontSize": 12,
                     "textMaxLines": null,
-                    "text": "접수일시: 2025/06/23 15:01:53[|SFS|]1[|SFS|]centerLeft[|SEO|]",
+                    "text": "접수일시: 2025/06/24 12:26:08[|SFS|]1[|SFS|]centerLeft[|SEO|]",
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "divider",
@@ -135,7 +142,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": "hyphen",
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "divider",
@@ -150,7 +158,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": "blank",
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "text",
@@ -165,7 +174,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "divider",
@@ -180,7 +190,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": "blank",
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "divider",
@@ -195,7 +206,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": "hyphen",
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "text",
@@ -206,11 +218,12 @@
                     "textStyle": "italic",
                     "fontSize": 12,
                     "textMaxLines": null,
-                    "text": "접수 ID: 126af7330849[|SFS|]1[|SFS|]leftPad[|SFS|]0[|SFS|] [|SEO|]",
+                    "text": "접수 ID: 126af741def0[|SFS|]1[|SFS|]leftPad[|SFS|]0[|SFS|] [|SEO|]",
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "divider",
@@ -225,7 +238,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": "equal",
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "barcode",
@@ -236,11 +250,12 @@
                     "textStyle": null,
                     "fontSize": 18,
                     "textMaxLines": null,
-                    "text": "126af7330849",
+                    "text": "126af741def0",
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "divider",
@@ -255,9 +270,11 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": "blank",
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 }
-            ]
+            ],
+            "bgColor": "#FFFFFFFF"
         }
     ],
     "smartRecordDivider": null,

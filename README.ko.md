@@ -5,19 +5,19 @@
 자연을 보호해야 자연도 여러분들을 보호합니다!</br>
 모든 비스페놀로부터 자유로워지세요...
 
-주문지, 주문서, 영수증, 번호표/번호태그, 쿠폰, 티켓 등 다양한 종류의 용지를 지원합니다.</br>
-AES 암호화 지원을 통해 안전한 전송 및 저장이 가능합니다.
+단일 SmartPaper 인스턴스 내에서 **여러 종류의 지류** (예: 주문서, 전표, 영수증, 번호표, 쿠폰, 티켓)를 지원하도록 기능이 대폭 확장되어 활용도가 크게 증가했습니다.
+AES 암호화 지원을 통해 보안 전송 및 저장이 가능합니다.
 
 개인, 기업, 공공기관, 정부 등 누구나 제한 없이 자유롭게 이용할 수 있습니다.
 
 ## 스마트페이퍼 데이터 모델
 
-버전 코드가 202506221515로 업데이트 되면서 스마트페이퍼의 데이터 모델이 변경 되었습니다.
+SmartPaper 데이터 모델은 `202506221515` 버전 코드부터 여러 종류의 지류를 지원하도록 크게 업데이트되었습니다.
 
 ### 데이터 모델 변경
 
-* **새로운 스마트페이퍼 구조**: 기존 SmartPaper의 일부와 `SmartRecord` 목록으로 구성됩니다.
-* **이름 변경**: `SmartPaperItem`에서 `SmartRecordLine`로 변경 되었습니다.s
+* **새로운 SmartPaper 구조**: 이제 기존 SmartPaper 구조의 일부와 `SmartRecord` 목록으로 구성됩니다. 이 변경을 통해 단일 용지 내에서 여러 지류 항목을 관리할 수 있게 되었습니다.
+* **이름 변경**: 새로운 모델의 명확성을 위해 `SmartPaperItem`이 `SmartRecordLine`으로 이름이 변경되었습니다.
 
 ```
 SmartPaper (Version Code: 202506221515)
@@ -172,7 +172,7 @@ smartPaper.smartRecordList.add(smartRecord);
 public const double defaultPaperWidth = 500; // 기본 500
 ```
 
-* 테두리 (Outline)
+* 외곽선 (Outline)
 
 ```
 smartRecord.outlineWidth = 2.0;

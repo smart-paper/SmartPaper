@@ -11,7 +11,7 @@ namespace SmartPaperExample
         {
             SmartPaper smartPaper = new SmartPaper(paperWidth: paperWidth);
             SmartRecord smartRecord = new SmartRecord();
-            smartRecord.smartPaperType = SmartPaperType.orderSheet.ToString();
+            smartRecord.smartRecordType = SmartRecordType.orderSheet.ToString();
             smartPaper.bizName = "PublicPlatform";
             SmartRecordLine smartRecordLine;
             PadString padString;
@@ -79,8 +79,8 @@ namespace SmartPaperExample
         {
             SmartPaper smartPaper = new(paperWidth);
             SmartRecord smartRecord = new();
-            smartRecord.smartPaperType = SmartPaperType.numberTicket.ToString();
-            smartRecord.smartPaperOutlineType = SmartPaperOutlineType.solid.ToString();
+            smartRecord.smartRecordType = SmartRecordType.numberTicket.ToString();
+            smartRecord.smartRecordOutlineType = SmartRecordOutlineType.solid.ToString();
             smartRecord.outlineWidth = 2;
             smartPaper.bizName = "PublicPlatform";
             SmartRecordLine smartPaperItem;

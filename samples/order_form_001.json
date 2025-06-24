@@ -1,20 +1,20 @@
 {
-    "id": "126af732eedf",
-    "no": "20250623143641040000",
+    "id": "126af741def0",
+    "no": "20250624122544026000",
     "bizName": "카페인마이하트",
     "fromName": "",
     "fromPhone": "01012345678",
     "fromAddress": "서울시 관악구 관악로 1",
     "fromComment": "",
-    "createDatetime": "20250623143647",
+    "createDatetime": "20250624122608",
     "paymentMethod": "unknown",
     "paperWidth": 500,
     "groupId": 0,
     "groupName": "",
     "smartRecordList": [
         {
-            "smartPaperType": "orderForm",
-            "smartPaperOutlineType": "none",
+            "smartRecordType": "orderForm",
+            "smartRecordOutlineType": "none",
             "outlineWidth": 0,
             "items": [
                 {
@@ -30,7 +30,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": "equal",
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "text",
@@ -45,7 +46,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "divider",
@@ -60,7 +62,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": "equal",
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "text",
@@ -75,7 +78,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "text",
@@ -90,7 +94,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "text",
@@ -105,7 +110,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "text",
@@ -120,7 +126,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "text",
@@ -135,7 +142,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "text",
@@ -146,11 +154,12 @@
                     "textStyle": "italic",
                     "fontSize": 12,
                     "textMaxLines": null,
-                    "text": "주문일시: 2025/06/23 14:36:47[|SFS|]1[|SFS|]centerLeft[|SEO|]",
+                    "text": "주문일시: 2025/06/24 12:26:08[|SFS|]1[|SFS|]centerLeft[|SEO|]",
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "divider",
@@ -165,7 +174,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": "hyphen",
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "divider",
@@ -180,7 +190,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": "hyphen",
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "text",
@@ -195,7 +206,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "divider",
@@ -210,7 +222,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": "hyphen",
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "text",
@@ -221,11 +234,12 @@
                     "textStyle": "normal",
                     "fontSize": 12,
                     "textMaxLines": null,
-                    "text": "아메리카노 Iced\n사이즈[Mega][|SFS|]3[|SFS|]centerLeft[|SEO|]₩3,800[|SFS|]2[|SFS|]center[|SEO|]2[|SFS|]1[|SFS|]center[|SEO|]",
+                    "text": "아메리카노 Iced\n사이즈[Mega][|SFS|]3[|SFS|]centerLeft[|SEO|]₩3,800[|SFS|]2[|SFS|]center[|SEO|]3[|SFS|]1[|SFS|]center[|SEO|]",
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "text",
@@ -236,11 +250,12 @@
                     "textStyle": "normal",
                     "fontSize": 12,
                     "textMaxLines": null,
-                    "text": "마끼아또 Iced\n사이즈[Big], Topping[1][|SFS|]3[|SFS|]centerLeft[|SEO|]₩4,500[|SFS|]2[|SFS|]center[|SEO|]3[|SFS|]1[|SFS|]center[|SEO|]",
+                    "text": "카페라떼 Iced[|SFS|]3[|SFS|]centerLeft[|SEO|]₩3,300[|SFS|]2[|SFS|]center[|SEO|]2[|SFS|]1[|SFS|]center[|SEO|]",
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "text",
@@ -251,11 +266,12 @@
                     "textStyle": "normal",
                     "fontSize": 12,
                     "textMaxLines": null,
-                    "text": "믹스베리스무디 Iced\n사이즈[Mega][|SFS|]3[|SFS|]centerLeft[|SEO|]₩4,500[|SFS|]2[|SFS|]center[|SEO|]2[|SFS|]1[|SFS|]center[|SEO|]",
+                    "text": "마끼아또 Iced\n사이즈[Big][|SFS|]3[|SFS|]centerLeft[|SEO|]₩4,000[|SFS|]2[|SFS|]center[|SEO|]2[|SFS|]1[|SFS|]center[|SEO|]",
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "text",
@@ -266,11 +282,12 @@
                     "textStyle": "normal",
                     "fontSize": 12,
                     "textMaxLines": null,
-                    "text": "핫초코 Hot[|SFS|]3[|SFS|]centerLeft[|SEO|]₩3,500[|SFS|]2[|SFS|]center[|SEO|]2[|SFS|]1[|SFS|]center[|SEO|]",
+                    "text": "핫초코 Hot[|SFS|]3[|SFS|]centerLeft[|SEO|]₩3,500[|SFS|]2[|SFS|]center[|SEO|]3[|SFS|]1[|SFS|]center[|SEO|]",
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "text",
@@ -281,11 +298,12 @@
                     "textStyle": "normal",
                     "fontSize": 12,
                     "textMaxLines": null,
-                    "text": "카페라떼 Hot[|SFS|]3[|SFS|]centerLeft[|SEO|]₩3,100[|SFS|]2[|SFS|]center[|SEO|]3[|SFS|]1[|SFS|]center[|SEO|]",
+                    "text": "블루베리스무디 Iced\n사이즈[Mega][|SFS|]3[|SFS|]centerLeft[|SEO|]₩4,500[|SFS|]2[|SFS|]center[|SEO|]5[|SFS|]1[|SFS|]center[|SEO|]",
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "divider",
@@ -300,7 +318,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": "hyphen",
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "text",
@@ -311,11 +330,12 @@
                     "textStyle": "italic",
                     "fontSize": 12,
                     "textMaxLines": null,
-                    "text": "주문 ID: 126af732eedf[|SFS|]1[|SFS|]leftPad[|SFS|]0[|SFS|] [|SEO|]",
+                    "text": "주문 ID: 126af741def0[|SFS|]1[|SFS|]leftPad[|SFS|]0[|SFS|] [|SEO|]",
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "divider",
@@ -330,7 +350,8 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": "equal",
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "barcode",
@@ -341,11 +362,12 @@
                     "textStyle": null,
                     "fontSize": 18,
                     "textMaxLines": null,
-                    "text": "126af732eedf",
+                    "text": "126af741def0",
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 },
                 {
                     "type": "divider",
@@ -360,9 +382,11 @@
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": "blank",
-                    "imageSrc": null
+                    "imageSrc": null,
+                    "bgColor": "#FFFFFFFF"
                 }
-            ]
+            ],
+            "bgColor": "#FFFFFFFF"
         }
     ],
     "smartRecordDivider": null,
