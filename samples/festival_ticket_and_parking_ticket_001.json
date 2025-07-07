@@ -286,7 +286,7 @@
                 },
                 {
                     "type": "text",
-                    "textAlignment": "center",
+                    "textAlignment": "centerLeft",
                     "imageAlignment": "none",
                     "imageWidth": null,
                     "imageHeight": null,
@@ -302,7 +302,7 @@
                 },
                 {
                     "type": "text",
-                    "textAlignment": "center",
+                    "textAlignment": "centerLeft",
                     "imageAlignment": "none",
                     "imageWidth": null,
                     "imageHeight": null,
