@@ -3,7 +3,7 @@
     public class SmartPaper
     {
         public const double defaultPaperWidth = 500;
-        public static readonly string versionCode = "202506221515";
+        public static readonly string versionCode = "202507071515";
         public string id = DatetimeManager.GetCurrentTimeHexId();
         public string no = "";
         public string bizName = "";
@@ -110,6 +110,57 @@
                 }
             }
             return -1;
+        }
+    }
+
+    // SmartPaperImageType enum definition for C#
+    public enum SmartPaperImageType : uint
+    {
+        /*BoxFit equivalents*/
+        none = 0x00000001,
+        cover = 0x00000002,
+        contain = 0x00000003,
+        fill = 0x00000004, /*stretch*/
+        fitWidth = 0x00000005,
+        fitHeight = 0x00000006,
+        scaleDown = 0x00000007,
+
+        /*ImageRepeat equivalents*/
+        repeat = 0x00000100,
+        repeatX = 0x00000200,
+        repeatY = 0x00000300,
+        unknown = 0x00000000
+    }
+
+    // Extension methods for SmartPaperImageType
+    public static class SmartPaperImageTypeExtensions
+    {
+        public static uint GetValue(this SmartPaperImageType type) => (uint)type;
+        public static string GetName(this SmartPaperImageType type) => type.ToString();
+
+        public static SmartPaperImageType ParseName(string name)
+        {
+            // Case-insensitive parsing
+            foreach (SmartPaperImageType type in Enum.GetValues(typeof(SmartPaperImageType)))
+            {
+                if (type.ToString().Equals(name, StringComparison.OrdinalIgnoreCase))
+                {
+                    return type;
+                }
+            }
+            return SmartPaperImageType.unknown;
+        }
+
+        public static bool IsBoxFitType(this SmartPaperImageType type)
+        {
+            return type.GetValue() >= (uint)SmartPaperImageType.none &&
+                   type.GetValue() <= (uint)SmartPaperImageType.scaleDown;
+        }
+
+        public static bool IsImageRepeatType(this SmartPaperImageType type)
+        {
+            return type.GetValue() >= (uint)SmartPaperImageType.repeat &&
+                   type.GetValue() <= (uint)SmartPaperImageType.repeatY;
         }
     }
 }

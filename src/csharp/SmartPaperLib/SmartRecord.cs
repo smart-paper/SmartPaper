@@ -7,6 +7,11 @@
         public double outlineWidth = 0;
         public List<SmartRecordLine> items = [];
         public string bgColor = "#FFFFFFFF";
+
+        // Newly added fields for background image
+        public string? bgImageSrc;
+        public double? bgImageOpacity;
+        public SmartPaperImageType smartPaperImageType = SmartPaperImageType.unknown;
     }
 
     public enum SmartRecordType : uint
