@@ -19,7 +19,7 @@
         public double? imageWidth;
         public double? imageHeight;
         public string? imageSrc;
-        public string bgColor = "#FFFFFFFF";
+        public string bgColor = "#00000000";
 
         public static string MakePadString(dynamic data)
         {

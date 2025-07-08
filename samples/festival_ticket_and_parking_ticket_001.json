@@ -31,7 +31,7 @@
                     "textBgColor": null,
                     "dividerStyle": "equal",
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "text",
@@ -43,11 +43,11 @@
                     "fontSize": 21,
                     "textMaxLines": null,
                     "text": "말죽거리축제",
-                    "textColor": null,
+                    "textColor": "#FF000000",
                     "textBgColor": null,
                     "dividerStyle": null,
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "divider",
@@ -63,7 +63,7 @@
                     "textBgColor": null,
                     "dividerStyle": "equal",
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "text",
@@ -74,12 +74,12 @@
                     "textStyle": "normal",
                     "fontSize": 12,
                     "textMaxLines": null,
-                    "text": "사업자명: 말죽거리소상공인연합회",
+                    "text": "주최(주관)기관명: 말죽거리소상공인연합회",
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "text",
@@ -90,12 +90,12 @@
                     "textStyle": "normal",
                     "fontSize": 12,
                     "textMaxLines": null,
-                    "text": "매장 주소: 서울특별시 서초구 남부순환로356길 15",
+                    "text": "주소: 서울특별시 서초구 남부순환로356길 15",
                     "textColor": null,
                     "textBgColor": null,
                     "dividerStyle": null,
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "text",
@@ -111,7 +111,7 @@
                     "textBgColor": null,
                     "dividerStyle": null,
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "divider",
@@ -127,7 +127,7 @@
                     "textBgColor": null,
                     "dividerStyle": "hyphen",
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "text",
@@ -143,7 +143,7 @@
                     "textBgColor": null,
                     "dividerStyle": null,
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "divider",
@@ -159,7 +159,7 @@
                     "textBgColor": null,
                     "dividerStyle": "hyphen",
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "text",
@@ -175,7 +175,7 @@
                     "textBgColor": null,
                     "dividerStyle": null,
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "barcode",
@@ -191,7 +191,7 @@
                     "textBgColor": null,
                     "dividerStyle": null,
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "divider",
@@ -207,7 +207,7 @@
                     "textBgColor": null,
                     "dividerStyle": "blank",
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 }
             ],
             "bgColor": "#FFFFFFFF",
@@ -234,7 +234,7 @@
                     "textBgColor": null,
                     "dividerStyle": "blank",
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "text",
@@ -250,7 +250,7 @@
                     "textBgColor": "#ff000000",
                     "dividerStyle": null,
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "text",
@@ -266,7 +266,7 @@
                     "textBgColor": null,
                     "dividerStyle": null,
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "divider",
@@ -282,7 +282,7 @@
                     "textBgColor": null,
                     "dividerStyle": "hyphen",
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "text",
@@ -298,7 +298,7 @@
                     "textBgColor": null,
                     "dividerStyle": null,
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "text",
@@ -314,7 +314,7 @@
                     "textBgColor": null,
                     "dividerStyle": null,
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "text",
@@ -330,7 +330,7 @@
                     "textBgColor": null,
                     "dividerStyle": null,
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "divider",
@@ -346,7 +346,7 @@
                     "textBgColor": null,
                     "dividerStyle": "hyphen",
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "divider",
@@ -362,7 +362,7 @@
                     "textBgColor": null,
                     "dividerStyle": "blank",
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "text",
@@ -378,7 +378,7 @@
                     "textBgColor": null,
                     "dividerStyle": null,
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "divider",
@@ -394,7 +394,7 @@
                     "textBgColor": null,
                     "dividerStyle": "blank",
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "divider",
@@ -410,7 +410,7 @@
                     "textBgColor": null,
                     "dividerStyle": "hyphen",
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "text",
@@ -426,7 +426,7 @@
                     "textBgColor": null,
                     "dividerStyle": null,
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "divider",
@@ -442,7 +442,7 @@
                     "textBgColor": null,
                     "dividerStyle": "equal",
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "barcode",
@@ -458,7 +458,7 @@
                     "textBgColor": null,
                     "dividerStyle": null,
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 },
                 {
                     "type": "divider",
@@ -474,7 +474,7 @@
                     "textBgColor": null,
                     "dividerStyle": "blank",
                     "imageSrc": null,
-                    "bgColor": "#FFFFFFFF"
+                    "bgColor": "#00000000"
                 }
             ],
             "bgColor": "#FFFFFFFF",
@@ -497,7 +497,7 @@
         "textBgColor": null,
         "dividerStyle": "hyphen",
         "imageSrc": null,
-        "bgColor": "#FFFFFFFF"
+        "bgColor": "#00000000"
     },
     "version": "202507071515"
 }

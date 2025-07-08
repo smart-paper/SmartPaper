@@ -90,6 +90,24 @@ SmartPaper supports various content types, each with specific configuration opti
     * `bottomLeft (0x21)`, `bottomCenter (0x120)`, `bottomRight (0x22)`
     * `none (0)`
 
+#### Background Image
+
+* **bgImageSrc**: The URL of the background image.
+* **bgImageOpacity**: Sets the transparency (opacity) of the background image. It takes a value between 0.0 (fully transparent) and 1.0 (fully opaque).
+* **smartPaperImageType**: Defines how the background image will be fitted or repeated within the line's area.
+    * BoxFit Series (Image Scaling Methods)
+	    * none: Displays the image at its original size. If larger than the area, it will be cropped; if smaller, empty space will appear.
+	    * cover: Scales the image while maintaining its aspect ratio to completely cover the area. Parts of the image may be cropped. (Recommended for most background images)
+	    * contain: Scales the image while maintaining its aspect ratio so that the entire image is visible within the area. Empty space (letterboxing/pillarboxing) may appear around the image.
+	    * fill (stretch): Stretches or shrinks the image to fill the area, disregarding its aspect ratio. The image may appear distorted.
+	    * fitWidth: Scales the image while maintaining its aspect ratio to fit the width of the area. The height is adjusted according to the image's aspect ratio.
+	    * fitHeight: Scales the image while maintaining its aspect ratio to fit the height of the area. The width is adjusted according to the image's aspect ratio.
+	    * scaleDown: If the image is smaller than the area, it behaves like none; if larger, it scales down like contain to fit the area.
+    * ImageRepeat Series (Image Repetition Methods)
+	    * repeat: Repeats the image horizontally and vertically at its original size until the area is filled.
+	    * repeatX: Repeats the image horizontally at its original size until the area is filled.
+	    * repeatY: Repeats the image vertically at its original size until the area is filled.
+
 #### Content Types (by `type` property)
 
 1.  **Text (`type = 1`)**

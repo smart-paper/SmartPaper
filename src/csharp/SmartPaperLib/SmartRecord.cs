@@ -6,7 +6,7 @@
         public string smartRecordOutlineType = SmartRecordOutlineType.none.ToString();
         public double outlineWidth = 0;
         public List<SmartRecordLine> items = [];
-        public string bgColor = "#FFFFFFFF";
+        public string bgColor = "#00000000";
 
         // Newly added fields for background image
         public string? bgImageSrc;
