@@ -328,6 +328,12 @@ string? surl = SmartPaperManager.EncryptAndGenerateUrl(paperUrl, keyBytes, nonce
 
 ## 샘플
 
+* 실시간 생성
+
+> [영화 티켓 & 주차권](https://app.publicplatform.co.kr/?/smart_paper?type=paper&vendor=theater&savable=true) 링크
+
+> [대기순번표](https://app.publicplatform.co.kr/?/smart_paper?type=paper&vendor=bank_waiting_number&savable=true) 링크
+
 * 일반 URLs
 
 > [축제초대장 & 주차권](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Ffestival_ticket_and_parking_ticket_001.json&autoSave=false) 링크</br><details><summary>QR 코드 보기</summary><img src="https://smart-paper.github.io/SmartPaper/samples/festival_ticket_and_parking_ticket_001.json.png" alt="festival_ticket_and_parking_ticket_001.json" width="200" height="200"></br></details>

@@ -328,6 +328,12 @@ You can test the smartpaper you created.
 
 ## Samples
 
+* Real-time generation
+
+> Link to [Movie & Parking Ticket](https://app.publicplatform.co.kr/?/smart_paper?type=paper&vendor=theater&savable=true)
+
+> Link to [Waiting Number Ticket](https://app.publicplatform.co.kr/?/smart_paper?type=paper&vendor=bank_waiting_number&savable=true)
+
 * Normal URLs
 
 > Link to [Festival Invitation & Parking Ticket](https://app.publicplatform.co.kr/?/smart_paper?type=url&url=https%3A%2F%2Fsmart-paper.github.io%2FSmartPaper%2Fsamples%2Ffestival_ticket_and_parking_ticket_001.json&autoSave=false)</br><details><summary>View QR Code</summary><img src="https://smart-paper.github.io/SmartPaper/samples/festival_ticket_and_parking_ticket_001.json.png" alt="festival_ticket_and_parking_ticket_001.json" width="200" height="200"></br></details>

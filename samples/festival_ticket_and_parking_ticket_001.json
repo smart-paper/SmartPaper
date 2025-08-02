@@ -211,7 +211,7 @@
                 }
             ],
             "bgColor": "#FFFFFFFF",
-            "bgImageSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/%EB%AC%B8%ED%99%94%EC%B2%B4%EC%9C%A1%EA%B4%80%EA%B4%91%EB%B6%80_%EB%A1%9C%EA%B3%A0_%282008-2016%29.svg/120px-%EB%AC%B8%ED%99%94%EC%B2%B4%EC%9C%A1%EA%B4%80%EA%B4%91%EB%B6%80_%EB%A1%9C%EA%B3%A0_%282008-2016%29.svg.png",
+            "bgImageSrc": "https://www.publicplatform.co.kr/pp/files/samples/images/mcst.png",
             "bgImageOpacity": 0.2,
             "smartPaperImageType": "repeat"
         },
