@@ -74,7 +74,11 @@ This document outlines the key features and configuration options for **SmartPap
     * **Height**: Dynamically determined by item configuration.
 2.  **Borders**: Supports a simple solid-line border around the entire paper. (Other types planned for future support.)
 3.  **Security**: Provides support for encrypted paper data and secure URL access.
-4.  **Saving**: Offers both manual and automatic saving within a dedicated viewer.
+4.  **Saving**: Offers both manual and automatic saving within a dedicated viewer. You can save multiple SmartRecords 'as one' or 'individually'.
+5. **Various SmartRecordLine formats**:
+    * **Basic**: Text, Image, Text & Image, Image & Text, Barcode, QR Code
+    * **Special**: Padding string (supports multiple texts on a single line)
+    * **Interaction**: List, Button, Timer (support coming soon, with real-time data updates)
 
 ---
 
