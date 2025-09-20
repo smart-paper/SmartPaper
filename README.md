@@ -47,6 +47,7 @@ SmartPaper (Version Code: 202506221515)
 | +---------------------------------------------------------+ |
 | | ...                                                     | |
 | +---------------------------------------------------------+ |
+| ...                                                         |
 +-------------------------------------------------------------+
 ```
 
@@ -82,6 +83,7 @@ This document outlines the key features and configuration options for **SmartPap
     * **Basic**: Text, Image, Text & Image, Image & Text, Barcode, QR Code
     * **Special**: Padding string (supports multiple texts on a single line)
     * **Interaction**: List, Button, Timer (support coming soon, with real-time data updates)
+	* **Media**: Animated images(GIF, APNG), video, audio (coming soon)
 
 ---
 
