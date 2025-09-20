@@ -9,6 +9,9 @@
         public string type = SmartRecordLineType.text.ToString();
         public string textAlignment = SmartRecordLineAlignment.none.ToString();
         public string imageAlignment = SmartRecordLineAlignment.none.ToString();
+        public string listAlignment = SmartRecordLineAlignment.none.ToString();
+        public string buttonAlignment = SmartRecordLineAlignment.none.ToString();
+        public string timerAlignment = SmartRecordLineAlignment.none.ToString();
         public string? textStyle;
         public double? fontSize;
         public int? textMaxLines;
@@ -19,6 +22,32 @@
         public double? imageWidth;
         public double? imageHeight;
         public string? imageSrc;
+        /// ListType
+        String? listType;
+        String? listTitle;
+        double? listWidth;
+        double? listHeight;
+        String? listTitleColor;
+        String? listTitleBgColor;
+        String? listTextColor;
+        String? listTextBgColor;
+        List<SmartRecordLine>? listItems;
+        /// ButtonType
+        // String? buttonType;
+        String? buttonAction;
+        String? buttonRestfulApi;
+        String? buttonText;
+        double? buttonWidth;
+        double? buttonHeight;
+        String? buttonTextColor;
+        String? buttonTextBgColor;
+        /// TimerType
+        String? timerType;
+        String? timerAction;
+        String? timerRestfulApi;
+        String? timerText;
+        int? timerInMillis;
+
         public string bgColor = "#00000000";
 
         public static string MakePadString(dynamic data)
@@ -63,7 +92,7 @@
         public bool IsValid()
         {
             return !string.IsNullOrEmpty(Text) &&
-                   ((TextAlignment == SmartRecordLineAlignment.none && TextPadTypeExtensions.ValidTextPadType(PadType) && !string.IsNullOrEmpty(PadText) && PadWidth >= 0) || TextAlignment != SmartRecordLineAlignment.none);
+                   ((TextAlignment == SmartRecordLineAlignment.none && TextPadTypeExtensions.ValidType(PadType) && !string.IsNullOrEmpty(PadText) && PadWidth >= 0) || TextAlignment != SmartRecordLineAlignment.none);
         }
 
         public string MakePadString()
@@ -225,9 +254,119 @@
             return name == nameof(TextPadType.rightPad) ? TextPadType.rightPad : TextPadType.leftPad;
         }
 
-        public static bool ValidTextPadType(TextPadType textPadType)
+        public static bool ValidType(TextPadType textPadType)
         {
             return textPadType == TextPadType.leftPad || textPadType == TextPadType.rightPad;
+        }
+    }
+
+    public enum ActionType
+    {
+        unknown = -1,
+        restfulApi = 0,
+        refresh = 1,
+        autoRefresh = 2
+    }
+
+    public static class ActionTypeExtensions
+    {
+        public static int GetValue(this ActionType type)
+        {
+            return (int)type;
+        }
+
+        public static ActionType ParseValue(int value)
+        {
+            return Enum.IsDefined(typeof(ActionType), value) ? (ActionType)value : ActionType.unknown;
+        }
+
+        public static ActionType? ParseName(string? name)
+        {
+            if (name == null) return null;
+            return name switch
+            {
+                nameof(ActionType.restfulApi) => ActionType.restfulApi,
+                nameof(ActionType.refresh) => ActionType.refresh,
+                nameof(ActionType.autoRefresh) => ActionType.autoRefresh,
+                _ => ActionType.unknown
+            };
+        }
+
+        public static bool ValidType(ActionType type)
+        {
+            return type >= ActionType.restfulApi && type <= ActionType.autoRefresh;
+        }
+    }
+
+    public enum ListType
+    {
+        normal = 0,
+        fold = 1,
+        combobox = 2
+    }
+
+    public static class ListTypeExtensions
+    {
+        public static int GetValue(this ListType type)
+        {
+            return (int)type;
+        }
+
+        public static ListType ParseValue(int value)
+        {
+            return Enum.IsDefined(typeof(ListType), value) ? (ListType)value : ListType.normal;
+        }
+
+        public static ListType? ParseName(string? name)
+        {
+            if (name == null) return null;
+            return name switch
+            {
+                nameof(ListType.fold) => ListType.fold,
+                nameof(ListType.combobox) => ListType.combobox,
+                _ => ListType.normal
+            };
+        }
+
+        public static bool ValidType(ListType type)
+        {
+            return type >= ListType.normal && type <= ListType.combobox;
+        }
+    }
+
+    public enum TimerType
+    {
+        normal = 0,
+        validTime = 1,
+        autoRefresh = 2
+    }
+
+    public static class TimerTypeExtensions
+    {
+        public static int GetValue(this TimerType type)
+        {
+            return (int)type;
+        }
+
+        public static TimerType ParseValue(int value)
+        {
+            return Enum.IsDefined(typeof(TimerType), value) ? (TimerType)value : TimerType.normal;
+        }
+
+        public static TimerType? ParseName(string? name)
+        {
+            if (name == null) return null;
+            return name switch
+            {
+                nameof(TimerType.validTime) => TimerType.validTime,
+                nameof(TimerType.autoRefresh) => TimerType.autoRefresh,
+                _ => TimerType.normal
+            };
+        }
+
+        public static bool ValidType(TimerType type)
+        {
+            return type >= TimerType.normal && type <= TimerType.autoRefresh;
         }
     }
 }

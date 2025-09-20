@@ -18,6 +18,7 @@
         public string groupName = "";
         public List<SmartRecord> smartRecordList = [];
         public SmartRecordLine? smartRecordDivider;
+        public SupportedLocales? supportedLocales;
         public string version = SmartPaper.versionCode;
 
         public SmartPaper(double paperWidth = defaultPaperWidth)

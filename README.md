@@ -8,7 +8,10 @@ Be free from all bisphenols...
 Supports **multiple types of paper** (e.g., order forms, sheets, receipts, number tickets/tags, coupons, tickets) within a single SmartPaper instance, significantly expanding its utility.
 Secure transmission and storage are possible through support for AES encryption.
 
-Anyone, including individuals, businesses, public institutions, and governments, can use it freely without any restrictions.
+This project adopts a dual licensing model.
+
+* **GPLv3**: Applies to personal, public, and non-profit use. To use the source code under this license, any derived works must also be released under the GPLv3 license.
+* **Commercial License**: For-profit companies that do not wish to comply with the obligations of the GPLv3 must purchase a separate commercial license. For inquiries regarding commercial licensing, please contact [icitlabs@gmail.com].
 
 ## SmartPaper Data Model
 
