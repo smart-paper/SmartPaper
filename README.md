@@ -85,6 +85,24 @@ This document outlines the key features and configuration options for **SmartPap
     * **Interaction**: List, Button, Timer (support coming soon, with real-time data updates)
 	* **Media**: Animated images(GIF, APNG), video, audio (coming soon)
 
+### Supported URL Parameters
+
+This feature demonstrates flexibility in handling various data types through various parameters.
+
+1.  **type ㅡParameter**
+    * **type=paper**: Raw data from a smartpaper.
+    * **type=url**: Decodes and uses the smartpaper URL contained in the URL parameter.
+    * **type=surl**: Receives and processes the encrypted smartpaper URL along with parameters required for decryption, such as iv (initialization vector) and keyBits (key length).
+    * **type=json**: Decodes a base64-encoded JSON string and deserializes it into a SmartPaper object.
+
+2.  **Additional Function Parameters**
+    * **isAutoSave, isSavable**: Controls whether the smartpaper is automatically saved and savable.
+    * **isPinSetting**: Used when handling secure documents that require PIN settings.
+    * **autoRefresh**: Specifies the auto-refresh interval in milliseconds (ms). If this parameter is greater than 0, data is updated in real time.
+    * **isAutoCopy**: Provides the ability to automatically copy the SmartPaper URL to the user's clipboard.
+
+It is implemented as a sophisticated and scalable system that perfectly handles not only **static data (json)** but also dynamic interactions (autoRefresh) and **security features (surl, pinSetting)** via URLs.
+
 ---
 
 ### Supported Content Types & Configuration

@@ -122,13 +122,18 @@
 
     public enum SmartRecordLineType
     {
-        image = 0,
-        text = 1,
-        imageAndText = 2,
-        textAndImage = 3,
-        divider = 4,
-        barcode = 5,
-        qrCode = 6
+        image = 0x0000,
+        text = 0x0001,
+        imageAndText = 0x0002,
+        textAndImage = 0x0003,
+        divider = 0x0004,
+        barcode = 0x0005,
+        qrCode = 0x0006,
+        list = 0x0007,
+        button = 0x0008,
+        timer = 0x0008,
+        video = 0x000A,
+        audio = 0x000B,
     }
 
     public enum SmartRecordLineAlignment
