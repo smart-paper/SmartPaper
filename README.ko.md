@@ -10,8 +10,8 @@ AES 암호화 지원을 통해 보안 전송 및 저장이 가능합니다.
 
 이 프로젝트는 이중 라이선스 모델을 채택하고 있습니다.
 
-* **GPLv3**: 개인, 공공기관, 비영리 목적의 사용에 적용됩니다. 이 라이선스에 따라 소스 코드를 사용하려면 파생된 작업물 역시 GPLv3로 공개해야 합니다.
-* **상용 라이선스**: GPLv3의 의무를 따르지 않고자 하는 영리기업은 별도의 상용 라이선스를 구매해야 합니다. 상용 라이선스에 대한 문의는 [icitlabs@gmail.com]으로 연락 주시기 바랍니다.
+* **GPLv3**: 개인 및 비영리 목적의 사용에 적용됩니다. 이 라이선스에 따라 소스 코드를 사용하려면 파생된 작업물 역시 GPLv3로 공개해야 합니다.
+* **상용 라이선스**: GPLv3의 의무를 따르지 않고자 하는 공공기관, 영리기업 등 단체는 별도의 상용 라이선스를 구매해야 합니다. 단, 비영리 목적이라도 전문적인 기술 지원이나 맞춤형 개발 등 협업을 원할 경우 상용 라이선스에 대해 문의할 수 있습니다. 상용 라이선스에 대한 문의는 [icitlabs@gmail.com]으로 연락 주시기 바랍니다.
 
 ## 스마트페이퍼 데이터 모델
 
@@ -83,7 +83,8 @@ SmartPaper (Version Code: 202504101515)
     * **기본**: 텍스트, 이미지, 텍스트&이미지, 이미지&텍스트, 바코드, QR코드
     * **특수**: 패딩스트링(하나의 라인에 여러 개의 텍스트 지원)
     * **상호작용**: 리스트, 버튼, 타이머 (지원 예정이며 실시간으로 데이터 갱신 가능)
-    * **미디어**: 애니메이션 이미지(GIF, APNG), 비디오, 오디오 (지원 예정)
+    * **멀티미디어**: 애니메이션 이미지(GIF, APNG), 비디오, 오디오 (지원 예정)
+    * **알람**: 대기 순번, 쿠폰 마감, 예약/일정 등 다양한 알림 제공 (지원 예정)
 
 ### 지원되는 URL 파라미터
 
@@ -137,7 +138,10 @@ SmartPaper는 다양한 콘텐츠 유형을 지원하며, 각 유형에는 특�
 
 #### 콘텐츠 유형 (`type` 속성 기준)
 
-1.  **텍스트 (`type = 1`)**
+1.  **이미지 (`type = 0`)**
+    * **속성**: `imageWidth`, `imageHeight`, `imageSrc` (URL)
+
+2.  **텍스트 (`type = 1`)**
     * **텍스트 스타일**:
         * `폰트 스타일`: `normal (0x00000001)`, `italic (0x00000002)`
         * `폰트 굵기`: `bold (0x00000100)`
@@ -145,22 +149,13 @@ SmartPaper는 다양한 콘텐츠 유형을 지원하며, 각 유형에는 특�
         * 조합도 지원 (예: `normalAndBold`, `italicAndUnderline`).
     * **속성**: `text`, `fontSize`, `textAlignment`, `textMaxLines`, `textColor`, `textBgColor`
 
-2.  **이미지 (`type = 0`)**
-    * **속성**: `imageWidth`, `imageHeight`, `imageSrc` (URL)
-
 3.  **이미지 & 텍스트 (`type = 2`)**
     * 이미지는 왼쪽에 텍스트는 오른쪽에 배치
 
 4.  **텍스트 & 이미지 (`type = 3`)**
     * 텍스트는 왼쪽에 이미지는 오른쪽에 배치
 
-5.  **바코드 (`type = 5`)**
-    * **속성**: `text` (바코드 데이터), `imageWidth`, `imageHeight`
-
-6.  **QR 코드 (`type = 7`)**
-    * **속성**: `text` (QR 코드 데이터), `imageWidth`, `imageHeight`
-
-7.  **구분선 (`type = 4`)**
+5.  **구분선 (`type = 4`)**
     * **스타일**:
         * `pipe (0) [|]`, `slash (1) [/]`, `backSlash (2) [\\]`, `hyphen (3) [-]`, `sharp (4) [#]`
         * `plus (5) [+]`, `star (6) [*]`, `exclamation (7) [!]`, `at (8) [@]`, `dollar (9) [$]`
@@ -168,6 +163,27 @@ SmartPaper는 다양한 콘텐츠 유형을 지원하며, 각 유형에는 특�
         * `equal (14) [=]`, `underscore (15) [_]`, `dot (16) [.]`, `comma (17) [,]`
         * `custom (99) []`, `none (-1) []`
     * **속성**: `fontSize`
+
+6.  **바코드 (`type = 5`)**
+    * **속성**: `text` (바코드 데이터), `imageWidth`, `imageHeight`
+
+7.  **QR 코드 (`type = 6`)**
+    * **속성**: `text` (QR 코드 데이터), `imageWidth`, `imageHeight`
+
+8.  **리스트 (`type = 7`)**
+    * **속성**: `listType`, `listTitle`, `listWidth`, `listHeight`, `listTitleColor`, `listTitleBgColor`, `listTextColor`, `listTextBgColor`, `listItems`
+
+9.  **버튼 (`type = 8`)**
+    * **속성**: `buttonAction`, `buttonRestfulApi`, `buttonText`, `buttonWidth`, `buttonHeight`, `buttonTextColor`, `buttonTextBgColor`
+
+10.  **타이머 (`type = 9`)**
+    * **속성**: `timerType`, `timerAction`, `timerRestfulApi`, `timerText`, `timerInMillis`
+
+11.  **비디오 (`type = 10`)**
+    * **속성**: `videoTitle`, `videoUrl`, `videoWidth`, `videoHeight`
+
+12.  **오디오 (`type = 11`)**
+    * **속성**: `audioTitle`, `audioUrl`
 
 ---
 

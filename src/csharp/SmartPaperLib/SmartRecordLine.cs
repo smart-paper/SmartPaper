@@ -12,6 +12,9 @@
         public string listAlignment = SmartRecordLineAlignment.none.ToString();
         public string buttonAlignment = SmartRecordLineAlignment.none.ToString();
         public string timerAlignment = SmartRecordLineAlignment.none.ToString();
+        public string videoAlignment = SmartRecordLineAlignment.none.ToString();
+        public string audioAlignment = SmartRecordLineAlignment.none.ToString();
+        public string alarmAlignment = SmartRecordLineAlignment.none.ToString();
         public string? textStyle;
         public double? fontSize;
         public int? textMaxLines;
@@ -47,6 +50,17 @@
         String? timerRestfulApi;
         String? timerText;
         int? timerInMillis;
+        /// Video
+        String? videoTitle;
+        String? videoSrc;
+        double? videoWidth;
+        double? videoHeight;
+        /// Audio
+        String? audioTitle;
+        String? audioSrc;
+        /// Alarm
+        String? alarmTitle;
+        int? alarmDatetime; // yyyyMMddHHmmss
 
         public string bgColor = "#00000000";
 

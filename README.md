@@ -10,8 +10,8 @@ Secure transmission and storage are possible through support for AES encryption.
 
 This project adopts a dual licensing model.
 
-* **GPLv3**: Applies to personal, public, and non-profit use. To use the source code under this license, any derived works must also be released under the GPLv3 license.
-* **Commercial License**: For-profit companies that do not wish to comply with the obligations of the GPLv3 must purchase a separate commercial license. For inquiries regarding commercial licensing, please contact [icitlabs@gmail.com].
+* **GPLv3**: Applies to personal and non-profit use. To use the source code under this license, any derived works must also be released under the GPLv3 license.
+* **Commercial License**: Organizations such as public institutions and for-profit companies that do not wish to comply with the obligations of the GPLv3 must purchase a separate commercial license. However, even for non-profit purposes, you can inquire about a commercial license if you wish to collaborate, such as for professional technical support or custom development. For inquiries about a commercial license, please contact [icitlabs@gmail.com].
 
 ## SmartPaper Data Model
 
@@ -83,7 +83,8 @@ This document outlines the key features and configuration options for **SmartPap
     * **Basic**: Text, Image, Text & Image, Image & Text, Barcode, QR Code
     * **Special**: Padding string (supports multiple texts on a single line)
     * **Interaction**: List, Button, Timer (support coming soon, with real-time data updates)
-	* **Media**: Animated images(GIF, APNG), video, audio (coming soon)
+	* **Multimedia**: Animated Images(GIF, APNG), Video, Audio (Coming Soon)
+	* **Alarms**: Provides various notifications, such as waiting numbers, coupon expiration dates, reservations/schedules, etc. (Coming Soon)
 
 ### Supported URL Parameters
 
@@ -137,7 +138,10 @@ SmartPaper supports various content types, each with specific configuration opti
 
 #### Content Types (by `type` property)
 
-1.  **Text (`type = 1`)**
+1.  **Image (`type = 0`)**
+    * **Properties**: `imageWidth`, `imageHeight`, `imageSrc` (URL)
+
+2.  **Text (`type = 1`)**
     * **Text Style**:
         * `Font Style`: `normal (0x00000001)`, `italic (0x00000002)`
         * `Font Weight`: `bold (0x00000100)`
@@ -145,22 +149,13 @@ SmartPaper supports various content types, each with specific configuration opti
         * Combinations are also supported (e.g., `normalAndBold`, `italicAndUnderline`).
     * **Properties**: `text`, `fontSize`, `textAlignment`, `textMaxLines`, `textColor`, `textBgColor`
 
-2.  **Image (`type = 0`)**
-    * **Properties**: `imageWidth`, `imageHeight`, `imageSrc` (URL)
-
 3.  **Image & Text (`type = 2`)**
     * Image on the left, text on the right.
 
 4.  **Text & Image (`type = 3`)**
     * Text on the left, image on the right.
 
-5.  **Barcode (`type = 5`)**
-    * **Properties**: `text` (Barcode data), `imageWidth`, `imageHeight`
-
-6.  **QR Code (`type = 7`)**
-    * **Properties**: `text` (QR code data), `imageWidth`, `imageHeight`
-
-7.  **Divider (`type = 4`)**
+5.  **Divider (`type = 4`)**
     * **Style**:
         * `pipe (0) [|]`, `slash (1) [/]`, `backSlash (2) [\\]`, `hyphen (3) [-]`, `sharp (4) [#]`
         * `plus (5) [+]`, `star (6) [*]`, `exclamation (7) [!]`, `at (8) [@]`, `dollar (9) [$]`
@@ -168,6 +163,27 @@ SmartPaper supports various content types, each with specific configuration opti
         * `equal (14) [=]`, `underscore (15) [_]`, `dot (16) [.]`, `comma (17) [,]`
         * `custom (99) []`, `none (-1) []`
     * **Property**: `fontSize`
+
+6.  **Barcode (`type = 5`)**
+    * **Properties**: `text` (Barcode data), `imageWidth`, `imageHeight`
+
+7.  **QR Code (`type = 6`)**
+    * **Properties**: `text` (QR code data), `imageWidth`, `imageHeight`
+
+8.  **List (`type = 7`)**
+    * **Properties**: `listType`, `listTitle`, `listWidth`, `listHeight`, `listTitleColor`, `listTitleBgColor`, `listTextColor`, `listTextBgColor`, `listItems`
+
+9.  **Button (`type = 8`)**
+    * **Properties**: `buttonAction`, `buttonRestfulApi`, `buttonText`, `buttonWidth`, `buttonHeight`, `buttonTextColor`, `buttonTextBgColor`
+
+10.  **Timer (`type = 9`)**
+    * **Properties**: `timerType`, `timerAction`, `timerRestfulApi`, `timerText`, `timerInMillis`
+
+11.  **Video (`type = 10`)**
+    * **Properties**: `videoTitle`, `videoUrl`, `videoWidth`, `videoHeight`
+
+12.  **Audio (`type = 11`)**
+    * **Properties**: `audioTitle`, `audioUrl`
 
 ---
 
