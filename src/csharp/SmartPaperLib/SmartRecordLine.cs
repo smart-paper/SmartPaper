@@ -15,52 +15,84 @@
         public string videoAlignment = SmartRecordLineAlignment.none.ToString();
         public string audioAlignment = SmartRecordLineAlignment.none.ToString();
         public string alarmAlignment = SmartRecordLineAlignment.none.ToString();
+        public string documentAlignment = SmartRecordLineAlignment.none.ToString();
+        public string urlAlignment = SmartRecordLineAlignment.none.ToString();
         public string? textStyle;
-        public double? fontSize;
+        public double? textSize;
         public int? textMaxLines;
         public string? text;
+        public double? blankRatio;
         public string? textColor;
         public string? textBgColor;
         public string? dividerStyle;
         public double? imageWidth;
         public double? imageHeight;
         public string? imageSrc;
-        /// ListType
-        String? listType;
-        String? listTitle;
-        double? listWidth;
-        double? listHeight;
-        String? listTitleColor;
-        String? listTitleBgColor;
-        String? listTextColor;
-        String? listTextBgColor;
-        List<SmartRecordLine>? listItems;
-        /// ButtonType
+        /// List
+        public string? listType;
+        public string? listTitle;
+        public double? listTitleSize;
+        public double? listWidth;
+        public double? listHeight;
+        public string? listTitleColor;
+        public string? listTitleBgColor;
+        public double? listTextSize;
+        public string? listTextColor;
+        public string? listTextBgColor;
+        public List<SmartRecordLine>? listItems;
+        /// Button
         // String? buttonType;
-        String? buttonAction;
-        String? buttonRestfulApi;
-        String? buttonText;
-        double? buttonWidth;
-        double? buttonHeight;
-        String? buttonTextColor;
-        String? buttonTextBgColor;
-        /// TimerType
-        String? timerType;
-        String? timerAction;
-        String? timerRestfulApi;
-        String? timerText;
-        int? timerInMillis;
+        public string? buttonAction;
+        public string? buttonRestfulApi;
+        public string? buttonText;
+        public double? buttonTextSize;
+        public double? buttonWidth;
+        public double? buttonHeight;
+        public string? buttonTextColor;
+        public string? buttonTextBgColor;
+        /// Timer
+        public string? timerType;
+        public string? timerAction;
+        public string? timerRestfulApi;
+        public string? timerText;
+        public double? timerTextSize;
+        public string? timerTextColor;
+        public string? timerTextBgColor;
+        public int? timerInMillis;
         /// Video
-        String? videoTitle;
-        String? videoSrc;
-        double? videoWidth;
-        double? videoHeight;
+        public string? videoTitle;
+        public double? videoTitleSize;
+        public string? videoTitleColor;
+        public string? videoTitleBgColor;
+        public string? videoSrc;
+        public double? videoWidth;
+        public double? videoHeight;
         /// Audio
-        String? audioTitle;
-        String? audioSrc;
+        public string? audioTitle;
+        public double? audioTitleSize;
+        public string? audioTitleColor;
+        public string? audioTitleBgColor;
+        public string? audioSrc;
         /// Alarm
-        String? alarmTitle;
-        int? alarmDatetime; // yyyyMMddHHmmss
+        public string? alarmTitle;
+        public double? alarmTitleSize;
+        public string? alarmTitleColor;
+        public string? alarmTitleBgColor;
+        public long? alarmDatetime; // yyyyMMddHHmmss
+        /// Document
+        public string? documentTitle;
+        public double? documentTitleSize;
+        public string? documentTitleColor;
+        public string? documentTitleBgColor;
+        public string? documentSrc;
+        public double? documentWidth;
+        public double? documentHeight;
+        /// URL
+        public string? urlTitle;
+        public double? urlTitleSize;
+        public string? urlTitleColor;
+        public string? urlTitleBgColor;
+        public string? url;
 
         public string bgColor = "#00000000";
 
@@ -148,6 +180,9 @@
         timer = 0x0008,
         video = 0x000A,
         audio = 0x000B,
+        alarm = 0x000C,
+        document = 0x000D,
+        url = 0x000E,
     }
 
     public enum SmartRecordLineAlignment

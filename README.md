@@ -75,7 +75,7 @@ This document outlines the key features and configuration options for **SmartPap
 
 1.  **Paper Size & Layout**:
     * **Width**: Configurable in pixels; automatically adjusts to output screen if larger.
-    * **Height**: Dynamically determined by item configuration.
+	* **Height**: Dynamically determined based on the SmartPaper configuration.
 2.  **Borders**: Supports a simple solid-line border around the entire paper. (Other types planned for future support.)
 3.  **Security**: Provides support for encrypted paper data and secure URL access.
 4.  **Saving**: Offers both manual and automatic saving within a dedicated viewer. You can save multiple SmartRecords 'as one' or 'individually'.
@@ -84,25 +84,35 @@ This document outlines the key features and configuration options for **SmartPap
     * **Special**: Padding string (supports multiple texts on a single line)
     * **Interaction**: List, Button, Timer (support coming soon, with real-time data updates)
 	* **Multimedia**: Animated Images(GIF, APNG), Video, Audio (Coming Soon)
-	* **Alarms**: Provides various notifications, such as waiting numbers, coupon expiration dates, reservations/schedules, etc. (Coming Soon)
+	* **Documents**: PDF (Coming Soon), DOC(X), PPT(X), XLS(X), HWP(X) (under review)
+	* **Alarms**: Provides various notifications, such as for waiting numbers, coupon expiration dates, or reservations. (Coming Soon)
+	* **URL**: Add a link line that connects directly to an external webpage or another SmartPaper document, enabling information linking and expansion. (Coming Soon)
 
 ### Supported URL Parameters
 
-This feature demonstrates flexibility in handling various data types through various parameters.
+This feature demonstrates flexibility in handling various data types through its parameters.
 
-1.  **type ㅡParameter**
-    * **type=paper**: Raw data from a smartpaper.
+1.  **'type' Parameter**
     * **type=url**: Decodes and uses the smartpaper URL contained in the URL parameter.
     * **type=surl**: Receives and processes the encrypted smartpaper URL along with parameters required for decryption, such as iv (initialization vector) and keyBits (key length).
-    * **type=json**: Decodes a base64-encoded JSON string and deserializes it into a SmartPaper object.
+	* **type=paper**: Decodes Base64-encoded data and deserializes it into a SmartPaper object.
 
-2.  **Additional Function Parameters**
+2.  **'paper' Parameter**
+    * **paper=json**: JavaScript Object Notation, default
+    * **paper=xml**: eXtensible Markup Language
+    * **paper=csv**: Comma-Separated Values
+    * **paper=yaml**: YAML Ain't Markup Language
+    * **paper=protobuf**: Protocol Buffers
+    * **paper=bin**: Binary data
+    * **paper=raw**: Raw data from a smartpaper
+
+3.  **Additional Function Parameters**
     * **isAutoSave, isSavable**: Controls whether the smartpaper is automatically saved and savable.
     * **isPinSetting**: Used when handling secure documents that require PIN settings.
     * **autoRefresh**: Specifies the auto-refresh interval in milliseconds (ms). If this parameter is greater than 0, data is updated in real time.
     * **isAutoCopy**: Provides the ability to automatically copy the SmartPaper URL to the user's clipboard.
 
-It is implemented as a sophisticated and scalable system that perfectly handles not only **static data (json)** but also dynamic interactions (autoRefresh) and **security features (surl, pinSetting)** via URLs.
+It is a sophisticated and scalable system, perfectly handling not only **static data (json)** but also dynamic interactions (autoRefresh) and **security features (surl, pinSetting)** via URLs.
 
 ---
 
@@ -147,7 +157,7 @@ SmartPaper supports various content types, each with specific configuration opti
         * `Font Weight`: `bold (0x00000100)`
         * `Text Decoration`: `underline (0x00010000)`, `overline (0x00020000)`, `lineThrough (0x00040000)`
         * Combinations are also supported (e.g., `normalAndBold`, `italicAndUnderline`).
-    * **Properties**: `text`, `fontSize`, `textAlignment`, `textMaxLines`, `textColor`, `textBgColor`
+    * **Properties**: `text`, `textSize`, `textAlignment`, `textMaxLines`, `textColor`, `textBgColor`
 
 3.  **Image & Text (`type = 2`)**
     * Image on the left, text on the right.
@@ -162,7 +172,7 @@ SmartPaper supports various content types, each with specific configuration opti
         * `percent (10) [%]`, `caret (11) [^]`, `ampersand (12) [&]`, `blank (13) [ ]`
         * `equal (14) [=]`, `underscore (15) [_]`, `dot (16) [.]`, `comma (17) [,]`
         * `custom (99) []`, `none (-1) []`
-    * **Property**: `fontSize`
+    * **Property**: `textSize`
 
 6.  **Barcode (`type = 5`)**
     * **Properties**: `text` (Barcode data), `imageWidth`, `imageHeight`
@@ -265,7 +275,7 @@ smartRecordLine.imageAlignment = SmartRecordLineAlignment.center;
 ```
 smartRecordLine.textStyle = SmartRecordLineTextStyle.bold;
 smartRecordLine.text = "Smart Paper";
-smartRecordLine.fontSize = 16.0;
+smartRecordLine.textSize = 16.0;
 smartRecordLine.textAlignment = SmartRecordLineAlignment.center;
 smartRecordLine.textMaxLines = null; // Unlimit
 smartRecordLine.textColor = DataManager.IntToColorHex(4278190080); // #FF000000 (#ARGB)
@@ -281,7 +291,7 @@ padString = new PadString(text: "Waiting Number ", padFlex: 2, textAlignment: Sm
 padStringList.Add(padString);
 padString = new PadString(text: "123", padFlex: 1, textAlignment: SmartRecordLineAlignment.centerLeft);
 padStringList.Add(padString);
-smartRecordLine = SmartPaperHelper.MakePadStringLine(padStringList, textStyle: SmartRecordLineTextStyle.normal, fontSize: 21.0, textColor: "#FFFFFFFF", textBgColor: "#FF000000");
+smartRecordLine = SmartPaperHelper.MakePadStringLine(padStringList, textStyle: SmartRecordLineTextStyle.normal, textSize: 21.0, textColor: "#FFFFFFFF", textBgColor: "#FF000000");
 smartRecord.items.Add(smartRecordLine);
 ```
 
@@ -294,19 +304,19 @@ smartRecordLine = SmartPaperHelper.Image("https://image.example.com/paper.png", 
 * Image & Text
 
 ```
-smartRecordLine = SmartPaperHelper.ImageAndText("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", textAlignment: SmartRecordLineAlignment.center, fontSize: 16.0, textStyle: SmartRecordLineTextStyle.normal);
+smartRecordLine = SmartPaperHelper.ImageAndText("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", textAlignment: SmartRecordLineAlignment.center, textSize: 16.0, textStyle: SmartRecordLineTextStyle.normal);
 ```
 
 * Text & Image
 
 ```
-smartRecordLine = SmartPaperHelper.TextAndImage("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", textAlignment: SmartRecordLineAlignment.center, fontSize: 16.0, textStyle: SmartRecordLineTextStyle.normal);
+smartRecordLine = SmartPaperHelper.TextAndImage("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", textAlignment: SmartRecordLineAlignment.center, textSize: 16.0, textStyle: SmartRecordLineTextStyle.normal);
 ```
 
 * Divider
 
 ```
-smartRecordLine = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.equal, fontSize: 15.0);
+smartRecordLine = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.equal, textSize: 15.0);
 smartRecord.items.Add(smartRecordLine);
 ```
 
@@ -373,9 +383,9 @@ You can test the smartpaper you created.
 
 * Real-time generation
 
-> Link to [Movie & Parking Ticket](https://app.publicplatform.co.kr/?/smart_paper?type=paper&vendor=theater&savable=true)
+> Link to [Movie & Parking Ticket](https://app.publicplatform.co.kr/?/smart_paper?type=paper&paper=sample&vendor=theater&savable=true)
 
-> Link to [Waiting Number Ticket](https://app.publicplatform.co.kr/?/smart_paper?type=paper&vendor=bank_waiting_number&savable=true)
+> Link to [Waiting Number Ticket](https://app.publicplatform.co.kr/?/smart_paper?type=paper&paper=sample&vendor=bank_waiting_number&savable=true)
 
 * Normal URLs
 

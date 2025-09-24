@@ -75,7 +75,7 @@ SmartPaper (Version Code: 202504101515)
 
 1.  **용지 크기 및 레이아웃**:
     * **너비**: 픽셀 단위로 설정 가능하며, 출력 화면보다 클 경우 자동으로 화면 크기에 맞춰 조정됩니다.
-    * **높이**: 아이템 설정에 따라 동적으로 결정됩니다.
+    * **높이**: 스마트페이퍼 구성에 따라 동적으로 결정됩니다.
 2.  **테두리**: 용지 전체를 감싸는 단일 실선 테두리를 지원합니다. (다른 종류는 향후 지원 예정)
 3.  **보안 지원**: 용지가 저장되는 URL에 대한 지원 및 용지 데이터 암호화를 지원합니다. 사용자 정의 PIN 코드 지원으로 
 4.  **저장 기능**: 전용 뷰어에서 용지의 수동 및 자동 저장을 지원합니다. 여러 지류에 대해 '하나로' 또는 '개별로' 저장 가능합니다.
@@ -84,19 +84,29 @@ SmartPaper (Version Code: 202504101515)
     * **특수**: 패딩스트링(하나의 라인에 여러 개의 텍스트 지원)
     * **상호작용**: 리스트, 버튼, 타이머 (지원 예정이며 실시간으로 데이터 갱신 가능)
     * **멀티미디어**: 애니메이션 이미지(GIF, APNG), 비디오, 오디오 (지원 예정)
+    * **문서**: PDF (지원 예정), DOC(X), PPT(X), XLS(X), HWP(X) (검토 중)
     * **알람**: 대기 순번, 쿠폰 마감, 예약/일정 등 다양한 알림 제공 (지원 예정)
+    * **URL**: 외부 웹 페이지나 다른 스마트페이퍼 문서로 직접 연결되는 링크 라인을 추가하여 정보 연계 및 확장 가능 (지원 예정)
 
 ### 지원되는 URL 파라미터
 
 다양한 파라미터를 통해 여러 데이터 유형을 처리하는 유연성을 보여줍니다.
 
-1.  **type 파라미터**
-    * **type=paper**: 스마트페이퍼의 Raw data.
+1.  **'type' 파라미터**
     * **type=url**: URL 파라미터에 포함된 스마트페이퍼 URL을 디코딩하여 사용합니다.
     * **type=surl**: 암호화된 스마트페이퍼 URL과 함께 iv (초기화 벡터), keyBits (키 길이) 등 복호화에 필요한 파라미터를 전달받아 처리합니다.
-    * **type=json**: Base64로 인코딩된 JSON 문자열을 디코딩하여 SmartPaper 객체로 역직렬화합니다.
+    * **type=paper**: Base64로 인코딩된 데이터를 디코딩하여 SmartPaper 객체로 역직렬화합니다.
 
-2. **부가 기능 파라미터**
+2.  **'paper' 파라미터**
+    * **paper=json**: 자바스크립트 객체 표기법 (JavaScript Object Notation), 기본값
+    * **paper=xml**: 확장 가능한 마크업 언어 (eXtensible Markup Language)
+    * **paper=csv**: 콤마 구분 값 (Comma-Separated Values)
+    * **paper=yaml**: YAML은 마크업 언어가 아니다 (YAML Ain't Markup Language)
+    * **paper=protobuf**: 프로토콜 버퍼 (Protocol Buffers)
+    * **paper=bin**: 바이너리 데이터 (Binary data)
+    * **paper=raw**: 스마트페이퍼의 원시 데이터 (Raw data)
+
+3. **부가 기능 파라미터**
     * **isAutoSave, isSavable**: 스마트페이퍼의 자동 저장 및 저장 가능 여부를 제어합니다.
     * **isPinSetting**: 핀(PIN) 설정이 필요한 보안 문서를 다룰 때 사용됩니다.
     * **autoRefresh**: 자동 새로고침 간격을 밀리초(ms) 단위로 지정합니다. 이 파라미터가 0보다 크면 실시간으로 데이터를 갱신합니다.
@@ -147,7 +157,7 @@ SmartPaper는 다양한 콘텐츠 유형을 지원하며, 각 유형에는 특�
         * `폰트 굵기`: `bold (0x00000100)`
         * `텍스트 장식`: `underline (0x00010000)`, `overline (0x00020000)`, `lineThrough (0x00040000)`
         * 조합도 지원 (예: `normalAndBold`, `italicAndUnderline`).
-    * **속성**: `text`, `fontSize`, `textAlignment`, `textMaxLines`, `textColor`, `textBgColor`
+    * **속성**: `text`, `textSize`, `textAlignment`, `textMaxLines`, `textColor`, `textBgColor`
 
 3.  **이미지 & 텍스트 (`type = 2`)**
     * 이미지는 왼쪽에 텍스트는 오른쪽에 배치
@@ -162,7 +172,7 @@ SmartPaper는 다양한 콘텐츠 유형을 지원하며, 각 유형에는 특�
         * `percent (10) [%]`, `caret (11) [^]`, `ampersand (12) [&]`, `blank (13) [ ]`
         * `equal (14) [=]`, `underscore (15) [_]`, `dot (16) [.]`, `comma (17) [,]`
         * `custom (99) []`, `none (-1) []`
-    * **속성**: `fontSize`
+    * **속성**: `textSize`
 
 6.  **바코드 (`type = 5`)**
     * **속성**: `text` (바코드 데이터), `imageWidth`, `imageHeight`
@@ -265,7 +275,7 @@ smartRecordLine.imageAlignment = SmartRecordLineAlignment.center;
 ```
 smartRecordLine.textStyle = SmartRecordLineTextStyle.bold;
 smartRecordLine.text = "Smart Paper";
-smartRecordLine.fontSize = 16.0;
+smartRecordLine.textSize = 16.0;
 smartRecordLine.textAlignment = SmartRecordLineAlignment.center;
 smartRecordLine.textMaxLines = null; // Unlimit
 smartRecordLine.textColor = DataManager.IntToColorHex(4278190080); // #FF000000 (#ARGB)
@@ -281,7 +291,7 @@ padString = new PadString(text: "Waiting Number ", padFlex: 2, textAlignment: Sm
 padStringList.Add(padString);
 padString = new PadString(text: "123", padFlex: 1, textAlignment: SmartRecordLineAlignment.centerLeft);
 padStringList.Add(padString);
-smartRecordLine = SmartPaperHelper.MakePadStringLine(padStringList, textStyle: SmartRecordLineTextStyle.normal, fontSize: 21.0, textColor: "#FFFFFFFF", textBgColor: "#FF000000");
+smartRecordLine = SmartPaperHelper.MakePadStringLine(padStringList, textStyle: SmartRecordLineTextStyle.normal, textSize: 21.0, textColor: "#FFFFFFFF", textBgColor: "#FF000000");
 smartRecord.items.Add(smartRecordLine);
 ```
 
@@ -294,19 +304,19 @@ smartRecordLine = SmartPaperHelper.Image("https://image.example.com/paper.png", 
 * 이미지 & 텍스트 (Image & Text)
 
 ```
-smartRecordLine = SmartPaperHelper.ImageAndText("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", textAlignment: SmartRecordLineAlignment.center, fontSize: 16.0, textStyle: SmartRecordLineTextStyle.normal);
+smartRecordLine = SmartPaperHelper.ImageAndText("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", textAlignment: SmartRecordLineAlignment.center, textSize: 16.0, textStyle: SmartRecordLineTextStyle.normal);
 ```
 
 * 텍스트 & 이미지 (Text & Image)
 
 ```
-smartRecordLine = SmartPaperHelper.TextAndImage("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", textAlignment: SmartRecordLineAlignment.center, fontSize: 16.0, textStyle: SmartRecordLineTextStyle.normal);
+smartRecordLine = SmartPaperHelper.TextAndImage("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", textAlignment: SmartRecordLineAlignment.center, textSize: 16.0, textStyle: SmartRecordLineTextStyle.normal);
 ```
 
 * 구분선 (Divider)
 
 ```
-smartRecordLine = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.equal, fontSize: 15.0);
+smartRecordLine = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.equal, textSize: 15.0);
 smartRecord.items.Add(smartRecordLine);
 ```
 
@@ -373,9 +383,9 @@ string? surl = SmartPaperManager.EncryptAndGenerateUrl(paperUrl, keyBytes, nonce
 
 * 실시간 생성
 
-> [영화 티켓 & 주차권](https://app.publicplatform.co.kr/?/smart_paper?type=paper&vendor=theater&savable=true) 링크
+> [영화 티켓 & 주차권](https://app.publicplatform.co.kr/?/smart_paper?type=paper&paper=sample&vendor=theater&savable=true) 링크
 
-> [대기순번표](https://app.publicplatform.co.kr/?/smart_paper?type=paper&vendor=bank_waiting_number&savable=true) 링크
+> [대기순번표](https://app.publicplatform.co.kr/?/smart_paper?type=paper&paper=sample&vendor=bank_waiting_number&savable=true) 링크
 
 * 일반 URLs
 

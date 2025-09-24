@@ -20,7 +20,7 @@ namespace SmartPaperExample
 
             // bizName
             smartRecordLine = SmartPaperHelper.Text(smartPaper.bizName, SmartRecordLineAlignment.center,
-                15.0, SmartRecordLineTextStyle.bold);
+                SmartRecordLineTextStyle.bold, 15.0);
             smartRecord.items.Add(smartRecordLine);
 
             // Body
@@ -57,18 +57,18 @@ namespace SmartPaperExample
             padStringList.Add(padString);
             smartRecordLine = SmartPaperHelper.MakePadStringLine(padStringList);
             smartRecordLine.textStyle = SmartRecordLineTextStyle.normal.ToString();
-            smartRecordLine.fontSize = 12.0;
+            smartRecordLine.textSize = 12.0;
             smartRecord.items.Add(smartRecordLine);
 
-            smartRecordLine = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.hyphen, fontSize: 15.0);
+            smartRecordLine = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.hyphen, textSize: 15.0);
             smartRecord.items.Add(smartRecordLine);
 
-            smartRecordLine = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.equal, fontSize: 15.0);
+            smartRecordLine = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.equal, textSize: 15.0);
             smartRecord.items.Add(smartRecordLine);
 
             smartRecordLine = SmartPaperHelper.Barcode(text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
             smartRecord.items.Add(smartRecordLine);
-            smartRecordLine = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.blank, fontSize: 15.0);
+            smartRecordLine = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.blank, textSize: 15.0);
             smartRecord.items.Add(smartRecordLine);
 
             smartPaper.smartRecordList.Add(smartRecord);
@@ -98,7 +98,7 @@ namespace SmartPaperExample
             padStringList.Add(padString);
             padString = new PadString(text: "123", padFlex: 1, textAlignment: SmartRecordLineAlignment.centerLeft);
             padStringList.Add(padString);
-            smartPaperItem = SmartPaperHelper.MakePadStringLine(padStringList, textStyle: SmartRecordLineTextStyle.normal, fontSize: 21.0, textColor: "#FFFFFFFF", textBgColor: "#FF000000");
+            smartPaperItem = SmartPaperHelper.MakePadStringLine(padStringList, textStyle: SmartRecordLineTextStyle.normal, textSize: 21.0, textColor: "#FFFFFFFF", textBgColor: "#FF000000");
             smartRecord.items.Add(smartPaperItem);
 
             // Waiting People Number
@@ -107,21 +107,21 @@ namespace SmartPaperExample
             padStringList.Add(padString);
             padString = new PadString(text: "12", padFlex: 1, textAlignment: SmartRecordLineAlignment.centerLeft);
             padStringList.Add(padString);
-            smartPaperItem = SmartPaperHelper.MakePadStringLine(padStringList, textStyle: SmartRecordLineTextStyle.normal, fontSize: 18.0);
+            smartPaperItem = SmartPaperHelper.MakePadStringLine(padStringList, textStyle: SmartRecordLineTextStyle.normal, textSize: 18.0);
             smartRecord.items.Add(smartPaperItem);
 
             smartPaperItem = SmartPaperHelper.Divider(SmartRecordLineDividerStyle.hyphen, 15.0);
             smartRecord.items.Add(smartPaperItem);
 
-            smartPaperItem = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.hyphen, fontSize: 15.0);
+            smartPaperItem = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.hyphen, textSize: 15.0);
             smartRecord.items.Add(smartPaperItem);
 
-            smartPaperItem = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.equal, fontSize: 15.0);
+            smartPaperItem = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.equal, textSize: 15.0);
             smartRecord.items.Add(smartPaperItem);
 
             smartPaperItem = SmartPaperHelper.Barcode(text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
             smartRecord.items.Add(smartPaperItem);
-            smartPaperItem = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.blank, fontSize: 15.0);
+            smartPaperItem = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.blank, textSize: 15.0);
             smartRecord.items.Add(smartPaperItem);
 
             smartPaper.smartRecordList.Add(smartRecord);
