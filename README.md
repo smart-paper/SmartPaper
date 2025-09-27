@@ -1,374 +1,176 @@
-# SmartPaper
+# SmartPaper 🛡️
 
-A repository for providing and sharing information about SmartPaper.
+This repository provides the SmartPaper data model and related logic.
 
-Protect nature, and nature will protect you!</br>
-Be free from all bisphenols...
+Protect nature, and nature will protect you! 🌳</br>
+Be free from all bisphenols... 🚫
 
-Supports **multiple types of paper** (e.g., order forms, sheets, receipts, number tickets/tags, coupons, tickets) within a single SmartPaper instance, significantly expanding its utility.
-Secure transmission and storage are possible through support for AES encryption.
+**SmartPaper** is a data standard optimized for mobile environments that digitizes the content of paper documents (receipts, tickets, etc.) and adds security and interactivity features.
+Its functionality has been significantly expanded to support **multiple types of paper** (e.g., order forms, vouchers, receipts, number tags, coupons, tickets) within a single instance, significantly increasing its usability. Support for **AES-GCM encryption** also enables secure transmission and storage.
 
 This project adopts a dual licensing model.
 
-* **GPLv3**: Applies to personal and non-profit use. To use the source code under this license, any derived works must also be released under the GPLv3 license.
-* **Commercial License**: Organizations such as public institutions and for-profit companies that do not wish to comply with the obligations of the GPLv3 must purchase a separate commercial license. However, even for non-profit purposes, you can inquire about a commercial license if you wish to collaborate, such as for professional technical support or custom development. For inquiries about a commercial license, please contact [icitlabs@gmail.com].
+* **GPLv3**: Applies to personal, public, and non-profit use. Under this license, any derived works must also be released under GPLv3.
+* **Commercial License**: For-profit companies that do not wish to comply with the obligations of the GPLv3 must purchase a separate commercial license. For inquiries regarding commercial licensing, please contact [icitlabs@gmail.com].
 
-## SmartPaper Data Model
+---
 
-The SmartPaper data model has been significantly updated, effective with version code `202506221515`, to support multiple paper types.
+## 🏗️ Smartpaper Data Model and Refactoring (Integration)
 
-### Data Model Changes
+The SmartPaper data model has been significantly updated with **multi-level structures and unified fields** to efficiently support multiple paper types within a single instance, starting with version code `202506221515`.
 
-* **New SmartPaper structure**: Now composed of a partial existing SmartPaper structure and a list of `SmartRecord`s. This change enables the management of multiple paper items within a single paper.
-* **Renamed**: `SmartPaperItem` to `SmartRecordLine` for better clarity within the new model.
+### Change data model and integrate fields
+
+1.  **Introducing a new SmartPaper hierarchy**:
+    * A **SmartPaper** consists of a portion of the existing SmartPaper structure and a **`SmartRecord`** list.
+    * A **`SmartRecord`** has properties such as a background image and outline, and contains a **`SmartRecordLine`** list.
+    * This change allows for managing **multiple independent paper items (Records)** within a single paper.
+
+2.  **Rename and field consolidation**:
+    * The existing `SmartPaperItem` has been renamed to **`SmartRecordLine`**.
+    * Line-level properties have been **consolidated** (e.g., `imageWidth`, `listWidth`, `buttonWidth` -> **`width`**).
 
 ```
 SmartPaper (Version Code: 202506221515)
 +-------------------------------------------------------------+
-| SmartPaper Instance 1                                       |
+| SmartPaper Instance (Common Properties)                     |
 | +---------------------------------------------------------+ |
-| | SmartRecord 1 (of SmartPaper Instance 1)                | |
+| | SmartRecord 1 (Receipt/Ticket)                          | |
 | | +-----------------------------------------------------+ | |
-| | | SmartRecordLine 1 (of SmartRecord 1)                | | |
+| | | SmartRecordLine 1 (Text/Image/Button)               | | |
 | | +-----------------------------------------------------+ | |
-| | +-----------------------------------------------------+ | |
-| | | SmartRecordLine 2 (of SmartRecord 1)                | | |
-| | +-----------------------------------------------------+ | |
-| | | ...                                                 | | |
+| | | SmartRecordLine 2 (Text/Image/Button)               | | |
 | | +-----------------------------------------------------+ | |
 | +---------------------------------------------------------+ |
-| +---------------------------------------------------------+ |
-| | SmartRecord 2 (of SmartPaper Instance 1)                | |
+| | SmartRecord 2 (Coupon)                                  | |
 | | +-----------------------------------------------------+ | |
-| | | SmartRecordLine 1 (of SmartRecord 2)                | | |
+| | | SmartRecordLine 1 (Text/Image/Button)               | | |
 | | +-----------------------------------------------------+ | |
-| | | ...                                                 | | |
-| | +-----------------------------------------------------+ | |
-| +---------------------------------------------------------+ |
-| | ...                                                     | |
-| +---------------------------------------------------------+ |
-| ...                                                         |
-+-------------------------------------------------------------+
-```
-
-```
-SmartPaper (Version Code: 202504101515)
-+-------------------------------------------------------------+
-| SmartPaper Instance 1                                       |
-| +---------------------------------------------------------+ |
-| | SmartPaperItem 1 (of SmartPaper Instance 1)             | |
-| +---------------------------------------------------------+ |
-| | SmartPaperItem 2 (of SmartPaper Instance 1)             | |
-| +---------------------------------------------------------+ |
-| | ...                                                     | |
 | +---------------------------------------------------------+ |
 +-------------------------------------------------------------+
 ```
 
-## Features
+---
 
-This document outlines the key features and configuration options for **SmartPaper**.
+## ✨ Features
+
+### 1. Enhanced Security
+
+* **AES-GCM Encryption**: Supports **AES-256 GCM** encryption, ensuring both data **confidentiality** and **integrity**.
+* **Deterministic Key Derivation**: Deterministically generates a strong 256-bit **key** used for encryption through **SHA-256** hashing based on the user-set PIN (`String`).
+* **Secure Nonce Generation**: Maximizes the security of GCM mode by generating a 12-byte (96-bit) **unique nonce** essential for encryption.
+
+### 2. Flexibility in URL and data processing
+
+SmartPaper is a sophisticated and scalable system that handles static data, dynamic interactions, and security features through URLs.
+
+| Parameter | Value | Description |
+| :--- | :--- | :--- |
+| **`type=url`** | `url` | Uses the **plaintext SmartPaper JSON URL** contained in the URL parameter. |
+| **`type=surl`** | `url` | Receives and processes **encrypted (AES-GCM) data** along with necessary decryption parameters (e.g., iv for Nonce, keyBits). |
+| **`type=paper`** | `url` | Directly decodes and uses **SmartPaper object JSON data** encoded in Base64. |
+| **`autoRefresh`** | `ms` | If a value greater than 0 (ms) is specified, data is automatically refreshed at that interval to support **real-time updates**. |
+| **`isPinSetting`** | `bool` | Used when handling secure documents that require PIN settings. |
 
 ---
 
-### Core Functionality
+## 📜 Supported content types (based on integration fields)
 
-1.  **Paper Size & Layout**:
-    * **Width**: Configurable in pixels; automatically adjusts to output screen if larger.
-	* **Height**: Dynamically determined based on the SmartPaper configuration.
-2.  **Borders**: Supports a simple solid-line border around the entire paper. (Other types planned for future support.)
-3.  **Security**: Provides support for encrypted paper data and secure URL access.
-4.  **Saving**: Offers both manual and automatic saving within a dedicated viewer. You can save multiple SmartRecords 'as one' or 'individually'.
-5. **Various SmartRecordLine formats**:
-    * **Basic**: Text, Image, Text & Image, Image & Text, Barcode, QR Code
-    * **Special**: Padding string (supports multiple texts on a single line)
-    * **Interaction**: List, Button, Timer (support coming soon, with real-time data updates)
-	* **Multimedia**: Animated Images(GIF, APNG), Video, Audio (Coming Soon)
-	* **Documents**: PDF (Coming Soon), DOC(X), PPT(X), XLS(X), HWP(X) (under review)
-	* **Alarms**: Provides various notifications, such as for waiting numbers, coupon expiration dates, or reservations. (Coming Soon)
-	* **URL**: Add a link line that connects directly to an external webpage or another SmartPaper document, enabling information linking and expansion. (Coming Soon)
+The main content types and settings supported at the SmartRecordLine level are as follows:
 
-### Supported URL Parameters
+### 1. Common and Background Settings
 
-This feature demonstrates flexibility in handling various data types through its parameters.
+* **Alignment`:** Defines the position within the section (e.g., `center`, `topRight`, etc.).
+* **Background Image**: `bgImageSrc`, `bgImageOpacity`, `smartPaperImageType` (supports BoxFit and ImageRepeat families).
+* **Border**: `outlineWidth` (SmartRecord level)
 
-1.  **'type' Parameter**
-    * **type=url**: Decodes and uses the smartpaper URL contained in the URL parameter.
-    * **type=surl**: Receives and processes the encrypted smartpaper URL along with parameters required for decryption, such as iv (initialization vector) and keyBits (key length).
-	* **type=paper**: Decodes Base64-encoded data and deserializes it into a SmartPaper object.
+### 2. Content Type (based on `type` property)
 
-2.  **'paper' Parameter**
-    * **paper=json**: JavaScript Object Notation, default
-    * **paper=xml**: eXtensible Markup Language
-    * **paper=csv**: Comma-Separated Values
-    * **paper=yaml**: YAML Ain't Markup Language
-    * **paper=protobuf**: Protocol Buffers
-    * **paper=bin**: Binary data
-    * **paper=raw**: Raw data from a smartpaper
-
-3.  **Additional Function Parameters**
-    * **isAutoSave, isSavable**: Controls whether the smartpaper is automatically saved and savable.
-    * **isPinSetting**: Used when handling secure documents that require PIN settings.
-    * **autoRefresh**: Specifies the auto-refresh interval in milliseconds (ms). If this parameter is greater than 0, data is updated in real time.
-    * **isAutoCopy**: Provides the ability to automatically copy the SmartPaper URL to the user's clipboard.
-
-It is a sophisticated and scalable system, perfectly handling not only **static data (json)** but also dynamic interactions (autoRefresh) and **security features (surl, pinSetting)** via URLs.
+| Type ID | Type | Core Properties (Unified Fields) | Additional Properties |
+| :--- | :--- | :--- | :--- |
+| 0 | **Image** | `mediaSrc`, `width`, `height` | `alignment` |
+| 1 | **Text** | `text`, `textSize`, `textColor`, `textStyle` | `textMaxLines`, `blankRatio` (for padded strings) |
+| 4 | **Divider** | `dividerStyle` | `textSize` |
+| 5 | **Barcode** | `text` (data), `width`, `height` | `alignment` |
+| 6 | **QR Code** | `text` (data), `width`, `height` | `alignment` |
+| 7 | **List** | `listItems` (SmartRecordLine list), `title`, `listType` | `textSize`, `textColor` (set item text) |
+| 8 | **Button** | `text`, `actionType`, `actionUrl` | `width`, `height`, `textSize`, `textColor` |
+| 9 | **Timer** | `millis`, `actionType`, `actionUrl` | `timerType`, `text`, `textSize` |
+| 10 | **Video** | `mediaSrc`, `title`, `isLooping` | `width`, `height`, `titleSize`, `titleColor` |
+| 11 | **Audio** | `mediaSrc`, `title`, `isLooping` | `titleSize`, `titleColor` |
+| 12 | **Alarm (Planned)** | `datetime` (yyyyMMddHHmmss), `title` | `titleSize`, `titleColor` |
+| 13 | **Document (Planned)** | `mediaSrc`, `title` | `titleSize`, `titleColor`, `width`, `height` |
+| 14 | **URL** | `url`, `title` | `titleSize`, `titleColor` |
+| 15 | **Group (Planned)** | `group` (SmartRecordLine list), `groupSpace` | `alignment` |
 
 ---
 
-### Supported Content Types & Configuration
+## ⌨️ How to Use (C# Example)
 
-SmartPaper supports various content types, each with specific configuration options:
+You can easily configure and encrypt SmartPaper objects using the **Helper class (`SmartPaperHelper`) and the Manager class (`SmartPaperManager`).
 
-#### Common Configurations
+### 1. Data Configuration
 
-* **Alignment**: Defines positioning within a section.
-    * `topLeft (0x11)`, `topCenter (0x110)`, `topRight (0x12)`
-    * `centerLeft (0x101)`, `center (0x100)`, `centerRight (0x102)`
-    * `bottomLeft (0x21)`, `bottomCenter (0x120)`, `bottomRight (0x22)`
-    * `none (0)`
-
-#### Background Image
-
-* **bgImageSrc**: The URL of the background image.
-* **bgImageOpacity**: Sets the transparency (opacity) of the background image. It takes a value between 0.0 (fully transparent) and 1.0 (fully opaque).
-* **smartPaperImageType**: Defines how the background image will be fitted or repeated within the line's area.
-    * BoxFit Series (Image Scaling Methods)
-	    * none: Displays the image at its original size. If larger than the area, it will be cropped; if smaller, empty space will appear.
-	    * cover: Scales the image while maintaining its aspect ratio to completely cover the area. Parts of the image may be cropped. (Recommended for most background images)
-	    * contain: Scales the image while maintaining its aspect ratio so that the entire image is visible within the area. Empty space (letterboxing/pillarboxing) may appear around the image.
-	    * fill (stretch): Stretches or shrinks the image to fill the area, disregarding its aspect ratio. The image may appear distorted.
-	    * fitWidth: Scales the image while maintaining its aspect ratio to fit the width of the area. The height is adjusted according to the image's aspect ratio.
-	    * fitHeight: Scales the image while maintaining its aspect ratio to fit the height of the area. The width is adjusted according to the image's aspect ratio.
-	    * scaleDown: If the image is smaller than the area, it behaves like none; if larger, it scales down like contain to fit the area.
-    * ImageRepeat Series (Image Repetition Methods)
-	    * repeat: Repeats the image horizontally and vertically at its original size until the area is filled.
-	    * repeatX: Repeats the image horizontally at its original size until the area is filled.
-	    * repeatY: Repeats the image vertically at its original size until the area is filled.
-
-#### Content Types (by `type` property)
-
-1.  **Image (`type = 0`)**
-    * **Properties**: `imageWidth`, `imageHeight`, `imageSrc` (URL)
-
-2.  **Text (`type = 1`)**
-    * **Text Style**:
-        * `Font Style`: `normal (0x00000001)`, `italic (0x00000002)`
-        * `Font Weight`: `bold (0x00000100)`
-        * `Text Decoration`: `underline (0x00010000)`, `overline (0x00020000)`, `lineThrough (0x00040000)`
-        * Combinations are also supported (e.g., `normalAndBold`, `italicAndUnderline`).
-    * **Properties**: `text`, `textSize`, `textAlignment`, `textMaxLines`, `textColor`, `textBgColor`
-
-3.  **Image & Text (`type = 2`)**
-    * Image on the left, text on the right.
-
-4.  **Text & Image (`type = 3`)**
-    * Text on the left, image on the right.
-
-5.  **Divider (`type = 4`)**
-    * **Style**:
-        * `pipe (0) [|]`, `slash (1) [/]`, `backSlash (2) [\\]`, `hyphen (3) [-]`, `sharp (4) [#]`
-        * `plus (5) [+]`, `star (6) [*]`, `exclamation (7) [!]`, `at (8) [@]`, `dollar (9) [$]`
-        * `percent (10) [%]`, `caret (11) [^]`, `ampersand (12) [&]`, `blank (13) [ ]`
-        * `equal (14) [=]`, `underscore (15) [_]`, `dot (16) [.]`, `comma (17) [,]`
-        * `custom (99) []`, `none (-1) []`
-    * **Property**: `textSize`
-
-6.  **Barcode (`type = 5`)**
-    * **Properties**: `text` (Barcode data), `imageWidth`, `imageHeight`
-
-7.  **QR Code (`type = 6`)**
-    * **Properties**: `text` (QR code data), `imageWidth`, `imageHeight`
-
-8.  **List (`type = 7`)**
-    * **Properties**: `listType`, `listTitle`, `listWidth`, `listHeight`, `listTitleColor`, `listTitleBgColor`, `listTextColor`, `listTextBgColor`, `listItems`
-
-9.  **Button (`type = 8`)**
-    * **Properties**: `buttonAction`, `buttonRestfulApi`, `buttonText`, `buttonWidth`, `buttonHeight`, `buttonTextColor`, `buttonTextBgColor`
-
-10.  **Timer (`type = 9`)**
-    * **Properties**: `timerType`, `timerAction`, `timerRestfulApi`, `timerText`, `timerInMillis`
-
-11.  **Video (`type = 10`)**
-    * **Properties**: `videoTitle`, `videoUrl`, `videoWidth`, `videoHeight`
-
-12.  **Audio (`type = 11`)**
-    * **Properties**: `audioTitle`, `audioUrl`
-
----
-
-### Advanced Text Composition: Pad String (`type = text`)
-
-Used for composing multiple text segments on a single line, often with proportional sizing or padding.
-
-Supports `Alignment Type` (takes precedence) and `Pad Type`.
-
-* **String Delimiters**:
-    * `STRING_FORMAT_SEPARATOR ([|SFS|])`
-    * `STRING_END_OF ([|SEO|])`
-
-#### Pad String Formats:
-
-1.  **Alignment Type**
-    * **Format**: `[text]|SFS|[padFlex]|SFS|[textAlignment]|SEO|`
-    * **Properties**:
-        * `text`: Content of the text segment.
-        * `padFlex`: Proportional integer value for sizing when multiple `Pad String` items are present.
-        * `textAlignment`: Alignment value.
-
-2.  **Pad Type**
-    * **Format**: `[text]|SFS|[padFlex]|SFS|[padType]|SFS|[padWidth]|SFS|[padText]|SEO|`
-    * **Properties**:
-        * `text`: Content of the text segment.
-        * `padFlex`: Proportional integer value for sizing when multiple `Pad String` items are present.
-        * `padType`: `leftPad (0)`, `rightPad (1)`
-        * `padWidth`: Width of the padding.
-        * `padText`: Character to fill the padding.
-
-## How to use (C# Source code)
-
-```
+```csharp
+// 1. Create SmartPaper and SmartRecord instances
 SmartPaper smartPaper = new();
 SmartRecord smartRecord = new();
-SmartRecordLine smartRecordLine;
-...
-smartRecord.items.add(smartRecordLine);
-...
-smartPaper.smartRecordList.add(smartRecord);
-```
+smartPaper.smartRecordList.Add(smartRecord); // Add multiple records to a single paper.
 
-* PaperSize
-
-```
-public const double defaultPaperWidth = 500; // Default 500
-```
-
-* Background Image
-
-```
-smartRecord.bgImageSrc = "Background Image URL";
+// 2. Set a background image and outline for the record
+smartRecord.bgImageSrc = "[https://image.example.com/background.png](https://image.example.com/background.png)";
 smartRecord.bgImageOpacity = 0.2;
-smartRecord.smartPaperImageType = SmartPaperImageType.repeat;
-```
-
-* Outline
-
-```
+smartRecord.smartPaperImageType = SmartPaperImageType.cover;
 smartRecord.outlineWidth = 2.0;
-```
 
-* Type
+// 3. Adding a SmartRecordLine using a Helper
 
-```
-smartRecordLine.type = SmartRecordLineType.image;
-```
+// - Add an image line
+smartRecord.items.Add(SmartPaperHelper.Image("[https://image.example.com/logo.png](https://image.example.com/logo.png)", 360, 240, SmartRecordLineAlignment.center));
 
-* Alignment
+// - Add a divider line
+smartRecord.items.Add(SmartPaperHelper.Divider(SmartRecordLineDividerStyle.equal, textSize: 15.0));
 
-```
-smartRecordLine.textAlignment = SmartRecordLineAlignment.center;
-smartRecordLine.imageAlignment = SmartRecordLineAlignment.center;
-```
+// - Add a text line
+smartRecord.items.Add(SmartPaperHelper.Text(
+text: "Order History",
+textStyle: SmartRecordLineTextStyle.bold,
+textSize: 18.0,
+alignment: SmartRecordLineAlignment.center
+));
 
-* Text
+// - Add Pad String line
+PadString padString1 = new PadString(text: "WaitNumber ", padFlex: 2, alignment: SmartRecordLineAlignment.centerRight);
+PadString padString2 = new PadString(text: "123", padFlex: 1, alignment: SmartRecordLineAlignment.centerLeft);
+List<PadString> padStringList = new List<PadString> { padString1, padString2 };
 
-```
-smartRecordLine.textStyle = SmartRecordLineTextStyle.bold;
-smartRecordLine.text = "Smart Paper";
-smartRecordLine.textSize = 16.0;
-smartRecordLine.textAlignment = SmartRecordLineAlignment.center;
-smartRecordLine.textMaxLines = null; // Unlimit
-smartRecordLine.textColor = DataManager.IntToColorHex(4278190080); // #FF000000 (#ARGB)
-smartRecordLine.textBgColor = DataManager.IntToColorHex(4294967295); // #FFFFFFFF (#ARGB)
-```
+smartRecord.items.Add(SmartPaperHelper.MakePadStringLine( 
+data:padStringList, 
+textStyle: SmartRecordLineTextStyle.normal, 
+textSize: 21.0
+));
 
-* Pad String
 
-```
-PadString padString;
-List<PadString> padStringList = new List<PadString>();
-padString = new PadString(text: "Waiting Number ", padFlex: 2, textAlignment: SmartRecordLineAlignment.centerRight);
-padStringList.Add(padString);
-padString = new PadString(text: "123", padFlex: 1, textAlignment: SmartRecordLineAlignment.centerLeft);
-padStringList.Add(padString);
-smartRecordLine = SmartPaperHelper.MakePadStringLine(padStringList, textStyle: SmartRecordLineTextStyle.normal, textSize: 21.0, textColor: "#FFFFFFFF", textBgColor: "#FF000000");
-smartRecord.items.Add(smartRecordLine);
-```
-
-* Image
-
-```
-smartRecordLine = SmartPaperHelper.Image("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, SmartRecordLineAlignment.center);
-```
-
-* Image & Text
-
-```
-smartRecordLine = SmartPaperHelper.ImageAndText("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", textAlignment: SmartRecordLineAlignment.center, textSize: 16.0, textStyle: SmartRecordLineTextStyle.normal);
-```
-
-* Text & Image
-
-```
-smartRecordLine = SmartPaperHelper.TextAndImage("https://image.example.com/paper.png", imageWidth: 360, imageHeight: 240, text: "SmartPaper", textAlignment: SmartRecordLineAlignment.center, textSize: 16.0, textStyle: SmartRecordLineTextStyle.normal);
-```
-
-* Divider
-
-```
-smartRecordLine = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.equal, textSize: 15.0);
-smartRecord.items.Add(smartRecordLine);
-```
-
-* Barcode
-
-```
-smartRecordLine = SmartPaperHelper.Barcode(text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
-smartRecord.items.Add(smartRecordLine);
-```
-
-* QR Code
-
-```
-smartRecordLine = SmartPaperHelper.QrCode(text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
-smartRecord.items.Add(smartRecordLine);
-```
-
-* Generate sample JSON
-
-```
-SmartPaper smartPaper = Example001.GeneratePaper();
-string json = SmartPaper.toJson(smartPaper);
-```
-
-* Generate encrypted JSON
-
-```
-SmartPaper smartPaper = Example001.GeneratePaper();
+// 1. Convert SmartPaper object to JSON string
 string jsonData = SmartPaper.toJson(smartPaper);
-string pin = "abc123#@$"; // PIN is the value that the user actually enters.
+
+// 2. Generate a security key based on a PIN
+string pin = "abc123#@$"; // The PIN is the value entered by the user.
 byte[] keyBytes = SmartPaperManager.GenerateDeterministicKeyFromPin(pin);
 byte[] nonceBytes = SmartPaperManager.GenerateUniqueNonce();
 
-string securePayload = SmartPaperManager.EncryptData(jsonData, keyBytes, nonceBytes);	// Encoded in Base64
-```
+// 3. Generate a plaintext URL
+string paperUrl = "[https://paper.example.com/order_receipt_001.json](https://paper.example.com/order_receipt_001.json)";
+string? url = SmartPaperManager.GenerateUrl(paperUrl, isAutoSave: true); // Includes auto-save functionality.
 
-* Generate URL
-
-```
-string paperUrl = "https://paper.example.com/order_receipt_001.json";
-string? url = SmartPaperManager.GenerateUrl(paperUrl);
-```
-
-* Generate Secured URL
-
-```
-string paperUrl = "https://paper.example.com/order_receipt_001.paper";
-string pin = "abc123#@$"; // PIN is the value that the user actually enters.
-byte[] keyBytes = SmartPaperManager.GenerateDeterministicKeyFromPin(pin);
-byte[] nonceBytes = SmartPaperManager.GenerateUniqueNonce();
-
-string? surl = SmartPaperManager.EncryptAndGenerateUrl(paperUrl, keyBytes, nonceBytes);
+// 4. Generate a secure URL after encryption (surl type)
+string encryptedDataUrl = "[https://data.example.com/encrypted_order_001.paper](https://data.example.com/encrypted_order_001.paper)";
+string? surl = SmartPaperManager.EncryptAndGenerateUrl(
+encryptedDataUrl,
+keyBytes,
+nonceBytes,
+isAutoSave: false
+);
 ```
 
 ## Test Viewer

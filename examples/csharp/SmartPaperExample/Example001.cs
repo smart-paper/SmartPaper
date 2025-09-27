@@ -45,15 +45,15 @@ namespace SmartPaperExample
             totalMenuDC = totalMenuPrice - totalMenuPriceDC;
 
             padStringList.Clear();
-            padString = new PadString(text: menuName, padFlex: flexProductName, textAlignment: SmartRecordLineAlignment.centerLeft);
+            padString = new PadString(text: menuName, padFlex: flexProductName, alignment: SmartRecordLineAlignment.centerLeft);
             padStringList.Add(padString);
-            padString = new PadString(text: unitMenuPrice.ToString(), padFlex: flexUniPrice, textAlignment: SmartRecordLineAlignment.center);
+            padString = new PadString(text: unitMenuPrice.ToString(), padFlex: flexUniPrice, alignment: SmartRecordLineAlignment.center);
             padStringList.Add(padString);
-            padString = new PadString(text: quantity.ToString(), padFlex: flexQuantity, textAlignment: SmartRecordLineAlignment.center);
+            padString = new PadString(text: quantity.ToString(), padFlex: flexQuantity, alignment: SmartRecordLineAlignment.center);
             padStringList.Add(padString);
-            padString = new PadString(text: totalMenuDC.ToString(), padFlex: flexDiscount, textAlignment: SmartRecordLineAlignment.center);
+            padString = new PadString(text: totalMenuDC.ToString(), padFlex: flexDiscount, alignment: SmartRecordLineAlignment.center);
             padStringList.Add(padString);
-            padString = new PadString(text: totalMenuPriceDC.ToString(), padFlex: flexAmount, textAlignment: SmartRecordLineAlignment.centerRight);
+            padString = new PadString(text: totalMenuPriceDC.ToString(), padFlex: flexAmount, alignment: SmartRecordLineAlignment.centerRight);
             padStringList.Add(padString);
             smartRecordLine = SmartPaperHelper.MakePadStringLine(padStringList);
             smartRecordLine.textStyle = SmartRecordLineTextStyle.normal.ToString();
@@ -66,7 +66,7 @@ namespace SmartPaperExample
             smartRecordLine = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.equal, textSize: 15.0);
             smartRecord.items.Add(smartRecordLine);
 
-            smartRecordLine = SmartPaperHelper.Barcode(text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
+            smartRecordLine = SmartPaperHelper.Barcode(text: "126af11e3355", width: paperWidth, height: 100);
             smartRecord.items.Add(smartRecordLine);
             smartRecordLine = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.blank, textSize: 15.0);
             smartRecord.items.Add(smartRecordLine);
@@ -94,18 +94,18 @@ namespace SmartPaperExample
 
             // Waiting Number
             padStringList.Clear();
-            padString = new PadString(text: "Waiting Number ", padFlex: 2, textAlignment: SmartRecordLineAlignment.centerRight);
+            padString = new PadString(text: "Waiting Number ", padFlex: 2, alignment: SmartRecordLineAlignment.centerRight);
             padStringList.Add(padString);
-            padString = new PadString(text: "123", padFlex: 1, textAlignment: SmartRecordLineAlignment.centerLeft);
+            padString = new PadString(text: "123", padFlex: 1, alignment: SmartRecordLineAlignment.centerLeft);
             padStringList.Add(padString);
             smartPaperItem = SmartPaperHelper.MakePadStringLine(padStringList, textStyle: SmartRecordLineTextStyle.normal, textSize: 21.0, textColor: "#FFFFFFFF", textBgColor: "#FF000000");
             smartRecord.items.Add(smartPaperItem);
 
             // Waiting People Number
             padStringList.Clear();
-            padString = new PadString(text: "Waiting People ", padFlex: 2, textAlignment: SmartRecordLineAlignment.centerRight);
+            padString = new PadString(text: "Waiting People ", padFlex: 2, alignment: SmartRecordLineAlignment.centerRight);
             padStringList.Add(padString);
-            padString = new PadString(text: "12", padFlex: 1, textAlignment: SmartRecordLineAlignment.centerLeft);
+            padString = new PadString(text: "12", padFlex: 1, alignment: SmartRecordLineAlignment.centerLeft);
             padStringList.Add(padString);
             smartPaperItem = SmartPaperHelper.MakePadStringLine(padStringList, textStyle: SmartRecordLineTextStyle.normal, textSize: 18.0);
             smartRecord.items.Add(smartPaperItem);
@@ -119,7 +119,7 @@ namespace SmartPaperExample
             smartPaperItem = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.equal, textSize: 15.0);
             smartRecord.items.Add(smartPaperItem);
 
-            smartPaperItem = SmartPaperHelper.Barcode(text: "126af11e3355", imageWidth: paperWidth, imageHeight: 100);
+            smartPaperItem = SmartPaperHelper.Barcode(text: "126af11e3355", width: paperWidth, height: 100);
             smartRecord.items.Add(smartPaperItem);
             smartPaperItem = SmartPaperHelper.Divider(dividerStyle: SmartRecordLineDividerStyle.blank, textSize: 15.0);
             smartRecord.items.Add(smartPaperItem);

@@ -6,94 +6,50 @@
         public static readonly string PAD_TEXT_BLANK = " ";
         public static readonly string STRING_END_OF = "[|SEO|]";
 
+        /// Common
         public string type = SmartRecordLineType.text.ToString();
-        public string textAlignment = SmartRecordLineAlignment.none.ToString();
-        public string imageAlignment = SmartRecordLineAlignment.none.ToString();
-        public string listAlignment = SmartRecordLineAlignment.none.ToString();
-        public string buttonAlignment = SmartRecordLineAlignment.none.ToString();
-        public string timerAlignment = SmartRecordLineAlignment.none.ToString();
-        public string videoAlignment = SmartRecordLineAlignment.none.ToString();
-        public string audioAlignment = SmartRecordLineAlignment.none.ToString();
-        public string alarmAlignment = SmartRecordLineAlignment.none.ToString();
-        public string documentAlignment = SmartRecordLineAlignment.none.ToString();
-        public string urlAlignment = SmartRecordLineAlignment.none.ToString();
+        public string alignment = SmartRecordLineAlignment.none.ToString();
+        public double? width;
+        public double? height;
+        /// Text
         public string? textStyle;
         public double? textSize;
         public int? textMaxLines;
         public string? text;
-        public double? blankRatio;
         public string? textColor;
         public string? textBgColor;
+        /// Title
+        public string? titleStyle;
+        public double? titleSize;
+        public int? titleMaxLines;
+        public string? title;
+        public string? titleColor;
+        public string? titleBgColor;
+        public string? mediaSrc;
+        public bool? isLooping;
+        public string? actionType;
+        public int? millis;
+        public long? datetime; // yyyyMMddHHmmss
+        public string? actionUrl;
+        public string? url;
+        public double? blankRatio;
         public string? dividerStyle;
-        public double? imageWidth;
-        public double? imageHeight;
-        public string? imageSrc;
+        /// Image
         /// List
         public string? listType;
-        public string? listTitle;
-        public double? listTitleSize;
-        public double? listWidth;
-        public double? listHeight;
-        public string? listTitleColor;
-        public string? listTitleBgColor;
-        public double? listTextSize;
-        public string? listTextColor;
-        public string? listTextBgColor;
         public List<SmartRecordLine>? listItems;
         /// Button
         // String? buttonType;
-        public string? buttonAction;
-        public string? buttonRestfulApi;
-        public string? buttonText;
-        public double? buttonTextSize;
-        public double? buttonWidth;
-        public double? buttonHeight;
-        public string? buttonTextColor;
-        public string? buttonTextBgColor;
         /// Timer
         public string? timerType;
-        public string? timerAction;
-        public string? timerRestfulApi;
-        public string? timerText;
-        public double? timerTextSize;
-        public string? timerTextColor;
-        public string? timerTextBgColor;
-        public int? timerInMillis;
         /// Video
-        public string? videoTitle;
-        public double? videoTitleSize;
-        public string? videoTitleColor;
-        public string? videoTitleBgColor;
-        public string? videoSrc;
-        public double? videoWidth;
-        public double? videoHeight;
         /// Audio
-        public string? audioTitle;
-        public double? audioTitleSize;
-        public string? audioTitleColor;
-        public string? audioTitleBgColor;
-        public string? audioSrc;
         /// Alarm
-        public string? alarmTitle;
-        public double? alarmTitleSize;
-        public string? alarmTitleColor;
-        public string? alarmTitleBgColor;
-        public long? alarmDatetime; // yyyyMMddHHmmss
         /// Document
-        public string? documentTitle;
-        public double? documentTitleSize;
-        public string? documentTitleColor;
-        public string? documentTitleBgColor;
-        public string? documentSrc;
-        public double? documentWidth;
-        public double? documentHeight;
         /// URL
-        public string? urlTitle;
-        public double? urlTitleSize;
-        public string? urlTitleColor;
-        public string? urlTitleBgColor;
-        public string? url;
-
+        /// Group
+        public List<SmartRecordLine>? group;
+        /// Background Color
         public string bgColor = "#00000000";
 
         public static string MakePadString(dynamic data)
@@ -123,30 +79,30 @@
         public int PadWidth { get; set; } = 0;
         public int PadFlex { get; set; } = 1;
         public string PadText { get; set; } = defaultPadText;
-        public SmartRecordLineAlignment TextAlignment { get; set; } = SmartRecordLineAlignment.none;
+        public SmartRecordLineAlignment Alignment { get; set; } = SmartRecordLineAlignment.none;
 
-        public PadString(string text, double? width = null, TextPadType padType = TextPadType.leftPad, int padFlex = 1, string padText = defaultPadText, SmartRecordLineAlignment textAlignment = SmartRecordLineAlignment.none)
+        public PadString(string text, double? width = null, TextPadType padType = TextPadType.leftPad, int padFlex = 1, string padText = defaultPadText, SmartRecordLineAlignment alignment = SmartRecordLineAlignment.none)
         {
             Text = text;
             Width = width;
             PadType = padType;
             PadFlex = padFlex;
             PadText = padText;
-            TextAlignment = textAlignment;
+            Alignment = alignment;
         }
 
         public bool IsValid()
         {
             return !string.IsNullOrEmpty(Text) &&
-                   ((TextAlignment == SmartRecordLineAlignment.none && TextPadTypeExtensions.ValidType(PadType) && !string.IsNullOrEmpty(PadText) && PadWidth >= 0) || TextAlignment != SmartRecordLineAlignment.none);
+                   ((Alignment == SmartRecordLineAlignment.none && TextPadTypeExtensions.ValidType(PadType) && !string.IsNullOrEmpty(PadText) && PadWidth >= 0) || Alignment != SmartRecordLineAlignment.none);
         }
 
         public string MakePadString()
         {
             if (IsValid())
             {
-                return TextAlignment != SmartRecordLineAlignment.none
-                    ? $"{Text}{SmartRecordLine.STRING_FORMAT_SEPARATOR}{PadFlex}{SmartRecordLine.STRING_FORMAT_SEPARATOR}{TextAlignment.ToString()}{SmartRecordLine.STRING_END_OF}"
+                return Alignment != SmartRecordLineAlignment.none
+                    ? $"{Text}{SmartRecordLine.STRING_FORMAT_SEPARATOR}{PadFlex}{SmartRecordLine.STRING_FORMAT_SEPARATOR}{Alignment.ToString()}{SmartRecordLine.STRING_END_OF}"
                     : $"{Text}{SmartRecordLine.STRING_FORMAT_SEPARATOR}{PadFlex}{SmartRecordLine.STRING_FORMAT_SEPARATOR}{PadType.ToString()}{SmartRecordLine.STRING_FORMAT_SEPARATOR}{PadWidth}{SmartRecordLine.STRING_FORMAT_SEPARATOR}{PadText}{SmartRecordLine.STRING_END_OF}";
             }
             else
@@ -170,8 +126,6 @@
     {
         image = 0x0000,
         text = 0x0001,
-        imageAndText = 0x0002,
-        textAndImage = 0x0003,
         divider = 0x0004,
         barcode = 0x0005,
         qrCode = 0x0006,
@@ -183,6 +137,7 @@
         alarm = 0x000C,
         document = 0x000D,
         url = 0x000E,
+        group = 0x000F,
     }
 
     public enum SmartRecordLineAlignment
@@ -317,7 +272,7 @@
     public enum ActionType
     {
         unknown = -1,
-        restfulApi = 0,
+        ActionURL = 0,
         refresh = 1,
         autoRefresh = 2
     }
@@ -339,7 +294,7 @@
             if (name == null) return null;
             return name switch
             {
-                nameof(ActionType.restfulApi) => ActionType.restfulApi,
+                nameof(ActionType.ActionURL) => ActionType.ActionURL,
                 nameof(ActionType.refresh) => ActionType.refresh,
                 nameof(ActionType.autoRefresh) => ActionType.autoRefresh,
                 _ => ActionType.unknown
@@ -348,7 +303,7 @@
 
         public static bool ValidType(ActionType type)
         {
-            return type >= ActionType.restfulApi && type <= ActionType.autoRefresh;
+            return type >= ActionType.ActionURL && type <= ActionType.autoRefresh;
         }
     }
 
